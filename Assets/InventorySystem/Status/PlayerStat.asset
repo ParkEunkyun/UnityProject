@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ce07c0bb0e872469fab04e1fe02327, type: 3}
+  m_Name: PlayerStat
+  m_EditorClassIdentifier: 
+  Name: 
+  maxExp: 210
+  curExp: 162
+  Level: 21
+  Str: 69
+  Con: 9
+  Dex: 9
+  Int: 9
+  Luk: 9
+  Pp: 40
+  ItemStr: 0
+  ItemCon: 0
+  ItemDex: 0
+  ItemInt: 0
+  ItemLuk: 0
+  itemATK: 0
+  itemAttackSpeed: 0
+  itemCritical: 0
+  itemMoveSpeed: 0
+  itemCriticalDmg: 0
+  itemDEF: 0
+  itemCooltime: 0
+  itemMaxHP: 0
+  itemRecoveryHP: 0
+  itemMaxMP: 0
+  itemRecoveryMP: 0
+  minAtk: 207
+  maxAtk: 276
+  AttackSpeed: 109
+  Critical: 9
+  MoveSpeed: 300
+  CriticalDmg: 184
+  Def: 0
+  Cooltime: 0
+  maxHP: 90
+  curHP: 10
+  RecoveryHP: 9
+  maxMP: 45
+  curMP: 0
+  RecoveryMP: 9

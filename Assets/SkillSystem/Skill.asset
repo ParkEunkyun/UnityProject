@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a97a734724302494b99b5bd791987885, type: 3}
+  m_Name: Skill
+  m_EditorClassIdentifier: 
+  SkillPoint: 0
+  MagnetLv: 0
+  MagnetCurExp: 0
+  MagnetMaxExp: 10
+  ViewRadiusLv: 0
+  SkillViewRadius: 3
+  ViewRadiusCurExp: 0
+  ViewRadiusMaxExp: 10
+  AttackSpeedLv: 0
+  SkillAttackSpeed: 0
+  AttackSpeedCurExp: 0
+  AttackSpeedMaxExp: 10
+  AttackLv: 0
+  SkillAttack: 0
+  AttackCurExp: 0
+  AttackMaxExp: 10
+  CriticalLv: 0
+  SkillCritical: 0
+  CriticalCurExp: 0
+  CriticalMaxExp: 10
+  HealLv: 0
+  HealingAmount: 0
+  HealCurExp: 0
+  HealMaxExp: 10
+  HealUseMP: 0
+  HealCooltime: 0
+  MoveSpeedLv: 0
+  SkillMoveSpeed: 0
+  MoveSpeedDuring: 0
+  MoveSpeedCurExp: 0
+  HMoveSpeedMaxExp: 10
+  MoveSpeedUseMP: 0
+  MoveSpeedCooltime: 0
+  AreaSkillLv: 1
+  AreaSkillDamage: 10
+  AreaSkillDuring: 5
+  AreaSkillCurExp: 2
+  AreaSkillMaxExp: 20
+  AreaSkillUseMP: 10
+  AreaSkillCooltime: 15
+  AroundSkillLv: 0
+  AroundSkillDamage: 0
+  AroundSkillDuring: 0
+  AroundSkillCurExp: 2
+  AroundSkillMaxExp: 10
+  AroundSkillUseMP: 0
+  AroundSkillCooltime: 0
+  InvincibilityLv: 0
+  InvincibilityDuring: 0
+  InvincibilityCurExp: 0
+  InvincibilityMaxExp: 10
+  InvincibilityUseMP: 0
+  InvincibilityCooltime: 0
+  MultiShotLv: 0
+  MultiShotDuring: 0
+  MultiShotCurExp: 8
+  MultiShotMaxExp: 10
+  MultiShotUseMP: 0
+  MultiShotCooltime: 0
+  PierceShotLv: 0
+  PierceShotCount: 0
+  PierceShotCurExp: 3
+  PierceShotMaxExp: 10
+  PierceShotUseMP: 0
+  PierceShotCooltime: 0

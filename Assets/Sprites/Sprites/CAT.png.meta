@@ -1,0 +1,494 @@
+fileFormatVersion: 2
+guid: bb65eed4bebd8b140bda2f73cac19923
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CAT_51
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 204.875
+        width: 50.416668
+        height: 68.125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfc02a757f1b5354b855a03d37b45140
+      internalID: -643263414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAT_52
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 204.875
+        width: 50.416668
+        height: 68.125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa24a12cc7a6be945b9b5f979669404a
+      internalID: -1152515833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAT_53
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 204.875
+        width: 50.416668
+        height: 68.125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30d5986918a6e1a4081dc39e229bb38d
+      internalID: 1664530356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAT_63
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 136.875
+        width: 50.416668
+        height: 68.125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56cc141d0617cf649b0a2a8c72548174
+      internalID: -1962066109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAT_64
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 136.875
+        width: 50.416668
+        height: 68.125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe62187dbc8c172438131ff116c1e9aa
+      internalID: 2046586542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAT_65
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 136.875
+        width: 50.416668
+        height: 68.125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8b1d1dc8f899e340adc6cec0306f259
+      internalID: -1916488733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAT_75
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 68.875
+        width: 50.416668
+        height: 68.125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d70df50139903a4eac4259209c753a6
+      internalID: 2033138883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAT_76
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 68.875
+        width: 50.416668
+        height: 68.125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f91a1f9788cffce468643e5348bcd28b
+      internalID: -1372604543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAT_77
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 68.875
+        width: 50.416668
+        height: 68.125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93313e9a1ffeaab4cb23e55f4e2f2e53
+      internalID: 1782108988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAT_87
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 0.875
+        width: 50.416668
+        height: 68.125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 520dc193274c8b34e9a2f129181c6c6f
+      internalID: -88660780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAT_88
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0.875
+        width: 50.416668
+        height: 68.125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8f4735309f0bda408eba2ac50006691
+      internalID: 2050901993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CAT_89
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0.875
+        width: 50.416668
+        height: 68.125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59698a6bc3bacd4478287a989fbcd1fa
+      internalID: 1148188175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      CAT_56: -1971676656
+      CAT_83: -539033140
+      CAT_87: -88660780
+      CAT_91: -175220224
+      CAT_40: -958416489
+      CAT_51: -643263414
+      CAT_13: 1185856548
+      CAT_20: 1354704764
+      CAT_28: -671677715
+      CAT_5: 48029356
+      CAT_4: -681893966
+      CAT_27: -1000739263
+      CAT_34: 2036004255
+      CAT_62: 49823763
+      CAT_43: 323798653
+      CAT_12: 59630371
+      CAT_92: -312416130
+      CAT_89: 1148188175
+      CAT_95: -1610824025
+      CAT_46: 1806325570
+      CAT_10: 337609627
+      CAT_22: 308543094
+      CAT_63: -1962066109
+      CAT_9: 340797180
+      CAT_78: -1353761184
+      CAT_3: 2072770108
+      CAT_32: 1147012557
+      CAT_6: 560836842
+      CAT_29: 1073252397
+      CAT_49: 2022036021
+      CAT_7: -1340764892
+      CAT_33: -453961263
+      CAT_8: 2114008910
+      CAT_38: -2103292400
+      CAT_77: 1782108988
+      CAT_93: 691708819
+      CAT_35: 1885138485
+      CAT_53: 1664530356
+      CAT_52: -1152515833
+      CAT_2: -1926488434
+      CAT_71: -1242353778
+      CAT_84: -1370155468
+      CAT_50: -332638270
+      CAT_69: 1963738139
+      CAT_45: -153607448
+      CAT_21: -1954925380
+      CAT_44: 720691000
+      CAT_39: -1520453950
+      CAT_85: 351840355
+      CAT_59: 646995706
+      CAT_14: -1546821331
+      CAT_72: -82451244
+      CAT_58: 1545068200
+      CAT_30: 629039105
+      CAT_41: -2060624681
+      CAT_86: 654451742
+      CAT_57: 1609369932
+      CAT_80: 1853534579
+      CAT_19: 281757224
+      CAT_17: -440838488
+      CAT_73: 1896938464
+      CAT_47: -487292416
+      CAT_0: -1013614763
+      CAT_48: -513911797
+      CAT_67: -109779993
+      CAT_74: 817186776
+      CAT_90: 819570810
+      CAT_82: -1710703572
+      CAT_54: 563633036
+      CAT_75: 2033138883
+      CAT_25: 1310800582
+      CAT_64: 2046586542
+      CAT_23: 1076417320
+      CAT_11: -1728366351
+      CAT_15: 679820284
+      CAT_42: -1439701658
+      CAT_24: 628850558
+      CAT_60: -1414084376
+      CAT_61: -908212265
+      CAT_55: 548430668
+      CAT_1: -2114665523
+      CAT_36: 400975079
+      CAT_16: -342184690
+      CAT_88: 2050901993
+      CAT_65: -1916488733
+      CAT_70: 572150137
+      CAT_18: -1612078489
+      CAT_66: 1138188282
+      CAT_94: 680247129
+      CAT_68: 65143308
+      CAT_81: -1867915979
+      CAT_26: 685605652
+      CAT_31: 133771004
+      CAT_76: -1372604543
+      CAT_37: -407020668
+      CAT_79: -728579147
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

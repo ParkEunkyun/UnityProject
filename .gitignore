@@ -57,4 +57,25 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
+crashlytics_build_id.xml
 
+UserSettings/
+*.unitypackage.meta
+
+# StreamingAssets
+Assets/StreamingAssets/build_info
+Assets/StreamingAssets/build_info.meta
+Assets/StreamingAssets/google-services-desktop.json
+Assets/StreamingAssets/google-services-desktop.json.meta
+
+# Bundle
+Bundle/Bundle
+Bundle/Bundle.manifest
+
+# Excel
+~$*.*
+Assets/3_Resources/Table/XmasEventReward.json
+Assets/3_Resources/Table/XmasEventReward.json.meta
+
+#Ignore Folder
+Assets/Ignore

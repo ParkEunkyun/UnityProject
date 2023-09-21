@@ -18,7 +18,7 @@ public class Select : MonoBehaviour
         // 슬롯별로 저장된 데이터가 존재하는지 판단.
         //for (int i = 0; i < 1; i++)
         //{
-            if (File.Exists(DataManager.instance.PlayerPath + $"{0}"))	// 데이터가 있는 경우
+            if (File.Exists(DataManager.instance.PlayerPath + $"{0}") && DataManager.instance.nowPlayer.name != "")	// 데이터가 있는 경우
             {
                 savefile[0] = true;			// 해당 슬롯 번호의 bool배열 true로 변환
                 DataManager.instance.nowSlot = 0;	// 선택한 슬롯 번호 저장
@@ -27,7 +27,7 @@ public class Select : MonoBehaviour
             }
             else	// 데이터가 없는 경우
             {
-                slotText[0].text = "비어있음";
+                slotText[0].text = "비어있음";                
             }
         //}
         // 불러온 데이터를 초기화시킴.(버튼에 닉네임을 표현하기위함이었기 때문)
@@ -38,7 +38,7 @@ public class Select : MonoBehaviour
     {
         DataManager.instance.nowSlot = number;	// 슬롯의 번호를 슬롯번호로 입력함.
 
-        if (savefile[number])	// bool 배열에서 현재 슬롯번호가 true라면 = 데이터 존재한다는 뜻
+        if (savefile[number] && DataManager.instance.nowPlayer.name != "")	// bool 배열에서 현재 슬롯번호가 true라면 = 데이터 존재한다는 뜻
         {
             DataManager.instance.LoadData();	// 데이터를 로드하고
             GoGame();	// 게임씬으로 이동

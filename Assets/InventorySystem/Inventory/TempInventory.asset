@@ -13,12 +13,11 @@ MonoBehaviour:
   m_Name: TempInventory
   m_EditorClassIdentifier: 
   database: {fileID: 11400000, guid: ecb9b06f5c9d10e41886facefbdd38e1, type: 2}
-  type: 0
+  type: 3
   container:
     slots:
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -77,7 +76,64 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
+        id: -1
+        name: 
+        buffs:
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+      amount: 1
+    - allowedItem: 
+      item:
         id: -1
         name: 
         buffs:
@@ -136,7 +192,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -195,7 +250,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -254,66 +308,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
-        id: -1
-        name: 
-        buffs:
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-      amount: 0
-    - allowedItem: 
-      item:
-        partNum: 0
         id: -1
         name: 
         buffs:

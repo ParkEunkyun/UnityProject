@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a97a734724302494b99b5bd791987885, type: 3}
   m_Name: Skill
   m_EditorClassIdentifier: 
-  SkillPoint: 0
+  SkillPoint: 49708
   MagnetLv: 0
   MagnetCurExp: 0
   MagnetMaxExp: 10
@@ -45,35 +45,35 @@ MonoBehaviour:
   HMoveSpeedMaxExp: 10
   MoveSpeedUseMP: 0
   MoveSpeedCooltime: 0
-  AreaSkillLv: 1
-  AreaSkillDamage: 10
-  AreaSkillDuring: 5
-  AreaSkillCurExp: 2
-  AreaSkillMaxExp: 20
-  AreaSkillUseMP: 10
+  AreaSkillLv: 3
+  AreaSkillDamage: 30
+  AreaSkillDuring: 15
+  AreaSkillCurExp: 1
+  AreaSkillMaxExp: 80
+  AreaSkillUseMP: 30
   AreaSkillCooltime: 15
-  AroundSkillLv: 0
-  AroundSkillDamage: 0
-  AroundSkillDuring: 0
-  AroundSkillCurExp: 2
-  AroundSkillMaxExp: 10
-  AroundSkillUseMP: 0
-  AroundSkillCooltime: 0
+  AroundSkillLv: 4
+  AroundSkillDamage: 40
+  AroundSkillDuring: 25
+  AroundSkillCurExp: 35
+  AroundSkillMaxExp: 160
+  AroundSkillUseMP: 40
+  AroundSkillCooltime: 20
   InvincibilityLv: 0
   InvincibilityDuring: 0
   InvincibilityCurExp: 0
   InvincibilityMaxExp: 10
   InvincibilityUseMP: 0
   InvincibilityCooltime: 0
-  MultiShotLv: 0
-  MultiShotDuring: 0
-  MultiShotCurExp: 8
-  MultiShotMaxExp: 10
-  MultiShotUseMP: 0
-  MultiShotCooltime: 0
-  PierceShotLv: 0
-  PierceShotCount: 0
-  PierceShotCurExp: 3
-  PierceShotMaxExp: 10
-  PierceShotUseMP: 0
-  PierceShotCooltime: 0
+  MultiShotLv: 3
+  MultiShotDuring: 20
+  MultiShotCurExp: 12
+  MultiShotMaxExp: 80
+  MultiShotUseMP: 30
+  MultiShotCooltime: 5
+  PierceShotLv: 3
+  PierceShotCount: 3
+  PierceShotCurExp: 0
+  PierceShotMaxExp: 80
+  PierceShotUseMP: 30
+  PierceShotCooltime: 10

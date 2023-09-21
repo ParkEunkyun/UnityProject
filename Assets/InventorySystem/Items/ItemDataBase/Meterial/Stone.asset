@@ -15,9 +15,8 @@ MonoBehaviour:
   type: 5
   stackable: 1
   icon: {fileID: 21300000, guid: 2f8a837ebcb399c4a9f517b331fef0ad, type: 3}
-  ItemPrefab: {fileID: 0}
+  ItemPrefab: {fileID: 1772511043929954199, guid: 5ef44eb931b5bfd479cfaeab04cdaf8a, type: 3}
   data:
-    partNum: 0
     id: 2
     name: Stone
     buffs:
@@ -74,4 +73,5 @@ MonoBehaviour:
       min: 0
       max: 0
   partsName: []
-  description: 
+  description: "\uAE38\uAC00\uC758 \uD754\uD55C \uB3CC\uBA69\uC774\n(\uB358\uC9C8
+    \uC218 \uC5C6\uB2E4.)"

@@ -15,8 +15,16 @@ public class DamageText : MonoBehaviour
     void Start()
     {
         text = GetComponent<TextMeshPro>();
-        alpha = text.color;
-        text.text = damage.ToString();
+        //alpha = text.color;
+        //text.text = damage.ToString();
+        Invoke("DestroyObject", destroyTime);
+    }
+
+    void OnEnable()
+    {        
+        text = GetComponent<TextMeshPro>();
+        //alpha = text.color;
+        //text.text = damage.ToString();
         Invoke("DestroyObject", destroyTime);
     }
 
@@ -24,12 +32,13 @@ public class DamageText : MonoBehaviour
     void Update()
     {
         transform.Translate(new Vector3(0, moveSpeed * Time.deltaTime, 0));
-        alpha.a = Mathf.Lerp(alpha.a, 0, Time.deltaTime * alphaSpeed);
-        text.color = alpha;
+        //alpha.a = Mathf.Lerp(alpha.a, 0, Time.deltaTime * alphaSpeed);
+        //text.color = alpha;
     }
 
     private void DestroyObject()
-    {
-        Destroy(gameObject);    
+    {        
+        DamageObjectPool.ReturnObject(this.gameObject);
+        //Destroy(gameObject);        
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ParentMathod : MonoBehaviour
 {
@@ -30,8 +31,6 @@ public class ParentMathod : MonoBehaviour
     {
         SlotNumber = this.transform.GetSiblingIndex();
         Debug.Log(SlotNumber);
-        this.GetComponentInParent<TooltipManager>().MaterialslotClick();
-        
+        this.GetComponentInParent<TooltipManager>().MaterialslotClick();        
     }
-    
 }

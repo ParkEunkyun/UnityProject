@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 5904405710037628057}
   - component: {fileID: 5904405710037628062}
   - component: {fileID: 5904405710037628063}
+  - component: {fileID: -2888561531127227750}
   - component: {fileID: 5904405710037628060}
+  - component: {fileID: -2975468920727477646}
   m_Layer: 0
   m_Name: CriDamageText
   m_TagString: Untagged
@@ -173,7 +175,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 5904405710037628062}
   m_maskType: 0
---- !u!114 &5904405710037628060
+--- !u!114 &-2888561531127227750
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,6 +184,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 5904405710037628061}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 246ede6585cd9d34ca1f0cb0d6cd9180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1.5
+  alphaSpeed: 1
+  destroyTime: 2
+  damage: 0
+--- !u!114 &5904405710037628060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904405710037628061}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b25a1661ca2b84f4180eddf9cb2cfe88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
@@ -189,3 +207,14 @@ MonoBehaviour:
   alphaSpeed: 1
   destroyTime: 2
   damage: 0
+--- !u!210 &-2975468920727477646
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5904405710037628061}
+  m_Enabled: 1
+  m_SortingLayerID: -1903050065
+  m_SortingLayer: 2
+  m_SortingOrder: 2

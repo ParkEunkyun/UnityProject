@@ -11,9 +11,11 @@ public class GoldDrop : MonoBehaviour
     {
         if(other.tag.Equals("Player"))
         {            
-                DataManager.instance.nowPlayer.gold = DataManager.instance.nowPlayer.gold + Random.Range(minGold,maxGold);
-                DataManager.instance.SaveData();
-                Destroy(this.gameObject);
+            DataManager.instance.nowPlayer.gold = DataManager.instance.nowPlayer.gold + Random.Range(minGold,maxGold);
+            DataManager.instance.SaveData();
+            //this.gameObject.SetActive(false);
+            //Destroy(this.gameObject);
+            GoldObjectPool.ReturnObject(this.gameObject);
         }
         
     }

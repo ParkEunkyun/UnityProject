@@ -109,7 +109,7 @@ public class Multishot : MonoBehaviour
     public void Throwbullet()
     {
         
-        var newBullet = ObjectPool.GetObject(); // 수정
+        var newBullet = BulletObjectPool.GetObject(); // 수정
         //newBullet.transform.SetParent(transform.Find("BulletPool"));
         newBullet.GetComponent<Rigidbody2D> ().velocity = (targeting.transform.position - transform.position).normalized * BulletSpeed;    
         

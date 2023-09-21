@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 3352883997303848743}
   - component: {fileID: 8807798001726937206}
   - component: {fileID: 8462281290902630095}
-  - component: {fileID: 4966950774860910229}
   - component: {fileID: -1696559966579971841}
   - component: {fileID: -6216028974720246127}
   - component: {fileID: -386581228888417719}
   - component: {fileID: -7320127942352060432}
+  - component: {fileID: 8069762567465977092}
   m_Layer: 15
   m_Name: ManaPotion(drop)
   m_TagString: Item
@@ -76,9 +76,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -1903050065
+  m_SortingLayer: 2
+  m_SortingOrder: -48
   m_Sprite: {fileID: 21300000, guid: 2d7d9ae02b7159843ac7d5ead0f8b89a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -111,20 +111,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &4966950774860910229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6765248900800689553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f9dae27ce86ecf4890c7298b5637d72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  alphaSpeed: 0.25
-  destroyTime: 120
 --- !u!58 &-1696559966579971841
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -176,5 +162,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ae0a80ed151ec94ba1dd2e830c0aca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  contactDistance: 0
+  moveSpeed: 4
+  contactDistance: 0.01
+--- !u!114 &8069762567465977092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6765248900800689553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbcfd292776f27b4fafe77270fde40c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  alphaSpeed: 0.25
+  destroyTime: 60

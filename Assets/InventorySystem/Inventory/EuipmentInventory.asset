@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EuipmentInventory
   m_EditorClassIdentifier: 
   database: {fileID: 11400000, guid: ecb9b06f5c9d10e41886facefbdd38e1, type: 2}
-  type: 0
+  type: 1
   container:
     slots:
     - allowedItem: 
@@ -21,65 +21,7 @@ MonoBehaviour:
         id: -1
         name: 
         buffs:
-        - stat: 10
-          value: 0
-          min: 0
-          max: 0
-        - stat: 3
-          value: 0
-          min: 0
-          max: 0
-        - stat: 1
-          value: 0
-          min: 0
-          max: 0
-        - stat: 17
-          value: 0
-          min: 0
-          max: 0
-        - stat: 8
-          value: 0
-          min: 0
-          max: 0
-        - stat: 9
-          value: 0
-          min: 0
-          max: 0
-        - stat: 11
-          value: 0
-          min: 0
-          max: 0
-        - stat: 18
-          value: 0
-          min: 0
-          max: 0
-        - stat: 21
-          value: 0
-          min: 0
-          max: 0
-        - stat: 23
-          value: 0
-          min: 0
-          max: 0
-        - stat: 23
-          value: 0
-          min: 0
-          max: 0
-        - stat: 23
-          value: 0
-          min: 0
-          max: 0
-        - stat: 23
-          value: 0
-          min: 0
-          max: 0
-      amount: 0
-    - allowedItem: 
-      item:
-        id: -1
-        name: 
-        buffs:
-        - stat: 10
+        - stat: 0
           value: 0
           min: 0
           max: 0
@@ -87,47 +29,47 @@ MonoBehaviour:
           value: 0
           min: 0
           max: 0
-        - stat: 2
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 5
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 8
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 9
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 11
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 18
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 12
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 23
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 23
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 23
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 23
+        - stat: 0
           value: 0
           min: 0
           max: 0
@@ -195,11 +137,7 @@ MonoBehaviour:
         id: -1
         name: 
         buffs:
-        - stat: 10
-          value: 0
-          min: 0
-          max: 0
-        - stat: 1
+        - stat: 0
           value: 0
           min: 0
           max: 0
@@ -207,43 +145,105 @@ MonoBehaviour:
           value: 0
           min: 0
           max: 0
-        - stat: 6
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 8
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 9
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 11
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 18
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 14
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 17
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 23
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 23
+        - stat: 0
           value: 0
           min: 0
           max: 0
-        - stat: 23
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+      amount: 0
+    - allowedItem: 
+      item:
+        id: -1
+        name: 
+        buffs:
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
+          value: 0
+          min: 0
+          max: 0
+        - stat: 0
           value: 0
           min: 0
           max: 0

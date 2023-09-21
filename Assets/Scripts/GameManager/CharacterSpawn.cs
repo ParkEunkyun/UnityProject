@@ -24,7 +24,6 @@ public class CharacterSpawn : MonoBehaviour
     public GameObject PlayerParent;
     public int preGoldAmount;   public int preKillAmount;   public int prePowerAmount;
 
-
     void Start()
     {
         DataManager.instance.LoadData();
@@ -59,7 +58,8 @@ public class CharacterSpawn : MonoBehaviour
             return;
         }        
         DataManager.instance.EXPandHP();        
-    
+        stat.curHP = stat.maxHP;
+        stat.curMP = stat.maxMP;
     }    
     
     private void Update() 
@@ -83,6 +83,7 @@ public class CharacterSpawn : MonoBehaviour
                 PowerPoint.text = PowerPointFomat;
                 prePowerAmount = DataManager.instance.nowPlayer.TotalScore;
             }
+           
     }
 
     void LoadPlayerData()
@@ -126,7 +127,7 @@ public class CharacterSpawn : MonoBehaviour
 
     void optionload()
     {           
-        for(int i = 0; i < 30; i++)
+        for(int i = 0; i < 60; i++)
             {
                 if(DataManager.instance.nowPlayer.option0[i] == 0) { Inven.Slots[i].item.buffs[0].stat = Itemoption.STR; }
                 else  if(DataManager.instance.nowPlayer.option0[i] == 1) { Inven.Slots[i].item.buffs[0].stat = Itemoption.CON; }
@@ -154,7 +155,7 @@ public class CharacterSpawn : MonoBehaviour
                 else  if(DataManager.instance.nowPlayer.option0[i] == 23) { Inven.Slots[i].item.buffs[0].stat = Itemoption.Nothing; }
             }
 
-        for(int i = 0; i < 30; i++)
+        for(int i = 0; i < 60; i++)
             {
                 if(DataManager.instance.nowPlayer.option1[i] == 0) { Inven.Slots[i].item.buffs[1].stat = Itemoption.STR; }
                 else  if(DataManager.instance.nowPlayer.option1[i] == 1) { Inven.Slots[i].item.buffs[1].stat = Itemoption.CON; }
@@ -182,7 +183,7 @@ public class CharacterSpawn : MonoBehaviour
                 else  if(DataManager.instance.nowPlayer.option1[i] == 23) { Inven.Slots[i].item.buffs[1].stat = Itemoption.Nothing; }
             }
             
-        for(int i = 0; i < 30; i++)
+        for(int i = 0; i < 60; i++)
             {
                 if(DataManager.instance.nowPlayer.option2[i] == 0) { Inven.Slots[i].item.buffs[2].stat = Itemoption.STR; }
                 else  if(DataManager.instance.nowPlayer.option2[i] == 1) { Inven.Slots[i].item.buffs[2].stat = Itemoption.CON; }
@@ -210,7 +211,7 @@ public class CharacterSpawn : MonoBehaviour
                 else  if(DataManager.instance.nowPlayer.option2[i] == 23) { Inven.Slots[i].item.buffs[2].stat = Itemoption.Nothing; }
             }
             
-        for(int i = 0; i < 30; i++)
+        for(int i = 0; i < 60; i++)
             {
                 if(DataManager.instance.nowPlayer.option3[i] == 0) { Inven.Slots[i].item.buffs[3].stat = Itemoption.STR; }
                 else  if(DataManager.instance.nowPlayer.option3[i] == 1) { Inven.Slots[i].item.buffs[3].stat = Itemoption.CON; }
@@ -238,7 +239,7 @@ public class CharacterSpawn : MonoBehaviour
                 else  if(DataManager.instance.nowPlayer.option3[i] == 23) { Inven.Slots[i].item.buffs[3].stat = Itemoption.Nothing; }
             }
             
-        for(int i = 0; i < 30; i++)
+        for(int i = 0; i < 60; i++)
             {
                 if(DataManager.instance.nowPlayer.option4[i] == 0) { Inven.Slots[i].item.buffs[4].stat = Itemoption.STR; }
                 else  if(DataManager.instance.nowPlayer.option4[i] == 1) { Inven.Slots[i].item.buffs[4].stat = Itemoption.CON; }
@@ -266,7 +267,7 @@ public class CharacterSpawn : MonoBehaviour
                 else  if(DataManager.instance.nowPlayer.option4[i] == 23) { Inven.Slots[i].item.buffs[4].stat = Itemoption.Nothing; }
             }
             
-        for(int i = 0; i < 30; i++)
+        for(int i = 0; i < 60; i++)
             {
                 if(DataManager.instance.nowPlayer.option5[i] == 0) { Inven.Slots[i].item.buffs[5].stat = Itemoption.STR; }
                 else  if(DataManager.instance.nowPlayer.option5[i] == 1) { Inven.Slots[i].item.buffs[5].stat = Itemoption.CON; }
@@ -294,7 +295,7 @@ public class CharacterSpawn : MonoBehaviour
                 else  if(DataManager.instance.nowPlayer.option5[i] == 23) { Inven.Slots[i].item.buffs[5].stat = Itemoption.Nothing; }
             }
 
-            for(int i = 0; i < 30; i++)
+            for(int i = 0; i < 60; i++)
             {
                 if(DataManager.instance.nowPlayer.option6[i] == 0) { Inven.Slots[i].item.buffs[6].stat = Itemoption.STR; }
                 else  if(DataManager.instance.nowPlayer.option6[i] == 1) { Inven.Slots[i].item.buffs[6].stat = Itemoption.CON; }
@@ -322,7 +323,7 @@ public class CharacterSpawn : MonoBehaviour
                 else  if(DataManager.instance.nowPlayer.option6[i] == 23) { Inven.Slots[i].item.buffs[6].stat = Itemoption.Nothing; }
             }
 
-            for(int i = 0; i < 30; i++)
+            for(int i = 0; i < 60; i++)
             {
                 if(DataManager.instance.nowPlayer.option7[i] == 0) { Inven.Slots[i].item.buffs[7].stat = Itemoption.STR; }
                 else  if(DataManager.instance.nowPlayer.option7[i] == 1) { Inven.Slots[i].item.buffs[7].stat = Itemoption.CON; }
@@ -350,7 +351,7 @@ public class CharacterSpawn : MonoBehaviour
                 else  if(DataManager.instance.nowPlayer.option7[i] == 23) { Inven.Slots[i].item.buffs[7].stat = Itemoption.Nothing; }
             }
 
-            for(int i = 0; i < 30; i++)
+            for(int i = 0; i < 60; i++)
             {
                 if(DataManager.instance.nowPlayer.option8[i] == 0) { Inven.Slots[i].item.buffs[8].stat = Itemoption.STR; }
                 else  if(DataManager.instance.nowPlayer.option8[i] == 1) { Inven.Slots[i].item.buffs[8].stat = Itemoption.CON; }
@@ -378,7 +379,7 @@ public class CharacterSpawn : MonoBehaviour
                 else  if(DataManager.instance.nowPlayer.option8[i] == 23) { Inven.Slots[i].item.buffs[8].stat = Itemoption.Nothing; }
             }  
 
-            for(int i = 0; i < 30; i++)
+            for(int i = 0; i < 60; i++)
             {
                 if(DataManager.instance.nowPlayer.option9[i] == 0) { Inven.Slots[i].item.buffs[9].stat = Itemoption.STR; }
                 else  if(DataManager.instance.nowPlayer.option9[i] == 1) { Inven.Slots[i].item.buffs[9].stat = Itemoption.CON; }
@@ -406,7 +407,7 @@ public class CharacterSpawn : MonoBehaviour
                 else  if(DataManager.instance.nowPlayer.option9[i] == 23) { Inven.Slots[i].item.buffs[9].stat = Itemoption.Nothing; }
             }
 
-            for(int i = 0; i < 30; i++)
+            for(int i = 0; i < 60; i++)
             {
                 if(DataManager.instance.nowPlayer.option10[i] == 0) { Inven.Slots[i].item.buffs[10].stat = Itemoption.STR; }
                 else  if(DataManager.instance.nowPlayer.option10[i] == 1) { Inven.Slots[i].item.buffs[10].stat = Itemoption.CON; }
@@ -434,7 +435,7 @@ public class CharacterSpawn : MonoBehaviour
                 else  if(DataManager.instance.nowPlayer.option10[i] == 23) { Inven.Slots[i].item.buffs[10].stat = Itemoption.Nothing; }
             }
 
-            for(int i = 0; i < 30; i++)
+            for(int i = 0; i < 60; i++)
             {
                 if(DataManager.instance.nowPlayer.option11[i] == 0) { Inven.Slots[i].item.buffs[11].stat = Itemoption.STR; }
                 else  if(DataManager.instance.nowPlayer.option11[i] == 1) { Inven.Slots[i].item.buffs[11].stat = Itemoption.CON; }
@@ -462,7 +463,7 @@ public class CharacterSpawn : MonoBehaviour
                 else  if(DataManager.instance.nowPlayer.option11[i] == 23) { Inven.Slots[i].item.buffs[11].stat = Itemoption.Nothing; }
             }
 
-            for(int i = 0; i < 30; i++)
+            for(int i = 0; i < 60; i++)
             {
                 if(DataManager.instance.nowPlayer.option12[i] == 0) { Inven.Slots[i].item.buffs[12].stat = Itemoption.STR; }
                 else  if(DataManager.instance.nowPlayer.option12[i] == 1) { Inven.Slots[i].item.buffs[12].stat = Itemoption.CON; }
@@ -492,7 +493,7 @@ public class CharacterSpawn : MonoBehaviour
     } 
     void optionvalueload()
     {
-        for(int i = 0; i < 30; i++)
+        for(int i = 0; i < 60; i++)
         {
             
                 Inven.Slots[i].item.buffs[0].value = DataManager.instance.nowPlayer.optionValue0[i];
@@ -1365,7 +1366,7 @@ public class CharacterSpawn : MonoBehaviour
             stat.maxHP = stat.maxHP + (stat.itemDEF - 99)*1000;
             stat.Def = 99;
         }
-        stat.Cooltime = ((stat.Int + stat.ItemInt)/10) + stat.itemCooltime;
+        stat.Cooltime = ((stat.Int + stat.ItemInt)/20) + stat.itemCooltime;
         DataManager.instance.nowPlayer.TotalScore = (stat.maxAtk*2)+stat.maxHP+stat.AttackSpeed+stat.Critical+stat.CriticalDmg+stat.Def+stat.maxMP;
         
         ///////////////////////////////////////////////////////////////

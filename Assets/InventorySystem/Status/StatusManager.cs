@@ -16,8 +16,11 @@ public class StatusManager : MonoBehaviour
     public Stat stat;
     public GameObject AlertWindow; 
     public Text AlertText;
-    
-   
+
+    public bool[] isClick;
+    public float[] timer;
+
+
     public void infoupdate()    
     {
         Name.text = DataManager.instance.nowPlayer.name;
@@ -67,50 +70,135 @@ public class StatusManager : MonoBehaviour
         DataManager.instance.SaveData();
         DataManager.instance.OnClickSaveButton();
     }
-    #endregion
-/*
-    public void PPUPTEST()
+
+    private void Update()
     {
-        DataManager.instance.nowPlayer.curExp++;        
-        Textupdate();
-        LevelUP();   
-    }
-
-    public void LevelUP()
-    {        
-        while(DataManager.instance.nowPlayer.curExp >= ExpBar.maxValue)
+        if (isClick[0])
         {
-            DataManager.instance.nowPlayer.Level++;
-            DataManager.instance.nowPlayer.curExp = DataManager.instance.nowPlayer.curExp - DataManager.instance.nowPlayer.maxExp;
-            DataManager.instance.nowPlayer.Pp = DataManager.instance.nowPlayer.Pp + 5;
-            Level.text = DataManager.instance.nowPlayer.Level.ToString();
-            PP.text = DataManager.instance.nowPlayer.Pp.ToString();
-
-            if(DataManager.instance.nowPlayer.Level < 30)
+            timer[0] += Time.deltaTime;
+            if (timer[0] >= 0.2f)
             {
-                DataManager.instance.nowPlayer.maxExp = DataManager.instance.nowPlayer.maxExp + 10;
+                PlusPointSTR(); // 1초마다 A 함수 실행
+                timer[0] = 0.0f;
             }
-            else if(DataManager.instance.nowPlayer.Level < 50)
+        }
+        else if (isClick[1])
+        {
+            timer[1] += Time.deltaTime;
+            if (timer[1] >= 0.2f)
             {
-                DataManager.instance.nowPlayer.maxExp = DataManager.instance.nowPlayer.maxExp + 40;
+                PlusPointCON(); // 1초마다 A 함수 실행
+                timer[1] = 0.0f;
             }
-            else if(DataManager.instance.nowPlayer.Level < 100)
+        }
+        else if (isClick[2])
+        {
+            timer[2] += Time.deltaTime;
+            if (timer[2] >= 0.2f)
             {
-                DataManager.instance.nowPlayer.maxExp = DataManager.instance.nowPlayer.maxExp + 100;
+                PlusPointDEX(); // 1초마다 A 함수 실행
+                timer[2] = 0.0f;
             }
-
-            if(DataManager.instance.nowPlayer.curExp < DataManager.instance.nowPlayer.maxExp)
+        }
+        else if (isClick[3])
+        {
+            timer[3] += Time.deltaTime;
+            if (timer[3] >= 0.2f)
             {
-                break;
+                PlusPointINT(); // 1초마다 A 함수 실행
+                timer[3] = 0.0f;
             }
-        }   
-             
-        ExpBar.maxValue = DataManager.instance.nowPlayer.maxExp;
-        ExpBar.value = DataManager.instance.nowPlayer.curExp;
-        Textupdate();
-        DataManager.instance.SaveData();
+        }
+        else if (isClick[4])
+        {
+            timer[4] += Time.deltaTime;
+            if (timer[4] >= 0.2f)
+            {
+                PlusPointLUK(); // 1초마다 A 함수 실행
+                timer[4] = 0.0f;
+            }
+        }
+        else
+        {
+            return;
+        }
     }
-*/
+
+    public void OnButtonPress(int i)
+    {
+        if (i == 0)
+        {
+            PlusPointSTR();
+        }
+        else if (i == 1)
+        {
+            PlusPointCON();
+        }
+        else if (i == 2)
+        {
+            PlusPointDEX();
+        }
+        else if (i == 3)
+        {
+            PlusPointINT();
+        }
+        else if (i == 4)
+        {
+            PlusPointLUK();
+        }
+        isClick[i] = true;
+    }
+
+    public void OnButtonRelease(int i)
+    {
+        isClick[i] = false;
+        timer[i] = 0.0f;
+    }
+
+    #endregion
+    /*
+        public void PPUPTEST()
+        {
+            DataManager.instance.nowPlayer.curExp++;        
+            Textupdate();
+            LevelUP();   
+        }
+
+        public void LevelUP()
+        {        
+            while(DataManager.instance.nowPlayer.curExp >= ExpBar.maxValue)
+            {
+                DataManager.instance.nowPlayer.Level++;
+                DataManager.instance.nowPlayer.curExp = DataManager.instance.nowPlayer.curExp - DataManager.instance.nowPlayer.maxExp;
+                DataManager.instance.nowPlayer.Pp = DataManager.instance.nowPlayer.Pp + 5;
+                Level.text = DataManager.instance.nowPlayer.Level.ToString();
+                PP.text = DataManager.instance.nowPlayer.Pp.ToString();
+
+                if(DataManager.instance.nowPlayer.Level < 30)
+                {
+                    DataManager.instance.nowPlayer.maxExp = DataManager.instance.nowPlayer.maxExp + 10;
+                }
+                else if(DataManager.instance.nowPlayer.Level < 50)
+                {
+                    DataManager.instance.nowPlayer.maxExp = DataManager.instance.nowPlayer.maxExp + 40;
+                }
+                else if(DataManager.instance.nowPlayer.Level < 100)
+                {
+                    DataManager.instance.nowPlayer.maxExp = DataManager.instance.nowPlayer.maxExp + 100;
+                }
+
+                if(DataManager.instance.nowPlayer.curExp < DataManager.instance.nowPlayer.maxExp)
+                {
+                    break;
+                }
+            }   
+
+            ExpBar.maxValue = DataManager.instance.nowPlayer.maxExp;
+            ExpBar.value = DataManager.instance.nowPlayer.curExp;
+            Textupdate();
+            DataManager.instance.SaveData();
+        }
+    */
     public void Textupdate()
     {
         Calcurate();
@@ -222,7 +310,7 @@ public class StatusManager : MonoBehaviour
             stat.maxHP = stat.maxHP + (stat.itemDEF - 99)*1000;
             stat.Def = 99;
         }
-        stat.Cooltime = ((stat.Int + stat.ItemInt)/10) + stat.itemCooltime;
+        stat.Cooltime = ((stat.Int + stat.ItemInt)/20) + stat.itemCooltime;
         DataManager.instance.nowPlayer.TotalScore = (stat.maxAtk*2)+stat.maxHP+stat.AttackSpeed+stat.Critical+stat.CriticalDmg+stat.Def+stat.maxMP;
         
     }

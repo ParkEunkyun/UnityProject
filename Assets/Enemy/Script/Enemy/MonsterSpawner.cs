@@ -7,13 +7,14 @@ public class MonsterSpawner : MonoBehaviour
 public GameObject Monster;
 public static MonsterSpawner instance;
 public Queue<GameObject> m_queue = new Queue<GameObject>();
-public float xPos;
-public float yPos;
-private Vector3 RandomVector;
+//public float xPos;
+//public float yPos;
+//private Vector3 RandomVector;
 public int CNT;
 public int SCNT;
 [SerializeField]
 private int monsterCNT;
+public Transform[] spawnPoint;
 
 // Start is called before the first frame update
 void Awake()
@@ -26,8 +27,8 @@ void Awake()
         m_queue.Enqueue(t_object);
         t_object.SetActive(false);
     }    
-    //StartCoroutine(MonsterSpawn());       
-}
+        //StartCoroutine(MonsterSpawn());       
+    }
 /* private void OnTriggerStay2D(Collider2D other)
 {
     if(other.tag.Equals("Player") && CNT == 0)
@@ -71,18 +72,21 @@ public GameObject GetQueue()
 
 IEnumerator MonsterSpawn()
 {
+    spawnPoint = GameObject.Find("Spawner").GetComponentsInChildren<Transform>();
     while (true)
     {
         if(m_queue.Count != 0 )
         {
-            xPos = Random.Range(-9.5f, 9.5f);
-            yPos = Random.Range(-9.5f, 9.5f);
-            RandomVector = new Vector3(xPos, yPos, 0.0f);
+            //xPos = Random.Range(-9.5f, 9.5f);
+            //yPos = Random.Range(-9.5f, 9.5f);
+            //RandomVector = new Vector3(xPos, yPos, 0.0f);
             CNT++; 
             GameObject t_object = GetQueue();
-            t_object.transform.position = gameObject.transform.position+ RandomVector;           
-        }
-        yield return new WaitForSeconds(1.0f);                    
+            //t_object.transform.position = gameObject.transform.position+ RandomVector;
+            t_object.transform.position = spawnPoint[Random.Range(1, spawnPoint.Length)].position;
+            }
+            
+            yield return new WaitForSeconds(0.1f);                    
     }     
 }
 /*

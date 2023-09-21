@@ -318,7 +318,7 @@ public class DataManager : MonoBehaviour
     public void AddNewEquipItem(int i) // 추후 아이템 획득 로직으로 변경
     {
         if (databaseObject.itemObjects.Length > 0)
-        {
+        {            
             ItemObject newItemObject = databaseObject.itemObjects[i];
             Item newItem = new Item(newItemObject);
             inventoryObject.AddItem(newItem, 1);
@@ -382,7 +382,37 @@ public class DataManager : MonoBehaviour
                                                                 inventoryObject.Slots[26].item.id,
                                                                 inventoryObject.Slots[27].item.id,
                                                                 inventoryObject.Slots[28].item.id,
-                                                                inventoryObject.Slots[29].item.id
+                                                                inventoryObject.Slots[29].item.id,
+                                                                inventoryObject.Slots[30].item.id,
+                                                                inventoryObject.Slots[31].item.id,
+                                                                inventoryObject.Slots[32].item.id,
+                                                                inventoryObject.Slots[33].item.id,
+                                                                inventoryObject.Slots[34].item.id,
+                                                                inventoryObject.Slots[35].item.id,
+                                                                inventoryObject.Slots[36].item.id,
+                                                                inventoryObject.Slots[37].item.id,
+                                                                inventoryObject.Slots[38].item.id,
+                                                                inventoryObject.Slots[39].item.id,
+                                                                inventoryObject.Slots[40].item.id,
+                                                                inventoryObject.Slots[41].item.id,
+                                                                inventoryObject.Slots[42].item.id,
+                                                                inventoryObject.Slots[43].item.id,
+                                                                inventoryObject.Slots[44].item.id,
+                                                                inventoryObject.Slots[45].item.id,
+                                                                inventoryObject.Slots[46].item.id,
+                                                                inventoryObject.Slots[47].item.id,
+                                                                inventoryObject.Slots[48].item.id,
+                                                                inventoryObject.Slots[49].item.id,
+                                                                inventoryObject.Slots[50].item.id,
+                                                                inventoryObject.Slots[51].item.id,
+                                                                inventoryObject.Slots[52].item.id,
+                                                                inventoryObject.Slots[53].item.id,
+                                                                inventoryObject.Slots[54].item.id,
+                                                                inventoryObject.Slots[55].item.id,
+                                                                inventoryObject.Slots[56].item.id,
+                                                                inventoryObject.Slots[57].item.id,
+                                                                inventoryObject.Slots[58].item.id,
+                                                                inventoryObject.Slots[59].item.id
                                                                 };
         nowPlayer.itemname = new string[]  {
                                                                     inventoryObject.Slots[0].item.name,
@@ -415,7 +445,36 @@ public class DataManager : MonoBehaviour
                                                                     inventoryObject.Slots[27].item.name,
                                                                     inventoryObject.Slots[28].item.name,
                                                                     inventoryObject.Slots[29].item.name,
-
+                                                                    inventoryObject.Slots[30].item.name,
+                                                                    inventoryObject.Slots[31].item.name,
+                                                                    inventoryObject.Slots[32].item.name,
+                                                                    inventoryObject.Slots[33].item.name,
+                                                                    inventoryObject.Slots[34].item.name,
+                                                                    inventoryObject.Slots[35].item.name,
+                                                                    inventoryObject.Slots[36].item.name,
+                                                                    inventoryObject.Slots[37].item.name,
+                                                                    inventoryObject.Slots[38].item.name,
+                                                                    inventoryObject.Slots[39].item.name,
+                                                                    inventoryObject.Slots[40].item.name,
+                                                                    inventoryObject.Slots[41].item.name,
+                                                                    inventoryObject.Slots[42].item.name,
+                                                                    inventoryObject.Slots[43].item.name,
+                                                                    inventoryObject.Slots[44].item.name,
+                                                                    inventoryObject.Slots[45].item.name,
+                                                                    inventoryObject.Slots[46].item.name,
+                                                                    inventoryObject.Slots[47].item.name,
+                                                                    inventoryObject.Slots[48].item.name,
+                                                                    inventoryObject.Slots[49].item.name,
+                                                                    inventoryObject.Slots[50].item.name,
+                                                                    inventoryObject.Slots[51].item.name,
+                                                                    inventoryObject.Slots[52].item.name,
+                                                                    inventoryObject.Slots[53].item.name,
+                                                                    inventoryObject.Slots[54].item.name,
+                                                                    inventoryObject.Slots[55].item.name,
+                                                                    inventoryObject.Slots[56].item.name,
+                                                                    inventoryObject.Slots[57].item.name,
+                                                                    inventoryObject.Slots[58].item.name,
+                                                                    inventoryObject.Slots[59].item.name
                                                                 };
         nowPlayer.amount = new int[]  {
                                                                     inventoryObject.Slots[0].amount,
@@ -448,6 +507,36 @@ public class DataManager : MonoBehaviour
                                                                     inventoryObject.Slots[27].amount,
                                                                     inventoryObject.Slots[28].amount,
                                                                     inventoryObject.Slots[29].amount,
+                                                                    inventoryObject.Slots[30].amount,
+                                                                    inventoryObject.Slots[31].amount,
+                                                                    inventoryObject.Slots[32].amount,
+                                                                    inventoryObject.Slots[33].amount,
+                                                                    inventoryObject.Slots[34].amount,
+                                                                    inventoryObject.Slots[35].amount,
+                                                                    inventoryObject.Slots[36].amount,
+                                                                    inventoryObject.Slots[37].amount,
+                                                                    inventoryObject.Slots[38].amount,
+                                                                    inventoryObject.Slots[39].amount,
+                                                                    inventoryObject.Slots[40].amount,
+                                                                    inventoryObject.Slots[41].amount,
+                                                                    inventoryObject.Slots[42].amount,
+                                                                    inventoryObject.Slots[43].amount,
+                                                                    inventoryObject.Slots[44].amount,
+                                                                    inventoryObject.Slots[45].amount,
+                                                                    inventoryObject.Slots[46].amount,
+                                                                    inventoryObject.Slots[47].amount,
+                                                                    inventoryObject.Slots[48].amount,
+                                                                    inventoryObject.Slots[49].amount,
+                                                                    inventoryObject.Slots[50].amount,
+                                                                    inventoryObject.Slots[51].amount,
+                                                                    inventoryObject.Slots[52].amount,
+                                                                    inventoryObject.Slots[53].amount,
+                                                                    inventoryObject.Slots[54].amount,
+                                                                    inventoryObject.Slots[55].amount,
+                                                                    inventoryObject.Slots[56].amount,
+                                                                    inventoryObject.Slots[57].amount,
+                                                                    inventoryObject.Slots[58].amount,
+                                                                    inventoryObject.Slots[59].amount
 
                                                                 };
         tests0();
@@ -455,21 +544,21 @@ public class DataManager : MonoBehaviour
     }
     private void tests0()
     {
-        int[] op0 = new int[30]; 
-        int[] op1 = new int[30]; 
-        int[] op2 = new int[30]; 
-        int[] op3 = new int[30]; 
-        int[] op4 = new int[30]; 
-        int[] op5 = new int[30];
-        int[] op6 = new int[30]; 
-        int[] op7 = new int[30]; 
-        int[] op8 = new int[30]; 
-        int[] op9 = new int[30]; 
-        int[] op10 = new int[30]; 
-        int[] op11 = new int[30];
-        int[] op12 = new int[30];
+        int[] op0 = new int[60]; 
+        int[] op1 = new int[60]; 
+        int[] op2 = new int[60]; 
+        int[] op3 = new int[60]; 
+        int[] op4 = new int[60]; 
+        int[] op5 = new int[60];
+        int[] op6 = new int[60]; 
+        int[] op7 = new int[60]; 
+        int[] op8 = new int[60]; 
+        int[] op9 = new int[60]; 
+        int[] op10 = new int[60]; 
+        int[] op11 = new int[60];
+        int[] op12 = new int[60];
 
-         for(int i=0; i<30; i++)
+         for(int i=0; i<60; i++)
             {
                 op0[i] = ((inventoryObject.Slots[i].item.id != -1)?(int)inventoryObject.Slots[i].item.buffs[0].stat:-1);
                 op1[i] = ((inventoryObject.Slots[i].item.id != -1)?(int)inventoryObject.Slots[i].item.buffs[1].stat:-1);
@@ -502,21 +591,21 @@ public class DataManager : MonoBehaviour
     }
     private void tests1()
     {
-        int[] opv0 = new int[30]; 
-        int[] opv1 = new int[30]; 
-        int[] opv2 = new int[30]; 
-        int[] opv3 = new int[30]; 
-        int[] opv4 = new int[30]; 
-        int[] opv5 = new int[30];
-        int[] opv6 = new int[30]; 
-        int[] opv7 = new int[30]; 
-        int[] opv8 = new int[30]; 
-        int[] opv9 = new int[30]; 
-        int[] opv10 = new int[30]; 
-        int[] opv11 = new int[30];
-        int[] opv12 = new int[30];
+        int[] opv0 = new int[60]; 
+        int[] opv1 = new int[60]; 
+        int[] opv2 = new int[60]; 
+        int[] opv3 = new int[60]; 
+        int[] opv4 = new int[60]; 
+        int[] opv5 = new int[60];
+        int[] opv6 = new int[60]; 
+        int[] opv7 = new int[60]; 
+        int[] opv8 = new int[60]; 
+        int[] opv9 = new int[60]; 
+        int[] opv10 = new int[60]; 
+        int[] opv11 = new int[60];
+        int[] opv12 = new int[60];
 
-        for(int i=0; i<30; i++)
+        for(int i=0; i<60; i++)
             {
                 opv0[i] = ((inventoryObject.Slots[i].item.id != -1)?inventoryObject.Slots[i].item.buffs[0].value:0);
                 opv1[i] = ((inventoryObject.Slots[i].item.id != -1)?inventoryObject.Slots[i].item.buffs[1].value:0);

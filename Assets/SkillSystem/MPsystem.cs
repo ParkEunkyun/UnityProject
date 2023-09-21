@@ -28,13 +28,14 @@ public class MPsystem : MonoBehaviour
         MPtext.text = MPbar1.value.ToString() + " / " + _stat.maxMP.ToString();
         MPamountText.text = MPortionAmount.ToString();
         MPortionAmount = DataManager.instance.nowPlayer.ManaPotion;
+        _stat.curMP = (int)MPbar1.value;
         if(MPortionAmount != preAmount)
         {
             preAmount = MPortionAmount;
             DataManager.instance.SaveData();
             DataManager.instance.OnClickSaveButton();          
         }
-        if(timer >= 5f)
+        if(timer >= 15f)
         {
             RecoveryMP();
             timer = 0f;
@@ -58,6 +59,7 @@ public class MPsystem : MonoBehaviour
                 DataManager.instance.SaveData();
                 DataManager.instance.OnClickSaveButton();             
             }
+            _stat.curMP = (int)MPbar1.value;
         }
     }
 
@@ -65,6 +67,7 @@ public class MPsystem : MonoBehaviour
     {        
         {
             MPbar1.value = MPbar1.value + _stat.RecoveryMP*1f;
+            _stat.curMP = (int)MPbar1.value;
         }
     }
    

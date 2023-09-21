@@ -1,5 +1,7 @@
+using EZInventory;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +20,8 @@ public class Monster : MonoBehaviour
     public Stat stat;
     public SkillObject _skill;
     public bool AreaSkillUse;
+
+    //public GoldObjectPool goldPool;
     
     [SerializeField]
     private int EXP;
@@ -37,7 +41,7 @@ public class Monster : MonoBehaviour
         if(timer >= 0.5f)
         {
             AreaSkillUse = true;
-        }
+        }    
     } 
     private void OnTriggerEnter2D(Collider2D other)
     {       
@@ -66,12 +70,12 @@ public class Monster : MonoBehaviour
             {                
                 Vector2 v = new Vector2(0f, 0f);                
                 trans.position = this.transform.position;
-                this.gameObject.SetActive(false);
+                this.gameObject.SetActive(false);                
                 dropTheItems();
                 DataManager.instance.nowPlayer.monsterKill++;
                 DataManager.instance.nowPlayer.curExp = DataManager.instance.nowPlayer.curExp + EXP;               
                 DataManager.instance.LevelUP();
-                DataManager.instance.SaveData();   
+                DataManager.instance.SaveData();
                 MonsterSpawner.instance.InsertQueue(gameObject);
                 
             }
@@ -106,7 +110,7 @@ public class Monster : MonoBehaviour
                 DataManager.instance.nowPlayer.monsterKill++;
                 DataManager.instance.nowPlayer.curExp = DataManager.instance.nowPlayer.curExp + EXP;               
                 DataManager.instance.LevelUP();
-                DataManager.instance.SaveData();   
+                DataManager.instance.SaveData();
                 MonsterSpawner.instance.InsertQueue(gameObject);
                 
             }
@@ -125,11 +129,11 @@ public class Monster : MonoBehaviour
                 TakeDmg();
                 if(_AutoThrowing.CriDmg == 0)
                 {
-                    enemyHP.value = enemyHP.value - _AutoThrowing.Dmg;
+                    enemyHP.value = enemyHP.value - _AutoThrowing.Dmg/10;
                 }
                 else if(_AutoThrowing.Dmg == 0)
                 {
-                    enemyHP.value = enemyHP.value - _AutoThrowing.CriDmg;
+                    enemyHP.value = enemyHP.value - _AutoThrowing.CriDmg/10;
                 }           
                 Debug.Log("데미지" + _AutoThrowing.Dmg);
                 Debug.Log("데미지" + _AutoThrowing.CriDmg);
@@ -152,7 +156,15 @@ public class Monster : MonoBehaviour
             timer = 0;
         }
     }
-    
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag.Equals("GroundArea"))
+        {
+            this.gameObject.SetActive(false);
+            MonsterSpawner.instance.InsertQueue(gameObject);
+        }
+    }
+
     private void OnEnable() // 오브젝트 풀링에의해 다시 활성화될시 정보 초기화
     {
         if (enemyHP!= null)
@@ -167,34 +179,62 @@ public class Monster : MonoBehaviour
         int maxItems = 1;        
         for (int i = 0; i < maxItems; i++)
         {
-            int randomNum = Random.Range(0,1002);
-            if(randomNum < 801)
+            int randomNum = Random.Range(0,1001);
+            if(randomNum < 501)
+            {
+                DropItems();
+//return;
+            }
+            else if(randomNum < 979)
+            {
+                GameObject gold = GoldObjectPool.GetObject();
+                gold.transform.position = trans.position;                           
+            }
+            else if(randomNum < 984)
+            {
+                GameObject HPortion = HealthPortionObjectPool.GetObject();
+                HPortion.transform.position = trans.position;           
+            }
+            else if(randomNum < 990)
+            {
+                GameObject MPortion = ManaPortionObjectPool.GetObject();
+                MPortion.transform.position = trans.position;      
+            }
+            else if(randomNum < 995)
             {
                 Instantiate(items[0], trans.position, Quaternion.identity);
-                Debug.Log("아이템 1" + randomNum);            
+                //잡템
             }
-            else if(randomNum < 901)
+            else if (randomNum < 996)
+            {                
+                DropItems();
+                //조합템
+            }
+            else if (randomNum < 997)
             {
-                Instantiate(items[1], trans.position, Quaternion.identity);
-                Debug.Log("아이템 2" + randomNum);            
+                Instantiate(items[2], trans.position, Quaternion.identity);
+                //스킬조각
+            }
+            else if (randomNum < 998)
+            {
+                Instantiate(items[3], trans.position, Quaternion.identity);
+                //장비1
+            }
+            else if (randomNum < 999)
+            {
+                Instantiate(items[4], trans.position, Quaternion.identity);
+                //장비2
+            }
+            else if (randomNum < 1000)
+            {
+                Instantiate(items[5], trans.position, Quaternion.identity);
+                //장비3
             }
             else if(randomNum < 1001)
             {
-                Instantiate(items[2], trans.position, Quaternion.identity);
-                Debug.Log("아이템 3" + randomNum);            
+                Instantiate(items[6], trans.position, Quaternion.identity);
+                //희귀
             }
-            else if(randomNum < 1002)
-            {
-                Instantiate(items[3], trans.position, Quaternion.identity);
-                Debug.Log("아이템 4" + randomNum);            
-            }
-
-            if(randomNum < 1001)
-            {
-                Instantiate(items[4], trans.position, Quaternion.identity);
-                Debug.Log("기타아이템 " + randomNum);            
-            }
-            //Instantiate(items[3], trans.position, Quaternion.identity);
         }        
         
     }
@@ -203,18 +243,37 @@ public class Monster : MonoBehaviour
     {
         if(_AutoThrowing.CriDmg == 0)
         {
-        GameObject hudText = Instantiate(hudDamageText);
-        hudText.transform.position = hudPos.position;
-        hudText.gameObject.layer = 5;
-        hudText.GetComponent<DamageText>().damage = _AutoThrowing.Dmg;
+            GameObject hudText = DamageObjectPool.GetObject();//Instantiate(hudDamageText);
+            hudText.transform.position = hudPos.position;
+            hudText.gameObject.layer = 5;
+            //hudText.GetComponent<DamageText>().damage = _AutoThrowing.Dmg;
+            hudText.GetComponent<TextMeshPro>().text = _AutoThrowing.Dmg.ToString();
         }
         else if (_AutoThrowing.Dmg == 0)
         {
-        GameObject hudCriText = Instantiate(hudCriDamageText);
-        hudCriText.transform.position = hudPos.position;
-        hudCriText.gameObject.layer = 5;
-        hudCriText.GetComponent<DamageText>().damage = _AutoThrowing.CriDmg;
+            GameObject hudCriText = CriDamageObjectPool.GetObject(); //Instantiate(hudCriDamageText);
+            hudCriText.transform.position = hudPos.position;
+            hudCriText.gameObject.layer = 5;
+            //hudCriText.GetComponent<DamageText>().damage = _AutoThrowing.CriDmg;
+            hudCriText.GetComponent<TextMeshPro>().text = _AutoThrowing.CriDmg.ToString();
         }
     }
 
+    //////////////////////////////////////////////////////////// 새로 받아온 조합 시스템 아이템 드랍
+    public ItemSO itemDrop;
+    public int dropAmount;
+
+    static GameObject player;    
+
+    void DropItems()
+    {
+        for (int i = 0; i < dropAmount; i++)
+        {
+            //Spawn force and position. Random so they all pop out in different directions
+            Vector3 force = new Vector3(Random.Range(-2f, 2f), 2, Random.Range(-2f, 2f));
+            ItemPickupable drop = (Instantiate(Resources.Load("Item Pickupable 1"), transform.position + (force / 4f), Quaternion.identity) as GameObject).GetComponent<ItemPickupable>();
+            drop.SetUpPickupable(itemDrop, 1);
+            drop.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+        }
+    }
 }

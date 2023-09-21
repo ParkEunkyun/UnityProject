@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public GameObject Supportwindow;
     public GameObject Passivewindow;
     public GameObject Inventory2;
+    public GameObject CraftingInven;
     public GameObject EquipTooltipwindow;
     public GameObject MaterialTooltipwindow;
     public GameObject inventoryTooltipwindow;
@@ -29,16 +30,20 @@ public class UIManager : MonoBehaviour
     public GameObject RankingBoard;
     public GameObject Hamberger;
     public GameObject Xbutton;
+    public GameObject getitemPop;
     bool Ranking = false;
+    public GameObject testObj;
 
     private void Start()
     {
         MainUIwindow.GetComponent<LoadImage>();
         Inventory2.SetActive(false);
+        CraftingInven.SetActive(false);
         MainUIwindow.SetActive(false);
         RankingBoard.SetActive(false);
         Skillwindow.SetActive(false);
         Xbutton.SetActive(false);
+        getitemPop.SetActive(false);
     }    
 
     public void MainWindowOpen()
@@ -118,5 +123,14 @@ public class UIManager : MonoBehaviour
     public void RankWindowClose()
     {
         RankingBoard.SetActive(false);        
+    }
+
+    public void TestObjOn() 
+    {
+        testObj.SetActive(true);
+    }
+    public void TestObjOff()
+    {
+        testObj.SetActive(false);
     }
 }

@@ -14,12 +14,16 @@ public class DropItemMagnet : MonoBehaviour
         [Header("근접 거리")]
         [SerializeField] [Range(0f,3f)] float contactDistance = 1f;
         bool follow = false;
-        
-              
-       
 
+
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        target = GameObject.Find("Magnet").GetComponent<Transform>();
+    }
     // Start is called before the first frame update
-    void Awake()
+    void OnEnable()
     {
        rb = GetComponent<Rigidbody2D>();
        target = GameObject.Find("Magnet").GetComponent<Transform>();

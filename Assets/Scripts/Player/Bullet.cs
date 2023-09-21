@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
         if(destroytime >= 5)
         {
             destroytime = 0;          
-            ObjectPool.ReturnObject(this);
+            BulletObjectPool.ReturnObject(this);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -37,13 +37,13 @@ public class Bullet : MonoBehaviour
             else if(pierceCount == 0)
             {
                 destroytime = 0;
-                ObjectPool.ReturnObject(this);
+                BulletObjectPool.ReturnObject(this);
             }                      
         }
         else if(other.gameObject.tag.Equals("wall"))
         {
             destroytime = 0;
-            ObjectPool.ReturnObject(this);
+            BulletObjectPool.ReturnObject(this);
         }
     }
 

@@ -13,12 +13,69 @@ MonoBehaviour:
   m_Name: Inventory_2
   m_EditorClassIdentifier: 
   database: {fileID: 11400000, guid: 702a20db908e94948a90438e56d3a446, type: 2}
-  type: 0
+  type: 2
   container:
     slots:
     - allowedItem: 
       item:
-        partNum: 0
+        id: 3
+        name: PieceSlime
+        buffs:
+        - stat: 23
+          value: 0
+          min: 0
+          max: 0
+        - stat: 23
+          value: 0
+          min: 0
+          max: 0
+        - stat: 23
+          value: 0
+          min: 0
+          max: 0
+        - stat: 23
+          value: 0
+          min: 0
+          max: 0
+        - stat: 8
+          value: 500
+          min: 500
+          max: 501
+        - stat: 23
+          value: 0
+          min: 0
+          max: 0
+        - stat: 23
+          value: 0
+          min: 0
+          max: 0
+        - stat: 23
+          value: 0
+          min: 0
+          max: 0
+        - stat: 23
+          value: 0
+          min: 0
+          max: 0
+        - stat: 23
+          value: 0
+          min: 0
+          max: 0
+        - stat: 23
+          value: 0
+          min: 0
+          max: 0
+        - stat: 23
+          value: 0
+          min: 0
+          max: 0
+        - stat: 23
+          value: 0
+          min: 0
+          max: 0
+      amount: 20
+    - allowedItem: 
+      item:
         id: -1
         name: 
         buffs:
@@ -77,7 +134,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -136,7 +192,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -195,7 +250,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -254,7 +308,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -313,7 +366,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -372,7 +424,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -431,7 +482,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -490,7 +540,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -549,7 +598,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -608,7 +656,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -667,7 +714,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -726,7 +772,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -785,7 +830,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -844,7 +888,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -903,7 +946,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -962,7 +1004,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -1021,7 +1062,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -1080,7 +1120,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -1139,7 +1178,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -1198,7 +1236,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -1257,7 +1294,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -1316,7 +1352,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -1375,7 +1410,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -1434,7 +1468,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -1493,7 +1526,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -1552,7 +1584,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -1611,7 +1642,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
         id: -1
         name: 
         buffs:
@@ -1670,66 +1700,6 @@ MonoBehaviour:
       amount: 0
     - allowedItem: 
       item:
-        partNum: 0
-        id: -1
-        name: 
-        buffs:
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-        - stat: 0
-          value: 0
-          min: 0
-          max: 0
-      amount: 0
-    - allowedItem: 
-      item:
-        partNum: 0
         id: -1
         name: 
         buffs:

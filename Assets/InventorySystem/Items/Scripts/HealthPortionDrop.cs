@@ -8,9 +8,11 @@ public class HealthPortionDrop : MonoBehaviour
     {
         if(other.tag.Equals("Player"))
         {            
-                DataManager.instance.nowPlayer.HealthPotion++;
-                Destroy(this.gameObject);
-        }
-        
+            DataManager.instance.nowPlayer.HealthPotion++;
+            DataManager.instance.SaveData();
+            //Destroy(this.gameObject);
+            //this.gameObject.SetActive(false);
+            HealthPortionObjectPool.ReturnObject(this.gameObject);
+        }        
     }
 }

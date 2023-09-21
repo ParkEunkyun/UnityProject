@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4864233948100810744}
-  - component: {fileID: 6888352026293301637}
   m_Layer: 5
   m_Name: Hud
   m_TagString: Untagged
@@ -32,17 +31,6 @@ Transform:
   m_Father: {fileID: 7289463344962075093}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!210 &6888352026293301637
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4977014633453539405}
-  m_Enabled: 1
-  m_SortingLayerID: -1903050065
-  m_SortingLayer: 2
-  m_SortingOrder: 0
 --- !u!1 &7289463343373476790
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,8 +213,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1651808133
-  m_SortingLayer: 1
+  m_SortingLayerID: -1903050065
+  m_SortingLayer: 2
   m_SortingOrder: -49
   m_Sprite: {fileID: -364294941, guid: 119c0a73093f9764c91783b37c02c2dd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -520,7 +508,6 @@ GameObject:
   - component: {fileID: 7289463344776606083}
   - component: {fileID: 7289463344776606080}
   - component: {fileID: 7289463344776606081}
-  - component: {fileID: 4773371696417713103}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -610,17 +597,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!210 &4773371696417713103
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7289463344776606087}
-  m_Enabled: 1
-  m_SortingLayerID: -1903050065
-  m_SortingLayer: 2
-  m_SortingOrder: 0
 --- !u!1 &7289463344903590654
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,14 +762,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHP: {fileID: 7289463344427044215}
-  Damage: 10
+  Damage: 1
   maxHP: 100
   items:
-  - {fileID: 6765248900800689553, guid: c650dd7348d827b43a82cca96e9166f4, type: 3}
-  - {fileID: 6765248900800689553, guid: efbb7ee8ce292cc4391fb73091254a4d, type: 3}
-  - {fileID: 6765248900800689553, guid: fffa75fe8aa3c6c4891b259b2225088d, type: 3}
-  - {fileID: 7258782469191327977, guid: 280cc31ee851d6143b42f0c692569c63, type: 3}
+  - {fileID: 1772511043929954199, guid: 5ef44eb931b5bfd479cfaeab04cdaf8a, type: 3}
   - {fileID: 1772511043929954199, guid: f46fc8f6b194b144d8509dca24467d5e, type: 3}
+  - {fileID: 6765248900800689553, guid: e16ffcb806cd24342b54e46f16796650, type: 3}
+  - {fileID: 61721985561402589, guid: b392ffee1c1bc064dbcb985685cbdd55, type: 3}
+  - {fileID: 8919237178757489166, guid: 08c6b06c3c24a26498dee4a43bb85471, type: 3}
+  - {fileID: 5897861359729061341, guid: 818c1ce339f5f8a4492492457930f603, type: 3}
+  - {fileID: 7258782469191327977, guid: 280cc31ee851d6143b42f0c692569c63, type: 3}
   hudDamageText: {fileID: 5904405710037628061, guid: 32d3c276137f6ae4bb994c1deb63d75f, type: 3}
   hudCriDamageText: {fileID: 5904405710037628061, guid: e02f178b519c1df4692bbe914449f8ab, type: 3}
   hudPos: {fileID: 4864233948100810744}
@@ -802,6 +780,8 @@ MonoBehaviour:
   AreaSkillUse: 0
   EXP: 3
   timer: 0
+  itemDrop: {fileID: 11400000, guid: a21178f5c12258a40a11172a589e8d06, type: 2}
+  dropAmount: 1
 --- !u!114 &-4161628739299603601
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -16,9 +16,10 @@ public class MeterialDropItem : MonoBehaviour
         if(other.tag.Equals("Player") && _inventoryObject.EmptySlotCount > 0)
         {
                 DataManager.instance.AddNewMaterialItem(itemnumber);
+                //this.gameObject.SetActive(false);
                 Destroy(this.gameObject);
         }
-        
+
     }
 }
 

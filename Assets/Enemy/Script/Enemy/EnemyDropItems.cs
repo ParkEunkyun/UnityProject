@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyDropItems : MonoBehaviour
@@ -17,6 +18,7 @@ public class EnemyDropItems : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        destroyTime = 60.0f;
         StartCoroutine(DropItemTime());
         
         int updown = Random.Range(-5,5);
@@ -30,9 +32,10 @@ public class EnemyDropItems : MonoBehaviour
 
         sprite = GetComponent<SpriteRenderer>();
         alpha = sprite.color;        
+    }
+    void OnEnable()
+    {
         Invoke("DestroyObject", destroyTime);
-              
-        
     }
     IEnumerator DropItemTime()
     {
@@ -65,7 +68,7 @@ public class EnemyDropItems : MonoBehaviour
 
     private void DestroyObject()
     {
-        Destroy(gameObject);    
+        Destroy(gameObject);        
     }
     
 }

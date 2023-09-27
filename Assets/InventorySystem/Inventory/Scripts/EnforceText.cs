@@ -18,7 +18,7 @@ public class EnforceText : MonoBehaviour
                 
                 if (_inventory.Slots[i].item.buffs[7].value > 0)
                 {
-                    _text[i].color = Color.red;
+                    _text[i].color = Color.magenta;
                 }
                 else
                 {

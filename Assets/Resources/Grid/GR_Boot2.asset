@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GR_Boot2
   m_EditorClassIdentifier: 
   topLeft: {fileID: 11400000, guid: a21178f5c12258a40a11172a589e8d06, type: 2}
-  topMiddle: {fileID: 0}
+  topMiddle: {fileID: 11400000, guid: 5798043884458524da5b651b1519cf74, type: 2}
   topRight: {fileID: 11400000, guid: a21178f5c12258a40a11172a589e8d06, type: 2}
   middleLeft: {fileID: 11400000, guid: a21178f5c12258a40a11172a589e8d06, type: 2}
   middle: {fileID: 11400000, guid: a21178f5c12258a40a11172a589e8d06, type: 2}

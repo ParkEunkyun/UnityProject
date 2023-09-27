@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using EZInventory;
+using System.Security.Cryptography.X509Certificates;
 
 namespace EZInventory
 {
-    public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+    public class InventorySlot : MonoBehaviour, IPointerDownHandler//, IPointerUpHandler//, IPointerEnterHandler, IPointerExitHandler,
     {
-        public ItemSO currentItem { get; protected set; }
-        public int currentItemAmount { get; protected set; }
+        public ItemSO currentItem { get; set; }
+        public int currentItemAmount { get; set; }
         [Tooltip("Whether or not to include in the inventory")]
         public bool includeInInventory = true;
         [Tooltip("What types of items this slot can hold")]
@@ -25,10 +26,10 @@ namespace EZInventory
         protected Image stackImage;
         [SerializeField]
         protected Text stackText;
-       
+
         public int Id;
 
-
+        [SerializeField]
         protected bool mouseOver;
         protected static GameObject tooltipPrefab;
         protected GameObject tooltipInstance;
@@ -70,27 +71,39 @@ namespace EZInventory
         {
             if (!interactable) return;
 
-            if (Input.GetMouseButtonDown(1))
+            if (Input.touchCount == 1)
             {
-                InventoryManager.SwapItemWithSlot(this);
-            }
-            if (Input.GetMouseButtonDown(0))
-            {
-                //Grab item from slot if slot contains an item
-                if (currentItem)
+                /*
+                if (Input.GetTouch(0).phase == TouchPhase.Began)
                 {
-                    //Grab half if mouse is not holding an item, otherwise grab only 1
-                    int grabAmount = InventoryManager.currentItem == null ? 1 : -1;
-                    InventoryManager.GrabItemFromSlot(this, grabAmount);
+                    InventoryManager.SwapItemWithSlot(this);
+                    mouseOver = false;
                 }
-                //Place 1 item if slot is empty
-                else
+                */
+                if (Input.GetTouch(0).phase == TouchPhase.Began)
                 {
-                    currentItem = InventoryManager.currentItem;
-                    InventoryManager.GrabItemFromSlot(this, -1);
+                    //Grab item from slot if slot contains an item
+                    if (currentItem)
+                    {
+                        //Grab half if mouse is not holding an item, otherwise grab only 1
+                        int grabAmount = InventoryManager.currentItem == null ? 1 : -1;
+                        InventoryManager.GrabItemFromSlot(this, grabAmount);
+                        Debug.Log("InputDown(if)");
+                        mouseOver = false;
+                    }
+                    //Place 1 item if slot is empty
+                    else
+                    {                        
+                        currentItem = InventoryManager.currentItem;
+                        InventoryManager.GrabItemFromSlot(this, -1);
+                        Debug.Log("InputDown(else)");
+                        mouseOver = false;
+                    }
                 }
+                
             }
-        }
+
+        }        
 
         /// <summary>
         /// Called in Update(). Sets all UI elements for the slot.
@@ -120,7 +133,7 @@ namespace EZInventory
                     Destroy(tooltipInstance);
                 }
             }
-            else 
+            else
             {
                 //Slot UI
                 itemImage.sprite = null;
@@ -132,12 +145,22 @@ namespace EZInventory
             }
         }
 
-        public void OnPointerEnter(PointerEventData pointerEventData)
+        /*   public void OnPointerEnter(PointerEventData pointerEventData)
+           {
+               mouseOver = true;
+           }
+           public void OnPointerExit(PointerEventData pointerEventData)
+           {
+               mouseOver = false;
+           }*/
+        public void OnPointerDown(PointerEventData pointerEventData)
         {
             mouseOver = true;
+            Debug.Log("onPointerDown");
+            //Invoke("mousoverfalse", 0.5f);
         }
 
-        public void OnPointerExit(PointerEventData pointerEventData)
+        public void mousoverfalse()
         {
             mouseOver = false;
         }

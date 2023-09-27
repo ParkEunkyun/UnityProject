@@ -29,10 +29,9 @@ namespace EZInventory
             else base.MouseOverChecks();
 
             //check recipes
-            if (mouseOver && (Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1)))
-            {
-                craftingMenu.CheckRecipes();
-            }
+
+            craftingMenu.CheckRecipes();
+
         }
 
         private void OnApplicationQuit()

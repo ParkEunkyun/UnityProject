@@ -183,6 +183,7 @@ public class Monster : MonoBehaviour
             if(randomNum < 501)
             {
                 DropItems();
+                testDropItems();
 //return;
             }
             else if(randomNum < 979)
@@ -261,6 +262,7 @@ public class Monster : MonoBehaviour
 
     //////////////////////////////////////////////////////////// 새로 받아온 조합 시스템 아이템 드랍
     public ItemSO itemDrop;
+    public ItemSO itemDrop2;
     public int dropAmount;
 
     static GameObject player;    
@@ -273,6 +275,17 @@ public class Monster : MonoBehaviour
             Vector3 force = new Vector3(Random.Range(-2f, 2f), 2, Random.Range(-2f, 2f));
             ItemPickupable drop = (Instantiate(Resources.Load("Item Pickupable 1"), transform.position + (force / 4f), Quaternion.identity) as GameObject).GetComponent<ItemPickupable>();
             drop.SetUpPickupable(itemDrop, 1);
+            drop.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+        }
+    }
+    void testDropItems()
+    {
+        for (int i = 0; i < dropAmount; i++)
+        {
+            //Spawn force and position. Random so they all pop out in different directions
+            Vector3 force = new Vector3(Random.Range(-2f, 2f), 2, Random.Range(-2f, 2f));
+            ItemPickupable drop = (Instantiate(Resources.Load("Item Pickupable 1"), transform.position + (force / 4f), Quaternion.identity) as GameObject).GetComponent<ItemPickupable>();
+            drop.SetUpPickupable(itemDrop2, 1);
             drop.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
         }
     }

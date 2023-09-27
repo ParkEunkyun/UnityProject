@@ -17,11 +17,13 @@ namespace EZInventory
         public Image currentItemImage;
         [Tooltip("Item stack text UI that follows cursor")]
         public Text currentItemStackDisplay;
+        public Text currentItemName;
+        public Text Log;
 
         static InventoryManager instance;
 
         private static List<InventorySlot> slots;
-        
+
         public static ItemSO currentItem { get; private set; }
         public static int currentItemAmount { get; private set; }
 
@@ -41,8 +43,7 @@ namespace EZInventory
                 if (slot.includeInInventory)
                     slots.Add(slot);
             }
-            
-            //CloseInventory();
+
         }
 
         // Update is called once per frame
@@ -52,19 +53,6 @@ namespace EZInventory
             if (currentItemAmount <= 0)
                 currentItem = null;
 
-            /*/open/close inventory
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                if (inventoryMain.activeSelf)
-                {
-                    CloseInventory();
-                }
-                else
-                {
-                    OpenInventory();
-                }
-            }*/
-
             if (currentItem)
             {
                 //Set current held item UI
@@ -72,22 +60,23 @@ namespace EZInventory
                 currentItemImage.sprite = currentItem.itemSprite;
                 currentItemStackDisplay.text = currentItemAmount.ToString();
                 currentItemStackDisplay.gameObject.SetActive(true);
-
-                //If clicking off of inventory UI, drop item
-                if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
-                {
-                    DropItem(currentItem, currentItemAmount);
-                }
+                currentItemName.text = currentItem.tooltip;
+                                
             }
             else
             {
                 //Clear current held item UI
                 currentItemImage.enabled = false;
+                currentItemName.text = "아이템 선택";
                 currentItemStackDisplay.gameObject.SetActive(false);
+                Debug.Log("카운트 " + slots.Count);
+                Debug.Log("슬롯 " + slots);
             }
+            Log.text = currentItemImage.enabled.ToString();
+
 
             //Make UI follow cursor
-            currentItemImage.transform.position = Input.mousePosition;
+            //currentItemImage.transform.position = Input.mousePosition;
         }
         public static bool IsOpen()
         {
@@ -108,10 +97,10 @@ namespace EZInventory
 
         public static void CloseInventory()
         {
-            
+
             if (currentItem)
                 DropItem(currentItem, currentItemAmount);
-
+            
             if (instance.inventoryPause)
             {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -142,7 +131,7 @@ namespace EZInventory
                     //add as many to the slot as we can without overflowing
                     if (overflow > 0) remaining = overflow;
                     else remaining = 0;
-                }
+                }                
             }
 
             if (remaining <= 0)
@@ -188,11 +177,11 @@ namespace EZInventory
             drop.SetUpPickupable(item, amount);
 
             //Remove current item
-            if (removeCurrentItem)
+            /*if (removeCurrentItem)
             {
                 currentItem = null;
                 currentItemAmount = 0;
-            }
+            }*/
         }
 
         /// <summary>
@@ -321,8 +310,10 @@ namespace EZInventory
         /// <summary>
         /// Removes currently held item completely
         /// </summary>
+        ///     
+       
         public static void RemoveItem()
-        {
+        {  
             currentItem = null;
             currentItemAmount = 0;
         }
@@ -330,6 +321,6 @@ namespace EZInventory
         public void BinItem()
         {
             RemoveItem();
-        }
+        }       
     }
 }

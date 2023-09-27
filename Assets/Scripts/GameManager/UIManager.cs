@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void CloseAllUI()
-    {
+    {        
         UnEquipBtn.SetActive(false);
         SellingBtn1.SetActive(false);
         DisassambleBtn1.SetActive(false);

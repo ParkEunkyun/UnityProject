@@ -781,6 +781,7 @@ MonoBehaviour:
   EXP: 3
   timer: 0
   itemDrop: {fileID: 11400000, guid: a21178f5c12258a40a11172a589e8d06, type: 2}
+  itemDrop2: {fileID: 11400000, guid: 5798043884458524da5b651b1519cf74, type: 2}
   dropAmount: 1
 --- !u!114 &-4161628739299603601
 MonoBehaviour:

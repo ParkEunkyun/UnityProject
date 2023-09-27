@@ -19,7 +19,7 @@ public class EnemyDropItems : MonoBehaviour
     void Start()
     {
         destroyTime = 60.0f;
-        StartCoroutine(DropItemTime());
+        
         
         int updown = Random.Range(-5,5);
         int leftright = Random.Range(-5,5);
@@ -31,12 +31,11 @@ public class EnemyDropItems : MonoBehaviour
         this.r2bd.AddForce(DropPow, ForceMode2D.Impulse);
 
         sprite = GetComponent<SpriteRenderer>();
-        alpha = sprite.color;        
-    }
-    void OnEnable()
-    {
+        alpha = sprite.color;
+
+        StartCoroutine(DropItemTime());
         Invoke("DestroyObject", destroyTime);
-    }
+    }    
     IEnumerator DropItemTime()
     {
         yield return new WaitForSeconds(0.5f);

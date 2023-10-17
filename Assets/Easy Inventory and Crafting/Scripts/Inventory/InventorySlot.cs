@@ -102,7 +102,7 @@ namespace EZInventory
                 }
                 
             }
-
+            DataManager.instance.RecipeinvenSave();
         }        
 
         /// <summary>

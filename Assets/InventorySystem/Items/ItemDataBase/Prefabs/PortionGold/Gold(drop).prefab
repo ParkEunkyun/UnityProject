@@ -139,8 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78fc9db8bb437194a9adb02dcd3f9cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minGold: 50
-  maxGold: 101
+  minGold: 10
+  maxGold: 50
 --- !u!210 &-1057685189951900047
 SortingGroup:
   m_ObjectHideFlags: 0

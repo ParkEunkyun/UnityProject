@@ -61,7 +61,7 @@ namespace EZInventory
 
         public void GenerateItem()
         {
-            if (InventoryManager.AddItemToInventory(items[currentItem], currentItemAmount) > 0)
+            if (InventoryManager.instance.AddItemToInventory(items[currentItem], currentItemAmount) > 0)
             {
                 warningText.text = "Ran out of room!";
                 warningText.gameObject.SetActive(true);

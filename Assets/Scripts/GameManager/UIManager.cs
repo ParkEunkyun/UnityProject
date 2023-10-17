@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour
     public GameObject getitemPop;
     bool Ranking = false;
     public GameObject testObj;
+    public GameObject shop;
 
     private void Start()
     {
@@ -44,6 +45,7 @@ public class UIManager : MonoBehaviour
         Skillwindow.SetActive(false);
         Xbutton.SetActive(false);
         getitemPop.SetActive(false);
+        shop.SetActive(false);
     }    
 
     public void MainWindowOpen()
@@ -92,7 +94,8 @@ public class UIManager : MonoBehaviour
         EquipTooltipwindow.SetActive(false);
         inventoryTooltipwindow.SetActive(false);
         MaterialTooltipwindow.SetActive(false);
-        
+        shop.SetActive(false);
+
     }
 
     public void modifyWindowOpen()
@@ -132,5 +135,10 @@ public class UIManager : MonoBehaviour
     public void TestObjOff()
     {
         testObj.SetActive(false);
+    }
+
+    public void openShop()
+    {
+        shop.SetActive(true);
     }
 }

@@ -27,7 +27,7 @@ namespace EZInventory
                 //Quick grab
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
-                    InventoryManager.AddItemToInventory(currentItem, currentItemAmount);
+                    InventoryManager.instance.AddItemToInventory(currentItem, currentItemAmount);
                 }
                 else
                 {

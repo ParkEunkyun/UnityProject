@@ -36,7 +36,7 @@ namespace EZInventory
         {
             if (other.tag == "Player")
             {
-                int remaining = InventoryManager.AddItemToInventory(itemSO, itemAmount);
+                int remaining = InventoryManager.instance.AddItemToInventory(itemSO, itemAmount);
 
                 if (remaining > 0)
                 {

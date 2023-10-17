@@ -554,8 +554,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
-  m_SortingLayerID: -1869315837
-  m_SortingOrder: -1
+  m_SortingLayerID: -1903050065
+  m_SortingOrder: -49
   m_TargetDisplay: 0
 --- !u!114 &7289463344776606080
 MonoBehaviour:
@@ -762,7 +762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHP: {fileID: 7289463344427044215}
-  Damage: 1
+  Damage: 10
   maxHP: 100
   items:
   - {fileID: 1772511043929954199, guid: 5ef44eb931b5bfd479cfaeab04cdaf8a, type: 3}

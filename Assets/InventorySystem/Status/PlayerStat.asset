@@ -13,42 +13,42 @@ MonoBehaviour:
   m_Name: PlayerStat
   m_EditorClassIdentifier: 
   Name: 
-  maxExp: 160
-  curExp: 132
-  Level: 16
-  Str: 34
-  Con: 28
-  Dex: 18
-  Int: 20
-  Luk: 20
+  maxExp: 14290
+  curExp: 9954
+  Level: 61
+  Str: 178
+  Con: 20
+  Dex: 73
+  Int: 65
+  Luk: 9
   Pp: 0
-  ItemStr: 4
-  ItemCon: 5
-  ItemDex: 2
+  ItemStr: 0
+  ItemCon: 0
+  ItemDex: 0
   ItemInt: 0
   ItemLuk: 0
-  itemATK: 13
+  itemATK: 0
   itemAttackSpeed: 0
   itemCritical: 0
   itemMoveSpeed: 0
   itemCriticalDmg: 0
-  itemDEF: 10
+  itemDEF: 0
   itemCooltime: 0
   itemMaxHP: 0
   itemRecoveryHP: 0
   itemMaxMP: 0
   itemRecoveryMP: 0
-  minAtk: 127
-  maxAtk: 165
-  AttackSpeed: 120
-  Critical: 20
+  minAtk: 0
+  maxAtk: 10
+  AttackSpeed: 173
+  Critical: 9
   MoveSpeed: 300
-  CriticalDmg: 169
-  Def: 10
-  Cooltime: 2
-  maxHP: 50000
-  curHP: 49820
-  RecoveryHP: 50000
-  maxMP: 50000
-  curMP: 50000
-  RecoveryMP: 50000
+  CriticalDmg: 239
+  Def: 0
+  Cooltime: 3
+  maxHP: 200
+  curHP: 100
+  RecoveryHP: 20
+  maxMP: 325
+  curMP: 325
+  RecoveryMP: 65

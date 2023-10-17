@@ -20,9 +20,10 @@ namespace EZInventory
         public Text currentItemName;
         public Text Log;
 
-        static InventoryManager instance;
+        public static InventoryManager instance;
 
-        private static List<InventorySlot> slots;
+        public List<InventorySlot> slots;
+        public RecipeDataBase _recipeDataBase;
 
         public static ItemSO currentItem { get; private set; }
         public static int currentItemAmount { get; private set; }
@@ -61,16 +62,14 @@ namespace EZInventory
                 currentItemStackDisplay.text = currentItemAmount.ToString();
                 currentItemStackDisplay.gameObject.SetActive(true);
                 currentItemName.text = currentItem.tooltip;
-                                
+
             }
             else
             {
                 //Clear current held item UI
                 currentItemImage.enabled = false;
                 currentItemName.text = "아이템 선택";
-                currentItemStackDisplay.gameObject.SetActive(false);
-                Debug.Log("카운트 " + slots.Count);
-                Debug.Log("슬롯 " + slots);
+                currentItemStackDisplay.gameObject.SetActive(false);                
             }
             Log.text = currentItemImage.enabled.ToString();
 
@@ -100,7 +99,7 @@ namespace EZInventory
 
             if (currentItem)
                 DropItem(currentItem, currentItemAmount);
-            
+
             if (instance.inventoryPause)
             {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -117,7 +116,7 @@ namespace EZInventory
         /// <param name="item">What item to add</param>
         /// <param name="amount">How many of the item to add</param>
         /// <returns></returns>
-        public static int AddItemToInventory(ItemSO item, int amount)
+        public int AddItemToInventory(ItemSO item, int amount)
         {
             int remaining = amount;
 
@@ -131,7 +130,7 @@ namespace EZInventory
                     //add as many to the slot as we can without overflowing
                     if (overflow > 0) remaining = overflow;
                     else remaining = 0;
-                }                
+                }
             }
 
             if (remaining <= 0)
@@ -256,7 +255,7 @@ namespace EZInventory
         /// <param name="item"></param>
         /// <param name="amount"></param>
         /// <returns></returns>
-        public static bool CheckItem(ItemSO item, int amount)
+        public bool CheckItem(ItemSO item, int amount)
         {
             int remaining = amount;
 
@@ -281,7 +280,7 @@ namespace EZInventory
         /// </summary>
         /// <param name="item"></param>
         /// <param name="amount"></param>
-        public static void RemoveItemFromInventory(ItemSO item, int amount)
+        public void RemoveItemFromInventory(ItemSO item, int amount)
         {
             int remaining = amount;
 
@@ -311,9 +310,9 @@ namespace EZInventory
         /// Removes currently held item completely
         /// </summary>
         ///     
-       
+
         public static void RemoveItem()
-        {  
+        {
             currentItem = null;
             currentItemAmount = 0;
         }
@@ -321,6 +320,10 @@ namespace EZInventory
         public void BinItem()
         {
             RemoveItem();
-        }       
+        }
+        public void checklist()
+        {
+
+        }
     }
 }

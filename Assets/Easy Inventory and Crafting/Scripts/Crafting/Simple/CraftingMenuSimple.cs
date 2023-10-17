@@ -85,7 +85,7 @@ namespace EZInventory
             bool craftable = true;
             for (int i = 0; i < currentRecipe.ingredients.Length; i++)
             {
-                if (!InventoryManager.CheckItem(currentRecipe.ingredients[i].item, currentRecipe.ingredients[i].amount))
+                if (!InventoryManager.instance.CheckItem(currentRecipe.ingredients[i].item, currentRecipe.ingredients[i].amount))
                 {
                     ingredientSlots[i].ingredientsAvailable = false;
                     craftable = false;
@@ -111,7 +111,7 @@ namespace EZInventory
         {
             foreach (RecipeSimple.Ingredient ingredient in currentRecipe.ingredients)
             {
-                InventoryManager.RemoveItemFromInventory(ingredient.item, ingredient.amount);
+                InventoryManager.instance.RemoveItemFromInventory(ingredient.item, ingredient.amount);
             }
         }
     }

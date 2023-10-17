@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TooltipManager : MonoBehaviour
 {
+
     public GameObject Tooltip;
     public Text ItemName;
     public Image ItemIcon;

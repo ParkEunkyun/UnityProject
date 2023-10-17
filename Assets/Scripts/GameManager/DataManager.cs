@@ -216,6 +216,25 @@ public class PlayerData
 
     #endregion
 
+    #region 레시피 인벤토리
+    [Header("Inventory")]
+    public int[] RecipeitemId;
+    public int[] Recipeitemamount;
+
+    #endregion
+
+    #region 상점 이용 시간
+    [Header("Inventory")]
+
+    public string Crystal10Time;
+    public string Crystal30Time;
+    public string Crystal50Time;
+    public string FreeBoxTime;    
+    public string manaportionTime;
+    public string gold500RubyTime;
+    public string gold50CrystalTime;
+
+    #endregion
 
 
 }
@@ -262,6 +281,7 @@ public class DataManager : MonoBehaviour
         invenSave();
         EquipinvenSave();
         materialinvenSave();
+        RecipeinvenSave();
         SkillSave();
         string pdata = JsonUtility.ToJson(nowPlayer);
         //pdata = Crypto.AESEncrypt128(pdata);
@@ -960,6 +980,79 @@ public class DataManager : MonoBehaviour
         nowPlayer.materialoptionValue10 = opv10;
         nowPlayer.materialoptionValue11 = opv11;
         nowPlayer.materialoptionValue12 = opv12;
+    }
+
+    ////////////////////////기타창 저장///////////////////////////
+    public void RecipeinvenSave()
+    {
+        nowPlayer.RecipeitemId = new int[] {
+                                                                EZInventory.InventoryManager.instance.slots[0].Id,
+                                                                EZInventory.InventoryManager.instance.slots[1].Id,
+                                                                EZInventory.InventoryManager.instance.slots[2].Id,
+                                                                EZInventory.InventoryManager.instance.slots[3].Id,
+                                                                EZInventory.InventoryManager.instance.slots[4].Id,
+                                                                EZInventory.InventoryManager.instance.slots[5].Id,
+                                                                EZInventory.InventoryManager.instance.slots[6].Id,
+                                                                EZInventory.InventoryManager.instance.slots[7].Id,
+                                                                EZInventory.InventoryManager.instance.slots[8].Id,
+                                                                EZInventory.InventoryManager.instance.slots[9].Id,
+                                                                EZInventory.InventoryManager.instance.slots[10].Id,
+                                                                EZInventory.InventoryManager.instance.slots[11].Id,
+                                                                EZInventory.InventoryManager.instance.slots[12].Id,
+                                                                EZInventory.InventoryManager.instance.slots[13].Id,
+                                                                EZInventory.InventoryManager.instance.slots[14].Id,
+                                                                EZInventory.InventoryManager.instance.slots[15].Id,
+                                                                EZInventory.InventoryManager.instance.slots[16].Id,
+                                                                EZInventory.InventoryManager.instance.slots[17].Id,
+                                                                EZInventory.InventoryManager.instance.slots[18].Id,
+                                                                EZInventory.InventoryManager.instance.slots[19].Id,
+                                                                EZInventory.InventoryManager.instance.slots[20].Id,
+                                                                EZInventory.InventoryManager.instance.slots[21].Id,
+                                                                EZInventory.InventoryManager.instance.slots[22].Id,
+                                                                EZInventory.InventoryManager.instance.slots[23].Id,
+                                                                EZInventory.InventoryManager.instance.slots[24].Id,
+                                                                EZInventory.InventoryManager.instance.slots[25].Id,
+                                                                EZInventory.InventoryManager.instance.slots[26].Id,
+                                                                EZInventory.InventoryManager.instance.slots[27].Id,
+                                                                EZInventory.InventoryManager.instance.slots[28].Id,
+                                                                EZInventory.InventoryManager.instance.slots[29].Id,
+
+
+                                                                };
+        nowPlayer.Recipeitemamount = new int[]  {
+                                                                    EZInventory.InventoryManager.instance.slots[0].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[1].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[2].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[3].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[4].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[5].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[6].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[7].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[8].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[9].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[10].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[11].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[12].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[13].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[14].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[15].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[16].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[17].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[18].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[19].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[20].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[21].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[22].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[23].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[24].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[25].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[26].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[27].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[28].currentItemAmount,
+                                                                    EZInventory.InventoryManager.instance.slots[29].currentItemAmount,
+
+                                                                };
+        Debug.Log("레시피 인벤 세이브됨");
     }
 
     ////////////////////////스킬 저장//////////////////////////////////

@@ -44,7 +44,7 @@ public class HPsystem : MonoBehaviour
             DataManager.instance.SaveData();
             DataManager.instance.OnClickSaveButton();          
         }
-        if(timer >= 15f)
+        if(timer >= 10f)
         {
             RecoveryHP();
             timer = 0f;
@@ -55,7 +55,7 @@ public class HPsystem : MonoBehaviour
         }
 
         Monstertimer += Time.deltaTime;
-        if(Monstertimer >= 10f)
+        if(Monstertimer >= 1f)
         {
             MonsterDmg = true;
         }

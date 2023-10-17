@@ -24,7 +24,7 @@ namespace EZInventory
             //quick grab
             if (Input.GetKey(KeyCode.LeftShift) && Input.GetMouseButtonDown(0))
             {
-                InventoryManager.AddItemToInventory(currentItem, currentItemAmount);
+                InventoryManager.instance.AddItemToInventory(currentItem, currentItemAmount);
             }
             else base.MouseOverChecks();
 

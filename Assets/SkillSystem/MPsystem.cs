@@ -32,6 +32,7 @@ public class MPsystem : MonoBehaviour
         if(MPortionAmount != preAmount)
         {
             preAmount = MPortionAmount;
+             
             DataManager.instance.SaveData();
             DataManager.instance.OnClickSaveButton();          
         }
@@ -56,6 +57,7 @@ public class MPsystem : MonoBehaviour
             if(MPortionAmount != preAmount)
             {
                 preAmount = MPortionAmount;
+                 
                 DataManager.instance.SaveData();
                 DataManager.instance.OnClickSaveButton();             
             }

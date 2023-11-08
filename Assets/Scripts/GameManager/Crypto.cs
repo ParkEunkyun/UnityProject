@@ -6,7 +6,7 @@ using System.Text;
 public class Crypto
 {
     //키로 사용하기 위한 암호. 16글자 이상이어야 한다.
-    private static string PASSWORD = "tHisIstesT4tistory";
+    private static string PASSWORD = "dmsrbsdmsrbsdmsrbs";
     //인증키 정의
     private static readonly string KEY = PASSWORD.Substring(0, 128 / 8); //8bit단위로 나눔
 

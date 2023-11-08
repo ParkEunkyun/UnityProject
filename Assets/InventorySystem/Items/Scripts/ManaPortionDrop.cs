@@ -9,9 +9,11 @@ public class ManaPortionDrop : MonoBehaviour
         if(other.tag.Equals("Player"))
         {
             DataManager.instance.nowPlayer.ManaPotion++;
+             
             DataManager.instance.SaveData();
             //this.gameObject.SetActive(false);
             //Destroy(this.gameObject);           
+            this.GetComponent<CircleCollider2D>().isTrigger = false;
             ManaPortionObjectPool.ReturnObject(this.gameObject);
         }
     }

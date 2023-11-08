@@ -8,6 +8,11 @@ public class SelectCharacter : MonoBehaviour
     SpriteRenderer spriteRender;
     public SelectCharacter[] chars;
     Animator anim;
+
+    public GameObject[] selectArrow;
+
+    public AudioSource audioSource;
+
     private void Start()
     {        
         spriteRender = GetComponentInChildren<SpriteRenderer>();
@@ -16,13 +21,21 @@ public class SelectCharacter : MonoBehaviour
 
     private void OnMouseUpAsButton()
     {        
-        CharacterDataManager.instance.SelectedCharacter = character;    
+        CharacterDataManager.instance.SelectedCharacter = character;
+        audioSource.Play();
         OnSelect();
-        for(int i = 0; i < chars.Length; i++)
-        {
-            if(chars[i] != this)
-            {
+        
+        for (int i = 0; i < chars.Length; i++)
+        {            
+            if (chars[i] != this)
+            {            
                 chars[i].OnDeselect();
+                selectArrow[i].SetActive(false);
+            }
+
+            if (chars[i] == this) 
+            {
+                selectArrow[i].SetActive(true);
             }
         }
     }

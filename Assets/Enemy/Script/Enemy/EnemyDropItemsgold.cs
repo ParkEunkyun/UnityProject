@@ -69,6 +69,7 @@ public class EnemyDropItemsgold : MonoBehaviour
     private void DestroyObject()
     {
         //Destroy(gameObject);
+        this.GetComponent<CircleCollider2D>().isTrigger = false;
         GoldObjectPool.ReturnObject(this.gameObject);
     }
     

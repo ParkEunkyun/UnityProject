@@ -25,10 +25,21 @@ public class CharacterSpawn : MonoBehaviour
     public GameObject PlayerParent;
     public int preGoldAmount; public int preKillAmount; public int prePowerAmount;
 
-    void Start()
+
+
+    void OnEnable()
     {
+        // 씬 매니저의 sceneLoaded에 체인을 건다.
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("OnSceneLoaded: " + scene.name);
+        Debug.Log(mode);
+
+        DataManager.instance.audioSource.volume = 0.1f;
         DataManager.instance.LoadData();
-        // player = Instantiate(charprefabs[(int)CharacterDataManager.instance.SelectedCharacter]);
+        // player = Instantiate(charprefabs[(int)CharacterDataManager.instance.SelectedCharacter]);        
         player = Instantiate(charprefabs[(int)DataManager.instance.nowPlayer.SelectedCharacter]);
         player.transform.SetParent(PlayerParent.transform);
         player.name = "Player";
@@ -43,6 +54,7 @@ public class CharacterSpawn : MonoBehaviour
         KillPoint.text = KillFomat;
         PowerPointFomat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.TotalScore);
         PowerPoint.text = PowerPointFomat;
+        DataManager.instance.nowPlayer.howManyPlay++;
         Statload();
         SkillLoad();
         Calcurate();
@@ -54,62 +66,50 @@ public class CharacterSpawn : MonoBehaviour
         else
         {
             DataManager.instance.ClearInventory();
-            DataManager.instance.AddNewEquipItem(20);
+            //DataManager.instance.AddNewEquipItem(0);
+            //DataManager.instance.AddNewEquipItem(1);
+            //DataManager.instance.AddNewEquipItem(2);
+            //DataManager.instance.AddNewEquipItem(3);
+            //DataManager.instance.AddNewEquipItem(4);
             DataManager.instance.nowPlayer.Level++;
-            return;
+            DataManager.instance.nowPlayer.gold += 100000;
+            DataManager.instance.nowPlayer.RubbyPoint += 5000;
+            DataManager.instance.nowPlayer.CrystalPoint += 1000;
         }
-        DataManager.instance.EXPandHP();
+        //DataManager.instance.EXPandHP();
         stat.curHP = stat.maxHP;
         stat.curMP = stat.maxMP;
     }
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+       
 
     private void Update()
     {
-
-        if (DataManager.instance.nowPlayer.gold != preGoldAmount)
-        {
             goldFomat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.gold);
             gold.text = goldFomat;
-            preGoldAmount = DataManager.instance.nowPlayer.gold;
-        }
-        if (DataManager.instance.nowPlayer.monsterKill != preKillAmount)
-        {
             KillFomat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.monsterKill);
             KillPoint.text = KillFomat;
-            preKillAmount = DataManager.instance.nowPlayer.monsterKill;
-        }
-        if (DataManager.instance.nowPlayer.TotalScore != prePowerAmount)
-        {
             PowerPointFomat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.TotalScore);
             PowerPoint.text = PowerPointFomat;
-            prePowerAmount = DataManager.instance.nowPlayer.TotalScore;
-        }
-
     }
 
     void LoadPlayerData()
     {
         for (int i = 0; i < 30; i++)
         {
-            //if(Inven.Slots[i].item.id != -1)
+
             {
                 Inven.Slots[i].item.id = DataManager.instance.nowPlayer.itemId[i];
                 Inven.Slots[i].item.name = DataManager.instance.nowPlayer.itemname[i];
                 Inven.Slots[i].amount = DataManager.instance.nowPlayer.amount[i];
-                /*}
-            }
-            for(int i = 0; i < 30; i++)
-            {
-                //if(materialInven.Slots[i].item.id != -1)
-                {*/
-                materialInven.Slots[i].item.id = DataManager.instance.nowPlayer.materialitemId[i];
-                materialInven.Slots[i].item.name = DataManager.instance.nowPlayer.materialitemname[i];
-                materialInven.Slots[i].amount = DataManager.instance.nowPlayer.materialamount[i];
             }
         }
         for (int i = 0; i < 5; i++)
         {
-            //if(EquipInven.Slots[i].item.id != -1)
+
             {
                 EquipInven.Slots[i].item.id = DataManager.instance.nowPlayer.EquipItemID[i];
                 EquipInven.Slots[i].item.name = DataManager.instance.nowPlayer.EquipItemName[i];
@@ -120,9 +120,7 @@ public class CharacterSpawn : MonoBehaviour
         optionload();
         optionvalueload();
         Equipoptionload();
-        Equipoptionvalueload();
-        materialoptionload();
-        Materialionvalueload();
+        Equipoptionvalueload();      
 
         Calcurate();
     }
@@ -1341,12 +1339,12 @@ public class CharacterSpawn : MonoBehaviour
         stat.Def = 0;
         stat.Cooltime = 0;
 
-        stat.minAtk = (stat.Str + stat.ItemStr) * 3 + stat.itemATK;
-        stat.maxAtk = (stat.Str + stat.ItemStr) * 4 + stat.itemATK;
+        stat.minAtk = (stat.Str + stat.ItemStr) * 3 + stat.itemATK + _skill.SkillAttack;
+        stat.maxAtk = (stat.Str + stat.ItemStr) * 4 + stat.itemATK + _skill.SkillAttack;
         stat.maxHP = (stat.Con + stat.ItemCon) * 10 + stat.itemMaxHP;
         stat.maxMP = (stat.Int + stat.ItemInt) * 5 + stat.itemMaxMP;
-        stat.AttackSpeed = 100 + stat.Dex + stat.ItemDex + stat.itemAttackSpeed;
-        stat.Critical = stat.Luk + stat.ItemLuk + stat.itemCritical;
+        stat.AttackSpeed = 100 + stat.Dex + stat.ItemDex + stat.itemAttackSpeed + _skill.SkillAttackSpeed;
+        stat.Critical = stat.Luk + stat.ItemLuk + stat.itemCritical + _skill.SkillCritical;
         stat.CriticalDmg = 150 + ((stat.Str + stat.ItemStr) / 2) + stat.itemCriticalDmg;
         if (stat.Critical > 500)
         {
@@ -1464,16 +1462,23 @@ public class CharacterSpawn : MonoBehaviour
         for (int i = 0; i < InventoryManager.instance.slots.Count; i++)
         {
             int itemData = DataManager.instance.nowPlayer.RecipeitemId[i];
-
-            if (itemData != -1)
+            if (itemData > 0)
             {
+                itemData -= 1000;
                 ItemSO item = InventoryManager.instance._recipeDataBase.RecipeItem[itemData];
                 InventoryManager.instance.AddItemToInventory(item, DataManager.instance.nowPlayer.Recipeitemamount[i]);
             }
-            else
-            {
-                return;
-            }
         }
+    }
+
+
+    public void Continue()
+    {
+        LoadingBar.LoadScene("SelectScene");
+    }
+
+    public void ContinueAds()
+    {
+        TestAdmob.instance.ShowAds4();
     }
 }

@@ -13,6 +13,7 @@ public class InventoryTabButton : MonoBehaviour
     public GameObject metarialInvenBtn;
     public GameObject StatBtn;
     public GameObject SkillBtn;
+    public GameObject RecipeBtn;
     public bool EquipInvenbool;
     public bool meterialInvenbool;
 
@@ -27,6 +28,7 @@ public class InventoryTabButton : MonoBehaviour
         Equipments.SetActive(true);
         StatBtn.SetActive(true);
         SkillBtn.SetActive(true);
+        RecipeBtn.SetActive(false);
         MetarialInven.SetActive(false);
         Crafting.SetActive(false);
         EquipInvenbool = true;
@@ -46,10 +48,26 @@ public class InventoryTabButton : MonoBehaviour
         Crafting.SetActive(true);
         StatBtn.SetActive(false);
         SkillBtn.SetActive(false);
+        RecipeBtn.SetActive(true);
         //metarialInvenBtn.GetComponentInChildren<Image>().color = new Color(1.0f,1.0f,1.0f,1.0f);
         //EquipInvenBtn.GetComponentInChildren<Image>().color = new Color(1.0f,1.0f,1.0f,0.5f);
         metarialInvenBtn.SetActive(false);
         EquipInvenBtn.SetActive(true);
+    }
+
+    public Text goldtext;
+    public Text Rubytext;
+    public Text Crystaltext;
+    private void Update()
+    {
+        string goldFomat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.gold);
+        goldtext.text = goldFomat;
+
+        string RubyFomat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.RubbyPoint);
+        Rubytext.text = RubyFomat;
+
+        string CrystalFomat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.CrystalPoint);
+        Crystaltext.text = CrystalFomat;
     }
 
 }

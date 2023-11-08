@@ -2,19 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
- 
+
 public class AutoThrowing : MonoBehaviour
 {
     public float viewRadius;
     [Range(0, 360)]
     public float viewAngle;
- 
+
     public LayerMask targetMask;
     public LayerMask obstacleMask;
     //있어야함, 왜냐면 타겟 사이에 다른 오브젝트가 있는데 그 오브젝트를 투과해서 뒤의 타겟오브젝트를 볼 수 있음
     public GameObject targeting;
     public float shortDis;
-    public GameObject firePoint; 
+    public GameObject firePoint;
     public GameObject Bullet;
     public float attackSpeed;
     public float BulletSpeed;
@@ -28,50 +28,39 @@ public class AutoThrowing : MonoBehaviour
     public float FireTime;
     public float Criper;
 
+    public GameObject Aim;
+
+    public AudioClip ThrowSound;
+    public AudioSource audioSource;
+
     //public GameObject targetingUI;
     void Start()
     {
         //attackSpeed = _playerStat.AttackSpeed;
         BulletSpeed = 7f;
-        animator = GetComponentInChildren<Animator>();       
-        
+        animator = GetComponentInChildren<Animator>();
+
     }
     void Update()
     {
         //attackSpeed = _playerStat.AttackSpeed/100;            
         viewRadius = _Skill.SkillViewRadius;
-        FireTime = FireTime + (_playerStat.AttackSpeed*Time.deltaTime);
-        if(FireTime > 300)
+        Aiming();
+        FindTargets();
+        FireTime = FireTime + (_playerStat.AttackSpeed * Time.deltaTime);
+        if (FireTime > 300)
         {
-            FindTargets();
+            //FindTargets();
             FireTime = FireTime - 300;
+            Throwbullet();
         }
-
-            
     }
- /*
-    void Start()
-    { 
-        //플레이 시 FindTargetsDelay 코루틴을 실행한다. 0.2초 간격으로
-        StartCoroutine("FindTargetsDelay");
-        
-    }
- 
-    IEnumerator FindTargetsDelay()
+    private void OnDrawGizmos()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(attackSpeed);
-            FindTargets();
-        }
+        Vector3 myPos = transform.position;
+        Gizmos.DrawWireSphere(myPos, viewRadius);
     }
-*/
-private void OnDrawGizmos() 
-{
-    Vector3 myPos = transform.position;
-    Gizmos.DrawWireSphere(myPos, viewRadius);
-}
- 
+
     void FindTargets()
     {
         visibleTargets.Clear();
@@ -86,58 +75,84 @@ private void OnDrawGizmos()
                 if (!Physics.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask)) //레이캐스트를 쐇는데 obstacleMask가 아닐 때 참이고 아래를 실행함
                 {
                     visibleTargets.Add(target.transform.gameObject); //게임오브젝트가 리스트에 들어가긴 함,
-                    Debug.DrawRay(transform.position, dirToTarget * 10f, Color.red, 5f);
-                    
+                    //Debug.DrawRay(transform.position, dirToTarget * 10f, Color.red, 5f);
+
                     //print("raycast hit!");
-                }               
+                }
             }
-        } 
- 
+        }
+
         if (visibleTargets.Count != 0) //범위 안에 있는 게임오브젝트 리스트 존재 시, 거리 계산 시작
         {
-            targeting = visibleTargets[0];            
+            targeting = visibleTargets[0];
             shortDis = Vector2.Distance(transform.position, visibleTargets[0].transform.position); //visibleTargets 리스트의 첫번째와의 거리를 기준으로 잡기
-             //리스트에서 가장 가까운 거리의 게임 오브젝트 찾기
+                                                                                                   //리스트에서 가장 가까운 거리의 게임 오브젝트 찾기
             foreach (GameObject found in visibleTargets)
             {
                 float distance = Vector2.Distance(transform.position, found.transform.position);
                 if (distance < shortDis)
                 {
                     targeting = found;
-                    shortDis = distance;                    
+                    shortDis = distance;
                 }
             }
-            Throwbullet();
-        }            
+            
+        }
+        else
+        {
+            targeting = null;
+        }
     }
     public void Throwbullet()
     {
-        AnimateAttack();
-        var newBullet = BulletObjectPool.GetObject(); // 수정
-        //newBullet.transform.SetParent(transform.Find("BulletPool"));        
-        newBullet.GetComponent<Rigidbody2D> ().velocity = (targeting.transform.position - transform.position).normalized * BulletSpeed;
+        if (targeting != null)
+        {
+            if(targeting.CompareTag("Enemy") || targeting.CompareTag("Boss") || targeting.CompareTag("RealBoss"))
+            {
+                AnimateAttack();
+                var newBullet = BulletObjectPool.GetObject(); // 수정
+                                                              //newBullet.transform.SetParent(transform.Find("BulletPool"));        
+                newBullet.GetComponent<Rigidbody2D>().velocity = (targeting.transform.position - transform.position).normalized * BulletSpeed;                
+            }
+        }
     }
     public void AnimateAttack()
     {
         animator.SetTrigger("Attack");
+        
+            audioSource.PlayOneShot(ThrowSound);
+        
     }
     public void DamageCaculate()
     {
         int Crinum = Random.Range(0, 501);
-        if(Crinum < _playerStat.Critical + 1)
+        if (Crinum < _playerStat.Critical + 1)
         {
             Dmg = 0;
-            CriDmg = Random.Range(_playerStat.minAtk, _playerStat.maxAtk +1);
-            Criper = CriDmg*(_playerStat.CriticalDmg/100f);
+            CriDmg = Random.Range(_playerStat.minAtk, _playerStat.maxAtk + 1);
+            Criper = CriDmg * (_playerStat.CriticalDmg / 100f);
             //CriDmg = Random.Range(_playerStat.minAtk, _playerStat.maxAtk +1);
             CriDmg = Mathf.RoundToInt(Criper);
         }
         else
         {
             CriDmg = 0;
-            Dmg = Random.Range(_playerStat.minAtk, _playerStat.maxAtk +1);
+            Dmg = Random.Range(_playerStat.minAtk, _playerStat.maxAtk + 1);
         }
-    }    
+    }
 
+    public void Aiming()
+    {
+        if (targeting != null)
+        {
+            Aim.SetActive(true);
+            Aim.transform.position = targeting.transform.position;
+        }
+        else
+        {
+            Aim.transform.position = this.transform.position;
+            Aim.SetActive(false);
+        }
+    }
 }
 

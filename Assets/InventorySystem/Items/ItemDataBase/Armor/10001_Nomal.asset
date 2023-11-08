@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   stackable: 0
-  icon: {fileID: 21300000, guid: 9009ac759ece7bd4d996db0c8accbb1d, type: 3}
+  icon: {fileID: 21300000, guid: c41ba996e9d355a48ac9e82660a3a264, type: 3}
   ItemPrefab: {fileID: 2548054518879633567, guid: c1de5fe9cf5e80341919d53066c6c5dc, type: 3}
   data:
     id: 0

@@ -9,12 +9,12 @@ public class Monster : MonoBehaviour
 {
     public Slider enemyHP;
     public float Damage;
-    public int maxHP;    
+    public int maxHP;
     public GameObject[] items = new GameObject[4];
     public GameObject hudDamageText;
     public GameObject hudCriDamageText;
     Transform trans;
-    public Transform hudPos; 
+    public Transform hudPos;
     //private Animator animator;
     AutoThrowing _AutoThrowing;
     public Stat stat;
@@ -22,135 +22,135 @@ public class Monster : MonoBehaviour
     public bool AreaSkillUse;
 
     //public GoldObjectPool goldPool;
-    
+
     [SerializeField]
     private int EXP;
     public float timer;
     void Start()
     {
-        
+
         trans = GetComponent<Transform>();
         //obj = GetComponent<GameObject>();
         enemyHP.maxValue = maxHP;
         enemyHP.value = maxHP;
-        
+
     }
-    private void Update() 
-    {        
+    private void Update()
+    {
         timer += Time.deltaTime;
-        if(timer >= 0.5f)
+        if (timer >= 0.5f)
         {
             AreaSkillUse = true;
-        }    
-    } 
-    private void OnTriggerEnter2D(Collider2D other)
-    {       
-                
-        if(other.gameObject.tag.Equals("Bullet"))
-        {   
-            _AutoThrowing = GameObject.Find("Char").GetComponent<AutoThrowing>();           
-
-            if(enemyHP.value > 0)
-            { 
-                _AutoThrowing.DamageCaculate();
-                TakeDmg();
-                if(_AutoThrowing.CriDmg == 0)
-                {
-                    enemyHP.value = enemyHP.value - _AutoThrowing.Dmg;
-                }
-                else if(_AutoThrowing.Dmg == 0)
-                {
-                    enemyHP.value = enemyHP.value - _AutoThrowing.CriDmg;
-                }                
-                Debug.Log("데미지" + _AutoThrowing.Dmg);
-                Debug.Log("데미지" + _AutoThrowing.CriDmg);
-            }
-            
-            if (enemyHP.value <= 0)
-            {                
-                Vector2 v = new Vector2(0f, 0f);                
-                trans.position = this.transform.position;
-                this.gameObject.SetActive(false);                
-                dropTheItems();
-                DataManager.instance.nowPlayer.monsterKill++;
-                DataManager.instance.nowPlayer.curExp = DataManager.instance.nowPlayer.curExp + EXP;               
-                DataManager.instance.LevelUP();
-                DataManager.instance.SaveData();
-                MonsterSpawner.instance.InsertQueue(gameObject);
-                
-            }
         }
-///////////////회전체 스킬 데미지 : 데미지 루트 변경예정
-        if(other.gameObject.tag.Equals("Around"))
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.gameObject.tag.Equals("Bullet"))
         {
             _AutoThrowing = GameObject.Find("Char").GetComponent<AutoThrowing>();
 
-            if(enemyHP.value > 0)
-            { 
+            if (enemyHP.value > 0)
+            {
                 _AutoThrowing.DamageCaculate();
                 TakeDmg();
-                if(_AutoThrowing.CriDmg == 0)
+                if (_AutoThrowing.CriDmg == 0)
                 {
                     enemyHP.value = enemyHP.value - _AutoThrowing.Dmg;
                 }
-                else if(_AutoThrowing.Dmg == 0)
+                else if (_AutoThrowing.Dmg == 0)
                 {
                     enemyHP.value = enemyHP.value - _AutoThrowing.CriDmg;
-                }                
+                }
                 Debug.Log("데미지" + _AutoThrowing.Dmg);
                 Debug.Log("데미지" + _AutoThrowing.CriDmg);
             }
-            
+
             if (enemyHP.value <= 0)
-            {                
-                Vector2 v = new Vector2(0f, 0f);                
+            {
+                Vector2 v = new Vector2(0f, 0f);
                 trans.position = this.transform.position;
                 this.gameObject.SetActive(false);
                 dropTheItems();
                 DataManager.instance.nowPlayer.monsterKill++;
-                DataManager.instance.nowPlayer.curExp = DataManager.instance.nowPlayer.curExp + EXP;               
-                DataManager.instance.LevelUP();
+                DataManager.instance.nowPlayer.curExp = DataManager.instance.nowPlayer.curExp + EXP;
+                //DataManager.instance.LevelUP();
                 DataManager.instance.SaveData();
                 MonsterSpawner.instance.InsertQueue(gameObject);
-                
+
+            }
+        }
+        ///////////////회전체 스킬 데미지 : 데미지 루트 변경예정
+        if (other.gameObject.tag.Equals("Around"))
+        {
+            _AutoThrowing = GameObject.Find("Char").GetComponent<AutoThrowing>();
+
+            if (enemyHP.value > 0)
+            {
+                _AutoThrowing.DamageCaculate();
+                TakeDmg();
+                if (_AutoThrowing.CriDmg == 0)
+                {
+                    enemyHP.value = enemyHP.value - _AutoThrowing.Dmg;
+                }
+                else if (_AutoThrowing.Dmg == 0)
+                {
+                    enemyHP.value = enemyHP.value - _AutoThrowing.CriDmg;
+                }
+                Debug.Log("데미지" + _AutoThrowing.Dmg);
+                Debug.Log("데미지" + _AutoThrowing.CriDmg);
+            }
+
+            if (enemyHP.value <= 0)
+            {
+                Vector2 v = new Vector2(0f, 0f);
+                trans.position = this.transform.position;
+                this.gameObject.SetActive(false);
+                dropTheItems();
+                DataManager.instance.nowPlayer.monsterKill++;
+                DataManager.instance.nowPlayer.curExp = DataManager.instance.nowPlayer.curExp + EXP;
+                //DataManager.instance.LevelUP();
+                DataManager.instance.SaveData();
+                MonsterSpawner.instance.InsertQueue(gameObject);
+
             }
         }
     }
     private void OnTriggerStay2D(Collider2D other)
-    {        
+    {
         ///////////////장판 스킬 데미지 : 데미지 루트 변경예정
-        if(other.gameObject.tag.Equals("Area") && AreaSkillUse == true)
+        if (other.gameObject.tag.Equals("Area") && AreaSkillUse == true)
         {
             _AutoThrowing = GameObject.Find("Char").GetComponent<AutoThrowing>();
 
-            if(enemyHP.value > 0)
-            { 
+            if (enemyHP.value > 0)
+            {
                 _AutoThrowing.DamageCaculate();
                 TakeDmg();
-                if(_AutoThrowing.CriDmg == 0)
+                if (_AutoThrowing.CriDmg == 0)
                 {
-                    enemyHP.value = enemyHP.value - _AutoThrowing.Dmg/10;
+                    enemyHP.value = enemyHP.value - _AutoThrowing.Dmg / 10;
                 }
-                else if(_AutoThrowing.Dmg == 0)
+                else if (_AutoThrowing.Dmg == 0)
                 {
-                    enemyHP.value = enemyHP.value - _AutoThrowing.CriDmg/10;
-                }           
+                    enemyHP.value = enemyHP.value - _AutoThrowing.CriDmg / 10;
+                }
                 Debug.Log("데미지" + _AutoThrowing.Dmg);
                 Debug.Log("데미지" + _AutoThrowing.CriDmg);
             }
-            
+
             if (enemyHP.value <= 0)
-            {                
-                Vector2 v = new Vector2(0f, 0f);                
+            {
+                Vector2 v = new Vector2(0f, 0f);
                 trans.position = this.transform.position;
                 this.gameObject.SetActive(false);
                 dropTheItems();
                 DataManager.instance.nowPlayer.monsterKill++;
-                DataManager.instance.nowPlayer.curExp = DataManager.instance.nowPlayer.curExp + EXP;               
-                DataManager.instance.LevelUP();
+                DataManager.instance.nowPlayer.curExp = DataManager.instance.nowPlayer.curExp + EXP;
+                //DataManager.instance.LevelUP();
                 DataManager.instance.SaveData();
                 MonsterSpawner.instance.InsertQueue(gameObject);
-                
+
             }
             AreaSkillUse = false;
             timer = 0;
@@ -167,82 +167,88 @@ public class Monster : MonoBehaviour
 
     private void OnEnable() // 오브젝트 풀링에의해 다시 활성화될시 정보 초기화
     {
-        if (enemyHP!= null)
-        {       
+        if (enemyHP != null)
+        {
             enemyHP.maxValue = maxHP;
             enemyHP.value = maxHP;
         }
     }
-    
+    public int golddrop;
+
     void dropTheItems()
     {
-        int maxItems = 1;        
+        int maxItems = 1;
         for (int i = 0; i < maxItems; i++)
         {
-            int randomNum = Random.Range(0,1001);
-            if(randomNum < 501)
+            int randomNum = Random.Range(0, 1001);
+            if (randomNum < 301) //30%
             {
-                DropItems();
-                testDropItems();
-//return;
+                return;
             }
-            else if(randomNum < 979)
+            else if (randomNum < 701) // 40%
             {
-                GameObject gold = GoldObjectPool.GetObject();
-                gold.transform.position = trans.position;                           
+                for (int ii = 0; ii < golddrop; ii++)
+                {
+                    GameObject gold = GoldObjectPool.GetObject();
+                    gold.transform.position = trans.position;
+                }
             }
-            else if(randomNum < 984)
+            else if (randomNum < 726) //2.5%
             {
                 GameObject HPortion = HealthPortionObjectPool.GetObject();
-                HPortion.transform.position = trans.position;           
+                HPortion.transform.position = trans.position;
             }
-            else if(randomNum < 990)
+            else if (randomNum < 751) // 2.5%
             {
                 GameObject MPortion = ManaPortionObjectPool.GetObject();
-                MPortion.transform.position = trans.position;      
+                MPortion.transform.position = trans.position;
             }
-            else if(randomNum < 995)
+            else if (randomNum < 851) // 10%
             {
-                Instantiate(items[0], trans.position, Quaternion.identity);
-                //잡템
-            }
-            else if (randomNum < 996)
-            {                
                 DropItems();
-                //조합템
+                //하급 재료템
             }
-            else if (randomNum < 997)
+            else if (randomNum < 901) //5%
+            {
+                testDropItems();
+                //상급 재료템
+            }
+            else if (randomNum < 951) // 5%
             {
                 Instantiate(items[2], trans.position, Quaternion.identity);
                 //스킬조각
             }
-            else if (randomNum < 998)
+            else if (randomNum < 952) // 0.1%
             {
                 Instantiate(items[3], trans.position, Quaternion.identity);
                 //장비1
             }
-            else if (randomNum < 999)
+            else if (randomNum < 953) // 0.1%
             {
                 Instantiate(items[4], trans.position, Quaternion.identity);
                 //장비2
             }
-            else if (randomNum < 1000)
+            else if (randomNum < 954) // 0.1%
             {
                 Instantiate(items[5], trans.position, Quaternion.identity);
                 //장비3
             }
-            else if(randomNum < 1001)
+            else if (randomNum < 955) // 0.1%
             {
                 Instantiate(items[6], trans.position, Quaternion.identity);
                 //희귀
             }
-        }        
-        
+            else if (randomNum < 1001) // 4.5%
+            {
+                return;
+            }
+        }
+
     }
-    
+
     private void TakeDmg()
     {
-        if(_AutoThrowing.CriDmg == 0)
+        if (_AutoThrowing.CriDmg == 0)
         {
             GameObject hudText = DamageObjectPool.GetObject();//Instantiate(hudDamageText);
             hudText.transform.position = hudPos.position;
@@ -265,9 +271,9 @@ public class Monster : MonoBehaviour
     public ItemSO itemDrop2;
     public int dropAmount;
 
-    static GameObject player;    
+    static GameObject player;
 
-    void DropItems()
+    void DropItems() //노말재료
     {
         for (int i = 0; i < dropAmount; i++)
         {
@@ -278,7 +284,7 @@ public class Monster : MonoBehaviour
             drop.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
         }
     }
-    void testDropItems()
+    void testDropItems() // 고급재료
     {
         for (int i = 0; i < dropAmount; i++)
         {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class HPsystem : MonoBehaviour
@@ -17,6 +18,10 @@ public class HPsystem : MonoBehaviour
     public float timer;
     public float Monstertimer;
     public bool MonsterDmg;
+    public GameObject _char;
+    public GameObject _ContinueWindow;
+    public GameObject _monsterPool;
+
     public void Start()
     {
         
@@ -41,6 +46,7 @@ public class HPsystem : MonoBehaviour
         if(HPortionAmount != preAmount)
         {
             preAmount = HPortionAmount;
+             
             DataManager.instance.SaveData();
             DataManager.instance.OnClickSaveButton();          
         }
@@ -66,20 +72,115 @@ public class HPsystem : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {   
         Monster _monster = other.gameObject.GetComponent<Monster>();
+        BossMob _Boss = other.gameObject.GetComponent<BossMob>();
+        RealBossMob _RealBoss = other.gameObject.GetComponent<RealBossMob>();
 
-         if(other.gameObject.tag.Equals("Enemy") && MonsterDmg == true)
+        if (other.gameObject.tag.Equals("Enemy") && MonsterDmg == true)
         {
-            if(HPbar1.value > 0)
-            {                
-                HPbar1.value = HPbar1.value - Mathf.Round(_monster.Damage-(_monster.Damage*(_stat.Def/100f)));
-                Debug.Log(Mathf.Round(_monster.Damage-(_monster.Damage*(_stat.Def/100f))));
+            if (HPbar1.value > 0)
+            {
+                HPbar1.value = HPbar1.value - Mathf.Round(_monster.Damage - (_monster.Damage * (_stat.Def / 100f)));
+                Debug.Log(Mathf.Round(_monster.Damage - (_monster.Damage * (_stat.Def / 100f))));
                 HPbar2.value = HPbar1.value;
                 HPtext.text = HPbar1.value.ToString() + " / " + _stat.maxHP.ToString();
-                
+
             }
+            else if (HPbar1.value <= 0)
+            {
+                DataManager.instance.nowPlayer.PrecurExp = _stat.curExp;
+                DataManager.instance.nowPlayer.curExp = DataManager.instance.nowPlayer.curExp - (DataManager.instance.nowPlayer.curExp / 4);
+                DataManager.instance.SaveData();
+                
+                _monsterPool.SetActive(false);
+                _char.SetActive(false);
+                _ContinueWindow.SetActive(true);
+            }
+
+            if (HPbar1.value <= 0)
+            {
+                DataManager.instance.nowPlayer.PrecurExp = _stat.curExp;
+                DataManager.instance.nowPlayer.curExp = DataManager.instance.nowPlayer.curExp - (DataManager.instance.nowPlayer.curExp / 4);
+                DataManager.instance.SaveData();
+
+                _monsterPool.SetActive(false);
+                _char.SetActive(false);
+                _ContinueWindow.SetActive(true);
+            }
+
             MonsterDmg = false;
             Monstertimer = 0;
-        }             
+        }
+
+        else if (other.gameObject.tag.Equals("Boss") && MonsterDmg == true)
+        {
+            if (HPbar1.value > 0)
+            {
+                HPbar1.value = HPbar1.value - Mathf.Round(_Boss.Damage - (_Boss.Damage * (_stat.Def / 100f)));
+                Debug.Log(Mathf.Round(_Boss.Damage - (_Boss.Damage * (_stat.Def / 100f))));
+                HPbar2.value = HPbar1.value;
+                HPtext.text = HPbar1.value.ToString() + " / " + _stat.maxHP.ToString();
+
+            }
+            else if (HPbar1.value <= 0)
+            {
+                DataManager.instance.nowPlayer.PrecurExp = _stat.curExp;
+                DataManager.instance.nowPlayer.curExp = DataManager.instance.nowPlayer.curExp - (DataManager.instance.nowPlayer.curExp / 4);
+                DataManager.instance.SaveData();
+
+                _monsterPool.SetActive(false);
+                _char.SetActive(false);
+                _ContinueWindow.SetActive(true);
+            }
+
+            if (HPbar1.value <= 0)
+            {
+                DataManager.instance.nowPlayer.PrecurExp = _stat.curExp;
+                DataManager.instance.nowPlayer.curExp = DataManager.instance.nowPlayer.curExp - (DataManager.instance.nowPlayer.curExp / 4);
+                DataManager.instance.SaveData();
+
+                _monsterPool.SetActive(false);
+                _char.SetActive(false);
+                _ContinueWindow.SetActive(true);
+            }
+
+            MonsterDmg = false;
+            Monstertimer = 0;
+        }
+        else if (other.gameObject.tag.Equals("RealBoss") && MonsterDmg == true)
+        {
+            if (HPbar1.value > 0)
+            {
+                HPbar1.value = HPbar1.value - Mathf.Round(_RealBoss.Damage - (_RealBoss.Damage * (_stat.Def / 100f)));
+                Debug.Log(Mathf.Round(_RealBoss.Damage - (_RealBoss.Damage * (_stat.Def / 100f))));
+                HPbar2.value = HPbar1.value;
+                HPtext.text = HPbar1.value.ToString() + " / " + _stat.maxHP.ToString();
+
+            }
+            else if (HPbar1.value <= 0)
+            {
+                DataManager.instance.nowPlayer.PrecurExp = _stat.curExp;
+                DataManager.instance.nowPlayer.curExp = DataManager.instance.nowPlayer.curExp - (DataManager.instance.nowPlayer.curExp / 4);
+                DataManager.instance.SaveData();
+
+                _monsterPool.SetActive(false);
+                _char.SetActive(false);
+                _ContinueWindow.SetActive(true);
+            }
+
+            if (HPbar1.value <= 0)
+            {
+                DataManager.instance.nowPlayer.PrecurExp = _stat.curExp;
+                DataManager.instance.nowPlayer.curExp = DataManager.instance.nowPlayer.curExp - (DataManager.instance.nowPlayer.curExp / 4);
+                DataManager.instance.SaveData();
+
+                _monsterPool.SetActive(false);
+                _char.SetActive(false);
+                _ContinueWindow.SetActive(true);
+            }
+
+            MonsterDmg = false;
+            Monstertimer = 0;
+        }
     }
 
     public void UseHealthPortion()
@@ -92,6 +193,7 @@ public class HPsystem : MonoBehaviour
             if(HPortionAmount != preAmount)
             {
                 preAmount = HPortionAmount;
+                 
                 DataManager.instance.SaveData();
                 DataManager.instance.OnClickSaveButton();             
             }       
@@ -106,4 +208,5 @@ public class HPsystem : MonoBehaviour
             _stat.curHP = (int)HPbar1.value;        
         }
     }
+    
 }

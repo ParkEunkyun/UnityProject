@@ -59,7 +59,8 @@ public class Ads50CrystalPuchase : MonoBehaviour
         Textudate();
     }
     public void Puchase() // 구매버튼 클릭 시
-    {
+    {       
+
         if (isPuchase)
         {
             CurrentTimeStr = System.DateTime.Now.ToString("yyyyMMddHHmmss");
@@ -67,14 +68,14 @@ public class Ads50CrystalPuchase : MonoBehaviour
 
             Debug.Log("현재시간" + StartTimeDt);
 
-            DelayTimeTs = new TimeSpan(0, 30, 0); // 쿨타임
+            DelayTimeTs = new TimeSpan(0, 5, 0); // 쿨타임
             CountTimeTs = new TimeSpan(0, 0, 1);
             EndTimeDt = StartTimeDt + DelayTimeTs;            
 
             Debug.Log("목표시간" + EndTimeDt);
 
-            buttonCover.SetActive(true);
-            DataManager.instance.nowPlayer.CrystalPoint += 50;
+            buttonCover.SetActive(true);            
+            //DataManager.instance.nowPlayer.CrystalPoint += 50;
             isPuchase = false;
 
             CurrentTimeStr = System.DateTime.Now.ToString("yyyyMMddHHmmss");
@@ -84,11 +85,15 @@ public class Ads50CrystalPuchase : MonoBehaviour
             Textudate();
 
             StartCoroutine("PuchaseCor");
+
+            TestAdmob.instance.ShowAdss();
         }
         else
         {
             return;
         }
+
+
     }
     IEnumerator PuchaseCor()
     {

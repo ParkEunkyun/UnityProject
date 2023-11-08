@@ -14,6 +14,8 @@ public class GoogleLogin : MonoBehaviour
     Text googleLog;
     [SerializeField]
     Text firebaseLog;
+    [SerializeField]
+    Text Log;
 
     FirebaseAuth fbAuth;
 
@@ -30,8 +32,21 @@ public class GoogleLogin : MonoBehaviour
 
         TryGoogleLogin();
     }
+    public void googlebutton()
+    {
+        PlayGamesPlatform.InitializeInstance(new PlayGamesClientConfiguration.Builder()
+            .RequestIdToken()
+            .RequestEmail()
+            .Build());
+        PlayGamesPlatform.DebugLogEnabled = true;
+        PlayGamesPlatform.Activate();
 
-    public void TryGoogleLogin()
+        fbAuth = FirebaseAuth.DefaultInstance;
+
+        TryGoogleLogin();
+}
+
+public void TryGoogleLogin()
     {
         PlayGamesPlatform.Instance.Authenticate(SignInInteractivity.CanPromptAlways, (success) =>
         {

@@ -41,7 +41,7 @@ public class itemPuchase : MonoBehaviour
         if (isPuchase)
         {
             isPuchase = false;
-            if (DataManager.instance.nowPlayer.gold > 2000)
+            if (DataManager.instance.nowPlayer.gold >= 2000)
             {
                 Alert.SetActive(true);
                 AlertText.text = "구매 완료";
@@ -57,6 +57,7 @@ public class itemPuchase : MonoBehaviour
             }
         }
         Invoke("isPuchasetrue", 1.0f);
+        DataManager.instance.SaveData();
     }
 
     public void puchaseRuby()
@@ -65,7 +66,7 @@ public class itemPuchase : MonoBehaviour
         if (isPuchase)
         {
             isPuchase = false;
-            if (DataManager.instance.nowPlayer.gold > 50000)
+            if (DataManager.instance.nowPlayer.gold >= 50000)
             {
                 Alert.SetActive(true);
                 AlertText.text = "구매 완료";
@@ -80,6 +81,7 @@ public class itemPuchase : MonoBehaviour
             }
         }
         Invoke("isPuchasetrue", 1.0f);
+        DataManager.instance.SaveData();
 
     }
 
@@ -89,7 +91,7 @@ public class itemPuchase : MonoBehaviour
         if (isPuchase)
         {
             isPuchase = false;
-            if (DataManager.instance.nowPlayer.gold > 500000)
+            if (DataManager.instance.nowPlayer.gold >= 500000)
             {
                 Alert.SetActive(true);
                 AlertText.text = "구매 완료";
@@ -104,6 +106,7 @@ public class itemPuchase : MonoBehaviour
             }
         }
         Invoke("isPuchasetrue", 1.0f);
+        DataManager.instance.SaveData();
 
     }
 
@@ -116,6 +119,9 @@ public class itemPuchase : MonoBehaviour
         buybutton[1].SetActive(false);
         buybutton[2].SetActive(false);
         protector.SetActive(false);
+         
+        DataManager.instance.SaveData();
+        DataManager.instance.OnClickSaveButton();
     }
 
     public void OnDisable()
@@ -125,6 +131,9 @@ public class itemPuchase : MonoBehaviour
         buybutton[1].SetActive(false);
         buybutton[2].SetActive(false);
         protector.SetActive(false);
+         
+        DataManager.instance.SaveData();
+        DataManager.instance.OnClickSaveButton();
     }
 
     public void Textudate()

@@ -115,7 +115,7 @@ public class FirebaseManager
             FirebaseUser newUser = task.Result;
             if(newUser == task.Result)
             {
-                SceneManager.LoadScene("SelectScene");
+                SceneManager.LoadScene("LoadScene");
             }
             Debug.LogFormat("Firebase Signed in successfully: {0} ({1})", newUser.DisplayName, newUser.UserId);
             
@@ -126,7 +126,7 @@ public class FirebaseManager
     public void SignOut()
     {
         auth.SignOut();
-        SceneManager.LoadScene("LoadScene");
+        LoadingBar.LoadScene("LoginScene");
     }   
 
     private int GetFirebaseErrorCode(AggregateException exception)
@@ -166,7 +166,7 @@ public class FirebaseManager
                 photoUrl = user.PhotoUrl ?? null;
 
                 OnChangedLoginState?.Invoke(true);
-                SceneManager.LoadScene("SelectScene");
+                SceneManager.LoadScene("LoadScene");
             }
         }
     } 

@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b614f54be97412048a0191642a540a99, type: 3}
+  m_Name: 50009_Unique
+  m_EditorClassIdentifier: 
+  type: 1
+  stackable: 0
+  icon: {fileID: 21300000, guid: a97b473709a14e2499b704691c16cf5a, type: 3}
+  ItemPrefab: {fileID: 7258782469191327977, guid: 280cc31ee851d6143b42f0c692569c63, type: 3}
+  data:
+    id: 28
+    name: "\uD751\uCCA0 \uC218\uB9AC\uAC80"
+    buffs:
+    - stat: 10
+      value: 0
+      min: 0
+      max: 0
+    - stat: 0
+      value: 0
+      min: 40
+      max: 50
+    - stat: 2
+      value: 0
+      min: 20
+      max: 25
+    - stat: 5
+      value: 0
+      min: 990
+      max: 1001
+    - stat: 8
+      value: 0
+      min: 200000
+      max: 200001
+    - stat: 9
+      value: 0
+      min: 50
+      max: 51
+    - stat: 11
+      value: 0
+      min: 40
+      max: 41
+    - stat: 18
+      value: 0
+      min: 0
+      max: 0
+    - stat: 12
+      value: 0
+      min: 200
+      max: 201
+    - stat: 16
+      value: 0
+      min: 100
+      max: 101
+    - stat: 23
+      value: 0
+      min: 0
+      max: 0
+    - stat: 23
+      value: 0
+      min: 0
+      max: 0
+    - stat: 23
+      value: 0
+      min: 0
+      max: 0
+  partsName: []
+  description: 

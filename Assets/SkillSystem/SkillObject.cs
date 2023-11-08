@@ -16,7 +16,7 @@ public class SkillObject : ScriptableObject
 
     [Header("사거리")]
     public int ViewRadiusLv;
-    public int SkillViewRadius;    
+    public float SkillViewRadius;    
     public int ViewRadiusCurExp;
     public int ViewRadiusMaxExp;
 

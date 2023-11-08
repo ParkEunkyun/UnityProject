@@ -13,7 +13,7 @@ public class RecipeDataBase : ScriptableObject
     {
         for (int i = 0; i < RecipeItem.Length; ++i)
         {
-            RecipeItem[i].id = i;
+            RecipeItem[i].id = 1000 + i;
         }
     }
 }

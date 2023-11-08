@@ -14,7 +14,14 @@ public class AdsChestBoxPuchase : MonoBehaviour
     public Text Crystaltext;
     public RecipeDataBase recipeData;
 
-    public Sprite[] freeBox;
+    public GameObject Back;
+    public GameObject protector;
+    
+    public GameObject freeBox; // 결과
+    public GameObject resultImage;
+
+    public Sprite[] AdsBoxSprite;
+    public GameObject freeBoxSp;    
 
     public bool isPuchase;
     public GameObject buttonCover; // 버튼을 어둡게 해주는 창
@@ -26,7 +33,13 @@ public class AdsChestBoxPuchase : MonoBehaviour
     TimeSpan CountTimeTs;   // 감소 시간
     TimeSpan RemainTimeTs;   // 남은 시간
     public Text TimeText; //화면에 노출되는 텍스트    
-        
+
+    public GameObject inventory;
+    public GameObject Characterwin;
+
+    public AudioClip ItemSound;
+    public AudioSource audioSource;
+
     public void OnEnable() // 저장한 시간을 불러왔을때 처리해야됨
     {
         CurrentTimeStr = DateTime.Now.ToString("yyyyMMddHHmmss");
@@ -63,8 +76,23 @@ public class AdsChestBoxPuchase : MonoBehaviour
         }
         Textudate();
     }
+
+    public void AdsChestboxActiveTure()  // 상점에서 클릭
+    {
+        TestAdmob.instance.ShowAds2();
+
+        Back.SetActive(true);
+        freeBoxSp.SetActive(true);        
+    }
     public void Puchase() // 구매버튼 클릭 시
     {
+        StartCoroutine("ChangeImage");
+
+        Invoke("AdsChestboxActiveFalse", 2.0f);
+        Characterwin.SetActive(true);
+        inventory.SetActive(true);
+        
+
         if (isPuchase)
         {
             CurrentTimeStr = System.DateTime.Now.ToString("yyyyMMddHHmmss");
@@ -80,9 +108,10 @@ public class AdsChestBoxPuchase : MonoBehaviour
 
             buttonCover.SetActive(true);
 
-            int ran = Random.Range(0, 2);
+            int ran = Random.Range(0, recipeData.RecipeItem.Length); 
             ItemSO item = recipeData.RecipeItem[ran];
             EZInventory.InventoryManager.instance.AddItemToInventory(item, 1);
+            resultImage.GetComponent<Image>().sprite = item.itemSlotSprite;
 
             isPuchase = false;
 
@@ -91,12 +120,30 @@ public class AdsChestBoxPuchase : MonoBehaviour
             DataManager.instance.nowPlayer.FreeBoxTime = FinishTimeStr;
 
             Textudate();
-
+            Invoke("resultChestboxAds", 2.0f);
+            inventory.SetActive(false);
+            Characterwin.SetActive(false);
             StartCoroutine("PuchaseCor");
         }
         else
         {
             return;
+        }
+    }
+
+    public void resultChestboxAds()
+    {
+        freeBox.SetActive(true);
+    }
+
+    IEnumerator ChangeImage() // 보물상자 열리는 이펙트
+    {
+        
+        audioSource.PlayOneShot(ItemSound);
+        for (int i = 0; i < 7; i++)
+        {
+            freeBoxSp.GetComponent<Image>().sprite = AdsBoxSprite[i];
+            yield return new WaitForSeconds(0.5f);
         }
     }
     IEnumerator PuchaseCor()
@@ -126,5 +173,17 @@ public class AdsChestBoxPuchase : MonoBehaviour
 
         string CrystalFomat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.CrystalPoint);
         Crystaltext.text = CrystalFomat;
-    }    
+    }
+    public void ClosedBack() //닫을 때
+    {
+        Back.SetActive(false);
+        freeBoxSp.SetActive(false);
+        freeBox.SetActive(false);
+    }
+
+    public void AdsChestboxActiveFalse() //닫을 때
+    {
+        freeBoxSp.GetComponent<Image>().sprite = AdsBoxSprite[0];
+        freeBoxSp.SetActive(false);
+    }
 }

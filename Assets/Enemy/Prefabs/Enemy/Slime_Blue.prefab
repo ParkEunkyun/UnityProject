@@ -687,6 +687,7 @@ GameObject:
   - component: {fileID: 154457844721915007}
   - component: {fileID: -4161628739299603601}
   - component: {fileID: -3853826932283275765}
+  - component: {fileID: -2879350077611151114}
   m_Layer: 7
   m_Name: Slime_Blue
   m_TagString: Enemy
@@ -763,25 +764,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyHP: {fileID: 7289463344427044215}
   Damage: 10
-  maxHP: 100
+  maxHP: 50
   items:
-  - {fileID: 1772511043929954199, guid: 5ef44eb931b5bfd479cfaeab04cdaf8a, type: 3}
-  - {fileID: 1772511043929954199, guid: f46fc8f6b194b144d8509dca24467d5e, type: 3}
   - {fileID: 6765248900800689553, guid: e16ffcb806cd24342b54e46f16796650, type: 3}
-  - {fileID: 61721985561402589, guid: b392ffee1c1bc064dbcb985685cbdd55, type: 3}
-  - {fileID: 8919237178757489166, guid: 08c6b06c3c24a26498dee4a43bb85471, type: 3}
-  - {fileID: 5897861359729061341, guid: 818c1ce339f5f8a4492492457930f603, type: 3}
-  - {fileID: 7258782469191327977, guid: 280cc31ee851d6143b42f0c692569c63, type: 3}
+  - {fileID: 6765248900800689553, guid: e16ffcb806cd24342b54e46f16796650, type: 3}
+  - {fileID: 6765248900800689553, guid: e16ffcb806cd24342b54e46f16796650, type: 3}
+  - {fileID: 398401574023930141, guid: 43a4088c446a8d94fb48bf4853453485, type: 3}
+  - {fileID: 1395674309520109630, guid: 7fd3029dcb4c786478f82e3516237469, type: 3}
+  - {fileID: 1376355355344791861, guid: 4af8bd348bf3b2447a8c01e611207a44, type: 3}
+  - {fileID: 4020119315091013349, guid: d316d6dc47362714986ae5ddc5709ee7, type: 3}
   hudDamageText: {fileID: 5904405710037628061, guid: 32d3c276137f6ae4bb994c1deb63d75f, type: 3}
   hudCriDamageText: {fileID: 5904405710037628061, guid: e02f178b519c1df4692bbe914449f8ab, type: 3}
   hudPos: {fileID: 4864233948100810744}
   stat: {fileID: 11400000, guid: 1f131e299f510fb4ba70644e252e4d3d, type: 2}
   _skill: {fileID: 0}
   AreaSkillUse: 0
-  EXP: 3
+  EXP: 1
   timer: 0
-  itemDrop: {fileID: 11400000, guid: a21178f5c12258a40a11172a589e8d06, type: 2}
-  itemDrop2: {fileID: 11400000, guid: 5798043884458524da5b651b1519cf74, type: 2}
+  AttackSound: {fileID: 8300000, guid: e3347cc7022acfa46af46d0859c8683b, type: 3}
+  golddrop: 1
+  itemDrop: {fileID: 11400000, guid: 5798043884458524da5b651b1519cf74, type: 2}
+  itemDrop2: {fileID: 11400000, guid: 1f00b43d6e21a134a834a93a342863d9, type: 2}
   dropAmount: 1
 --- !u!114 &-4161628739299603601
 MonoBehaviour:
@@ -808,3 +811,99 @@ SortingGroup:
   m_SortingLayerID: -1903050065
   m_SortingLayer: 2
   m_SortingOrder: 1
+--- !u!82 &-2879350077611151114
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7289463344962075102}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.6
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

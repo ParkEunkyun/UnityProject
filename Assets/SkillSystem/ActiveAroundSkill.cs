@@ -13,32 +13,32 @@ public class ActiveAroundSkill : MonoBehaviour
     WeaponChange _weaponchange;
 
     public Stat _stat;
-    public float timer;    
+    public float timer;
     public Slider MPbar;
     public Text MPtext;
     public GameObject OnSkill;
     public GameObject OffSkill;
-    
+
     private void Update()
     {
-        if(Active && _stat.curMP != 0)
+        if (Active && _stat.curMP != 0)
         {
             timer += Time.deltaTime;
-            if(timer >= 1f)
+            if (timer >= 1f)
             {
-                _stat.curMP = _stat.curMP - (16*_skill.AroundSkillLv);
+                _stat.curMP = _stat.curMP - (16 * _skill.AroundSkillLv);
                 MPbar.value = _stat.curMP;
                 MPtext.text = MPbar.value.ToString() + " / " + _stat.maxMP.ToString();
                 timer = 0;
             }
         }
-        
-        if(_stat.curMP <= 0 && Active)
+
+        if (_stat.curMP <= 0 && Active)
         {
             UnActiveSkill();
             timer = 0;
             _stat.curMP = 0;
-        }                    
+        }
     }
 
     public void ActiveSkill()
@@ -75,9 +75,9 @@ public class ActiveAroundSkill : MonoBehaviour
     }
     public void UnActiveSkill()
     {
-        for(int i = 1; i < 7; i++)
+        for (int i = 1; i < 7; i++)
         {
-            if(_skill.AroundSkillLv == i)
+            if (_skill.AroundSkillLv == i)
             {
                 Active = false;
                 AroundLv[i].SetActive(false);
@@ -88,18 +88,20 @@ public class ActiveAroundSkill : MonoBehaviour
         OnSkill.SetActive(true);
         Cooltime();
     }
-    private void changeimage() 
-    {        
-        if(DataManager.instance.equipmentObject.Slots[1].item.id == 20) {_weaponchange.Itemcode50001();}
-        else if(DataManager.instance.equipmentObject.Slots[1].item.id == 21) {_weaponchange.Itemcode50002();}
-        else if(DataManager.instance.equipmentObject.Slots[1].item.id == 22) {_weaponchange.Itemcode50003();}
-        else if(DataManager.instance.equipmentObject.Slots[1].item.id == 23) {_weaponchange.Itemcode50004();}
-        else if(DataManager.instance.equipmentObject.Slots[1].item.id == 24) {_weaponchange.Itemcode50005();}
-        else if(DataManager.instance.equipmentObject.Slots[1].item.id == 25) {_weaponchange.Itemcode50006();}
-        else if(DataManager.instance.equipmentObject.Slots[1].item.id == 26) {_weaponchange.Itemcode50007();}
-        else if(DataManager.instance.equipmentObject.Slots[1].item.id == 27) {_weaponchange.Itemcode50008();}
-        else if(DataManager.instance.equipmentObject.Slots[1].item.id == 28) {_weaponchange.Itemcode50009();}
-        else if(DataManager.instance.equipmentObject.Slots[1].item.id == -1) {_weaponchange.Itemcode50000();}  
+    private void changeimage()
+    {
+        if (DataManager.instance.equipmentObject.Slots[1].item.id == 4) { _weaponchange.Itemcode50001(); }
+        else if (DataManager.instance.equipmentObject.Slots[1].item.id == 9) { _weaponchange.Itemcode50002(); }
+        else if (DataManager.instance.equipmentObject.Slots[1].item.id == 14) { _weaponchange.Itemcode50003(); }
+        else if (DataManager.instance.equipmentObject.Slots[1].item.id == 19) { _weaponchange.Itemcode50004(); }
+        else if (DataManager.instance.equipmentObject.Slots[1].item.id == 24) { _weaponchange.Itemcode50005(); }
+        else if (DataManager.instance.equipmentObject.Slots[1].item.id == 25) { _weaponchange.Itemcode50006(); }
+        else if (DataManager.instance.equipmentObject.Slots[1].item.id == 26) { _weaponchange.Itemcode50007(); }
+        else if (DataManager.instance.equipmentObject.Slots[1].item.id == 27) { _weaponchange.Itemcode50008(); }
+        else if (DataManager.instance.equipmentObject.Slots[1].item.id == 28) { _weaponchange.Itemcode50009(); }
+        else if (DataManager.instance.equipmentObject.Slots[1].item.id == 29) { _weaponchange.Itemcode50010(); }
+        else if (DataManager.instance.equipmentObject.Slots[1].item.id == 30) { _weaponchange.Itemcode50011(); }
+        else if (DataManager.instance.equipmentObject.Slots[1].item.id == -1) { _weaponchange.Itemcode50000(); }
     }
 
     public Button btn;

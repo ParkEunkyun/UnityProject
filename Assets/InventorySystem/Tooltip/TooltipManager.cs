@@ -12,7 +12,7 @@ public class TooltipManager : MonoBehaviour
     public InventoryObject Inven;
     public InventoryObject EquipInven;
     public InventoryObject TempInven;
-    public Text option1; public Text option2; public Text option3; public Text option4; public Text option5;
+    public Text option1; public Text option2; public Text option3; public Text option4; public Text option5; public Text option6;
     public GameObject Starforce;
     public GameObject Specialforce1; public GameObject Specialforce2; public GameObject Specialforce3;
     public GameObject Specialforce4; public GameObject Specialforce5;
@@ -27,8 +27,9 @@ public class TooltipManager : MonoBehaviour
     public GameObject DisassambleBtn;
     public Text GetRubbyPoint; string getRubbyFormat; // 분해 시 획득 포인트    
     public Text disassamblePrice; string disassambleFormat;// 분해 비용
-    public Text goldinfoamount; string goldFormat; // 소지 골드
-    public Text RubbyPoint; string RubbyFormat; // 소지 포인트
+    public Text goldinfoamount;  // 소지 골드
+    public Text RubbyPoint;  // 소지 포인트
+    public Text CrystalPoint; 
     public Text EnhanceRubbypoint; string EnhanceRubbypointFormat;//강화 시 사용 포인트
     public Text Enhancegold; string EnhancegoldFormat;// 강화시 사용 골드
     public GameObject EnhanceBtn;
@@ -40,6 +41,12 @@ public class TooltipManager : MonoBehaviour
     //WeaponChange _weaponchange;
     //public int PartNum;
     public GameObject QuestionMarkAlert;
+
+    private AudioSource audioSource;
+    public void OnEnable()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void slotClick() //인벤토리 슬롯 선택
     {
@@ -119,14 +126,21 @@ public class TooltipManager : MonoBehaviour
         option3.GetComponent<Text>().text = Inven.Slots[ParentMathod.SlotNumber].item.buffs[3].stat.ToString() + " +" + Inven.Slots[ParentMathod.SlotNumber].item.buffs[3].value.ToString();
         option4.GetComponent<Text>().text = Inven.Slots[ParentMathod.SlotNumber].item.buffs[8].stat.ToString() + " +" + Inven.Slots[ParentMathod.SlotNumber].item.buffs[8].value.ToString();
         option5.GetComponent<Text>().text = Inven.Slots[ParentMathod.SlotNumber].item.buffs[9].stat.ToString() + " +" + Inven.Slots[ParentMathod.SlotNumber].item.buffs[9].value.ToString();
+        option6.GetComponent<Text>().text = Inven.Slots[ParentMathod.SlotNumber].item.buffs[10].stat.ToString() + " +" + Inven.Slots[ParentMathod.SlotNumber].item.buffs[10].value.ToString();
 
         if ((int)Inven.Slots[ParentMathod.SlotNumber].item.buffs[8].stat == 23)
         {
             option4.GetComponent<Text>().text = "";
         }
+
         if ((int)Inven.Slots[ParentMathod.SlotNumber].item.buffs[9].stat == 23)
         {
             option5.GetComponent<Text>().text = "";
+        }
+
+        if ((int)Inven.Slots[ParentMathod.SlotNumber].item.buffs[10].stat == 23)
+        {
+            option6.GetComponent<Text>().text = "";
         }
     }    
     public void StarForceActive() //스타포스 활성화
@@ -214,7 +228,7 @@ public class TooltipManager : MonoBehaviour
         DisassambleBtn.SetActive(true);
         getRubbyFormat = string.Format("{0:#,0}", (Inven.Slots[ParentMathod.SlotNumber].item.buffs[6].value * (Inven.Slots[ParentMathod.SlotNumber].item.buffs[0].value + 1)));
         GetRubbyPoint.text = "         +" + getRubbyFormat;
-        disassambleFormat = string.Format("{0:#,0}", (Inven.Slots[ParentMathod.SlotNumber].item.buffs[4].value * 2));
+        disassambleFormat = string.Format("{0:#,0}", (Inven.Slots[ParentMathod.SlotNumber].item.buffs[4].value / 2));
         disassamblePrice.text = "         - " + disassambleFormat;
     }
     public void EnhanceButtonActive()  // 툴팁에서 강화버튼 클릭 했을 떄
@@ -224,7 +238,7 @@ public class TooltipManager : MonoBehaviour
             EnhanceBtn.SetActive(true);
             EnhanceRubbypointFormat = string.Format("{0:#,0}", (Inven.Slots[ParentMathod.SlotNumber].item.buffs[5].value * (Inven.Slots[ParentMathod.SlotNumber].item.buffs[0].value + 1)));
             EnhanceRubbypoint.text = "         - " + EnhanceRubbypointFormat;
-            EnhancegoldFormat = string.Format("{0:#,0}", (Inven.Slots[ParentMathod.SlotNumber].item.buffs[4].value * 2));
+            EnhancegoldFormat = string.Format("{0:#,0}", (Inven.Slots[ParentMathod.SlotNumber].item.buffs[4].value / 2));
             Enhancegold.text = "         - " + EnhancegoldFormat;
         }
     }
@@ -232,8 +246,7 @@ public class TooltipManager : MonoBehaviour
     {
 
         DataManager.instance.nowPlayer.gold = DataManager.instance.nowPlayer.gold + (Inven.Slots[ParentMathod.SlotNumber].item.buffs[4].value * (Inven.Slots[ParentMathod.SlotNumber].item.buffs[0].value + 1));
-        goldFormat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.gold);
-        goldinfoamount.text = goldFormat;
+        Textudate();
         Inven.Slots[ParentMathod.SlotNumber].RemoveItem();
         EquipStatReset();
         if ((int)Inven.type == 1) { EquipStatPlus2(); }
@@ -244,14 +257,11 @@ public class TooltipManager : MonoBehaviour
     }
     public void disasaambleAction()  //툴팁에서 분해버튼 누르고 최종 분해 할떄
     {
-        if (DataManager.instance.nowPlayer.gold > (Inven.Slots[ParentMathod.SlotNumber].item.buffs[4].value * 2))
+        if (DataManager.instance.nowPlayer.gold > (Inven.Slots[ParentMathod.SlotNumber].item.buffs[4].value / 2))
         {
             DataManager.instance.nowPlayer.RubbyPoint = DataManager.instance.nowPlayer.RubbyPoint + (Inven.Slots[ParentMathod.SlotNumber].item.buffs[6].value * (Inven.Slots[ParentMathod.SlotNumber].item.buffs[0].value + 1));
-            DataManager.instance.nowPlayer.gold = DataManager.instance.nowPlayer.gold - (Inven.Slots[ParentMathod.SlotNumber].item.buffs[4].value * 2);
-            RubbyFormat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.RubbyPoint);
-            RubbyPoint.text = RubbyFormat;
-            goldFormat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.gold);
-            goldinfoamount.text = goldFormat;
+            DataManager.instance.nowPlayer.gold = DataManager.instance.nowPlayer.gold - (Inven.Slots[ParentMathod.SlotNumber].item.buffs[4].value / 2);
+            Textudate();
             Inven.Slots[ParentMathod.SlotNumber].RemoveItem();
             EquipStatReset();
             if ((int)Inven.type == 1) { EquipStatPlus2(); }
@@ -269,14 +279,19 @@ public class TooltipManager : MonoBehaviour
     public void EnhanceAction() //툴팁에서 강화버튼 누르고 최종 강화 할떄
     {
         if (DataManager.instance.nowPlayer.RubbyPoint >= (Inven.Slots[ParentMathod.SlotNumber].item.buffs[5].value * (Inven.Slots[ParentMathod.SlotNumber].item.buffs[0].value + 1))
-        && Inven.Slots[ParentMathod.SlotNumber].item.buffs[0].value < 5 && DataManager.instance.nowPlayer.gold >= (Inven.Slots[ParentMathod.SlotNumber].item.buffs[4].value * 2))
+        && Inven.Slots[ParentMathod.SlotNumber].item.buffs[0].value < 5 && DataManager.instance.nowPlayer.gold >= (Inven.Slots[ParentMathod.SlotNumber].item.buffs[4].value / 2))
         {
+
+
+            EnforceEffect.SetActive(true);
+
+            StartCoroutine("ChangeImage");
+
+            Invoke("EnforceEffectFalse", 2.0f);
+
             DataManager.instance.nowPlayer.RubbyPoint = DataManager.instance.nowPlayer.RubbyPoint - (Inven.Slots[ParentMathod.SlotNumber].item.buffs[5].value * (Inven.Slots[ParentMathod.SlotNumber].item.buffs[0].value + 1));
-            DataManager.instance.nowPlayer.gold = DataManager.instance.nowPlayer.gold - (Inven.Slots[ParentMathod.SlotNumber].item.buffs[4].value * 2);
-            RubbyFormat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.RubbyPoint);
-            RubbyPoint.text = RubbyFormat;
-            goldFormat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.gold);
-            goldinfoamount.text = goldFormat;
+            DataManager.instance.nowPlayer.gold = DataManager.instance.nowPlayer.gold - (Inven.Slots[ParentMathod.SlotNumber].item.buffs[4].value / 2);
+            Textudate();
 
             if (Inven.Slots[ParentMathod.SlotNumber].item.buffs[0].value < 1)
             {
@@ -704,7 +719,7 @@ public class TooltipManager : MonoBehaviour
 
 
         }
-        else if (DataManager.instance.nowPlayer.gold < (Inven.Slots[ParentMathod.SlotNumber].item.buffs[4].value * 2))
+        else if (DataManager.instance.nowPlayer.gold < (Inven.Slots[ParentMathod.SlotNumber].item.buffs[4].value / 2))
         {
 
             AlertWindow.SetActive(true);
@@ -750,7 +765,7 @@ public class TooltipManager : MonoBehaviour
         if (EquipInven.Slots[1].item.id != -1 && EquipInven.Slots[3].item.id != -1)
         {
             DataManager.instance.nowPlayer.itemStr += EquipInven.Slots[1].item.buffs[1].value + EquipInven.Slots[3].item.buffs[2].value;
-            DataManager.instance.nowPlayer.itemATK += EquipInven.Slots[1].item.buffs[3].value;
+            DataManager.instance.nowPlayer.itemATK += EquipInven.Slots[1].item.buffs[3].value + EquipInven.Slots[1].item.buffs[10].value;
             DataManager.instance.nowPlayer.itemAttackSpeed += EquipInven.Slots[1].item.buffs[8].value;
             DataManager.instance.nowPlayer.itemCriticalDmg += EquipInven.Slots[1].item.buffs[9].value;
             DataManager.instance.nowPlayer.itemDEF += EquipInven.Slots[3].item.buffs[3].value;
@@ -760,7 +775,7 @@ public class TooltipManager : MonoBehaviour
         else if (EquipInven.Slots[1].item.id != -1)
         {
             DataManager.instance.nowPlayer.itemStr += EquipInven.Slots[1].item.buffs[1].value;
-            DataManager.instance.nowPlayer.itemATK += EquipInven.Slots[1].item.buffs[3].value;
+            DataManager.instance.nowPlayer.itemATK += EquipInven.Slots[1].item.buffs[3].value + EquipInven.Slots[1].item.buffs[10].value; ;
             DataManager.instance.nowPlayer.itemAttackSpeed += EquipInven.Slots[1].item.buffs[8].value;
             DataManager.instance.nowPlayer.itemCriticalDmg += EquipInven.Slots[1].item.buffs[9].value;
         }
@@ -800,7 +815,7 @@ public class TooltipManager : MonoBehaviour
         if (EquipInven.Slots[1].item.id != -1 && EquipInven.Slots[2].item.id != -1)
         {
             DataManager.instance.nowPlayer.itemDex += EquipInven.Slots[1].item.buffs[2].value + EquipInven.Slots[2].item.buffs[1].value;
-            DataManager.instance.nowPlayer.itemATK += EquipInven.Slots[1].item.buffs[3].value + EquipInven.Slots[2].item.buffs[3].value;
+            DataManager.instance.nowPlayer.itemATK += EquipInven.Slots[1].item.buffs[3].value + EquipInven.Slots[2].item.buffs[3].value + EquipInven.Slots[1].item.buffs[10].value; ;
             DataManager.instance.nowPlayer.itemAttackSpeed += EquipInven.Slots[1].item.buffs[8].value;
             DataManager.instance.nowPlayer.itemCriticalDmg += EquipInven.Slots[1].item.buffs[9].value;
             DataManager.instance.nowPlayer.itemAttackSpeed += EquipInven.Slots[2].item.buffs[8].value;
@@ -809,7 +824,7 @@ public class TooltipManager : MonoBehaviour
         else if (EquipInven.Slots[1].item.id != -1)
         {
             DataManager.instance.nowPlayer.itemDex += EquipInven.Slots[1].item.buffs[2].value;
-            DataManager.instance.nowPlayer.itemATK += EquipInven.Slots[1].item.buffs[3].value;
+            DataManager.instance.nowPlayer.itemATK += EquipInven.Slots[1].item.buffs[3].value + EquipInven.Slots[1].item.buffs[10].value; ;
             DataManager.instance.nowPlayer.itemAttackSpeed += EquipInven.Slots[1].item.buffs[8].value;
             DataManager.instance.nowPlayer.itemCriticalDmg += EquipInven.Slots[1].item.buffs[9].value;
         }
@@ -917,7 +932,7 @@ public class TooltipManager : MonoBehaviour
         if (Inven.Slots[1].item.id != -1 && Inven.Slots[3].item.id != -1)
         {
             DataManager.instance.nowPlayer.itemStr += Inven.Slots[1].item.buffs[1].value + Inven.Slots[3].item.buffs[2].value;
-            DataManager.instance.nowPlayer.itemATK += Inven.Slots[1].item.buffs[3].value;
+            DataManager.instance.nowPlayer.itemATK += Inven.Slots[1].item.buffs[3].value + EquipInven.Slots[1].item.buffs[10].value; ;
             DataManager.instance.nowPlayer.itemAttackSpeed += Inven.Slots[1].item.buffs[8].value;
             DataManager.instance.nowPlayer.itemCriticalDmg += Inven.Slots[1].item.buffs[9].value;
             DataManager.instance.nowPlayer.itemDEF += Inven.Slots[3].item.buffs[3].value;
@@ -927,7 +942,7 @@ public class TooltipManager : MonoBehaviour
         else if (Inven.Slots[1].item.id != -1)
         {
             DataManager.instance.nowPlayer.itemStr += Inven.Slots[1].item.buffs[1].value;
-            DataManager.instance.nowPlayer.itemATK += Inven.Slots[1].item.buffs[3].value;
+            DataManager.instance.nowPlayer.itemATK += Inven.Slots[1].item.buffs[3].value + EquipInven.Slots[1].item.buffs[10].value; ;
             DataManager.instance.nowPlayer.itemAttackSpeed += Inven.Slots[1].item.buffs[8].value;
             DataManager.instance.nowPlayer.itemCriticalDmg += Inven.Slots[1].item.buffs[9].value;
         }
@@ -967,7 +982,7 @@ public class TooltipManager : MonoBehaviour
         if (Inven.Slots[1].item.id != -1 && Inven.Slots[2].item.id != -1)
         {
             DataManager.instance.nowPlayer.itemDex += Inven.Slots[1].item.buffs[2].value + Inven.Slots[2].item.buffs[1].value;
-            DataManager.instance.nowPlayer.itemATK += Inven.Slots[1].item.buffs[3].value + Inven.Slots[2].item.buffs[3].value;
+            DataManager.instance.nowPlayer.itemATK += Inven.Slots[1].item.buffs[3].value + Inven.Slots[2].item.buffs[3].value + EquipInven.Slots[1].item.buffs[10].value; ;
             DataManager.instance.nowPlayer.itemAttackSpeed += Inven.Slots[1].item.buffs[8].value;
             DataManager.instance.nowPlayer.itemCriticalDmg += Inven.Slots[1].item.buffs[9].value;
             DataManager.instance.nowPlayer.itemAttackSpeed += Inven.Slots[2].item.buffs[8].value;
@@ -976,7 +991,7 @@ public class TooltipManager : MonoBehaviour
         else if (Inven.Slots[1].item.id != -1)
         {
             DataManager.instance.nowPlayer.itemDex += Inven.Slots[1].item.buffs[2].value;
-            DataManager.instance.nowPlayer.itemATK += Inven.Slots[1].item.buffs[3].value;
+            DataManager.instance.nowPlayer.itemATK += Inven.Slots[1].item.buffs[3].value + EquipInven.Slots[1].item.buffs[10].value; ;
             DataManager.instance.nowPlayer.itemAttackSpeed += Inven.Slots[1].item.buffs[8].value;
             DataManager.instance.nowPlayer.itemCriticalDmg += Inven.Slots[1].item.buffs[9].value;
         }
@@ -1076,6 +1091,8 @@ public class TooltipManager : MonoBehaviour
 
         Calcurate();
     }
+
+    public SkillObject _skill;
     public void Calcurate()
     {
         stat.minAtk = 0;
@@ -1090,12 +1107,12 @@ public class TooltipManager : MonoBehaviour
         stat.Def = 0;
         stat.Cooltime = 0;
 
-        stat.minAtk = (stat.Str + stat.ItemStr) * 3 + stat.itemATK;
-        stat.maxAtk = (stat.Str + stat.ItemStr) * 4 + stat.itemATK;
+        stat.minAtk = (stat.Str + stat.ItemStr) * 3 + stat.itemATK + _skill.SkillAttack;
+        stat.maxAtk = (stat.Str + stat.ItemStr) * 4 + stat.itemATK + _skill.SkillAttack;
         stat.maxHP = (stat.Con + stat.ItemCon) * 10 + stat.itemMaxHP;
         stat.maxMP = (stat.Int + stat.ItemInt) * 5 + stat.itemMaxMP;
-        stat.AttackSpeed = 100 + stat.Dex + stat.ItemDex + stat.itemAttackSpeed;
-        stat.Critical = stat.Luk + stat.ItemLuk + stat.itemCritical;
+        stat.AttackSpeed = 100 + stat.Dex + stat.ItemDex + stat.itemAttackSpeed + _skill.SkillAttackSpeed;
+        stat.Critical = stat.Luk + stat.ItemLuk + stat.itemCritical + _skill.SkillCritical;
         stat.CriticalDmg = 150 + ((stat.Str + stat.ItemStr) / 2) + stat.itemCriticalDmg;
         if (stat.Critical > 500)
         {
@@ -1162,8 +1179,7 @@ public class TooltipManager : MonoBehaviour
     public void MaterialSellAction()  // 툴팁에서 판매버튼 누르고 최종 판매 할떄
     {
         DataManager.instance.nowPlayer.gold = DataManager.instance.nowPlayer.gold + (Inven.Slots[ParentMathod.SlotNumber].item.buffs[4].value * materialvalue);
-        goldFormat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.gold);
-        goldinfoamount.text = goldFormat;
+        Textudate();
         Inven.Slots[ParentMathod.SlotNumber].amount = Inven.Slots[ParentMathod.SlotNumber].amount - materialvalue;
         Inven.Slots[ParentMathod.SlotNumber].UpdateSlot(Inven.Slots[ParentMathod.SlotNumber].item, Inven.Slots[ParentMathod.SlotNumber].amount);
         if (Inven.Slots[ParentMathod.SlotNumber].amount == 0)
@@ -1191,6 +1207,40 @@ public class TooltipManager : MonoBehaviour
         QuestionMarkAlert.SetActive(false);
     }
 
+    public void Textudate()
+    {
+        string goldFomat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.gold);
+        goldinfoamount.text = goldFomat;
+
+        string RubyFomat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.RubbyPoint);
+        RubbyPoint.text = RubyFomat;
+
+        string CrystalFomat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.CrystalPoint);
+        CrystalPoint.text = CrystalFomat;
+    }
+    public void Update()
+    {
+        Textudate();
+    }
+
+    public GameObject EnforceEffect;
+    public GameObject EnforceEffectimg;
+    public Sprite[] Enforcing;
+
+    IEnumerator ChangeImage() //강화중 이펙트
+    {
+        audioSource.Play();
+        for (int i = 0; i < 5; i++)
+        {
+            EnforceEffectimg.GetComponent<Image>().sprite = Enforcing[i];
+            yield return new WaitForSeconds(0.35f);
+        }
+        audioSource.Stop();
+    }
+    public void EnforceEffectFalse()
+    {
+        EnforceEffect.SetActive(false);
+    }    
 }
 
 

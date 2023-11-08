@@ -9,7 +9,7 @@ public class MonsterTrackerControl : MonoBehaviour
         Transform target;
         
         [Header("추격 속도")]
-        [SerializeField] [Range(1f,4f)] float moveSpeed = 3f;
+        [SerializeField] [Range(1f,6f)] float moveSpeed = 3f;
 
         [Header("근접 거리")]
         [SerializeField] [Range(0f,3f)] float contactDistance = 1f;

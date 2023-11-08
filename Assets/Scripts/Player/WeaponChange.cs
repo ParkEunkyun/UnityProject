@@ -10,18 +10,36 @@ public class WeaponChange : MonoBehaviour
     public void Start()
     {
         childCnt = this.transform.childCount;
-        if(Inven.Slots[1].item.id == 20) {Itemcode50001();}
-        else if(Inven.Slots[1].item.id == 21) {Itemcode50002();}
-        else if(Inven.Slots[1].item.id == 22) {Itemcode50003();}
-        else if(Inven.Slots[1].item.id == 23) {Itemcode50004();}
+        if(Inven.Slots[1].item.id == 4) {Itemcode50001();}
+        else if(Inven.Slots[1].item.id == 9) {Itemcode50002();}
+        else if(Inven.Slots[1].item.id == 14) {Itemcode50003();}
+        else if(Inven.Slots[1].item.id == 19) {Itemcode50004();}
         else if(Inven.Slots[1].item.id == 24) {Itemcode50005();}
         else if(Inven.Slots[1].item.id == 25) {Itemcode50006();}
         else if(Inven.Slots[1].item.id == 26) {Itemcode50007();}
         else if(Inven.Slots[1].item.id == 27) {Itemcode50008();}
         else if(Inven.Slots[1].item.id == 28) {Itemcode50009();}
+        else if(Inven.Slots[1].item.id == 29) {Itemcode50010();}
+        else if(Inven.Slots[1].item.id == 30) {Itemcode50011();}
 
     }
-     public void Itemcode50000()
+    public void Update()
+    {
+        childCnt = this.transform.childCount;
+        if (Inven.Slots[1].item.id == 4) { Itemcode50001(); }
+        else if (Inven.Slots[1].item.id == 9) { Itemcode50002(); }
+        else if (Inven.Slots[1].item.id == 14) { Itemcode50003(); }
+        else if (Inven.Slots[1].item.id == 19) { Itemcode50004(); }
+        else if (Inven.Slots[1].item.id == 24) { Itemcode50005(); }
+        else if (Inven.Slots[1].item.id == 25) { Itemcode50006(); }
+        else if (Inven.Slots[1].item.id == 26) { Itemcode50007(); }
+        else if (Inven.Slots[1].item.id == 27) { Itemcode50008(); }
+        else if (Inven.Slots[1].item.id == 28) { Itemcode50009(); }
+        else if (Inven.Slots[1].item.id == 29) { Itemcode50010(); }
+        else if (Inven.Slots[1].item.id == 30) { Itemcode50011(); }
+
+    }
+    public void Itemcode50000()
     {
         childCnt = this.transform.childCount;   
         for(int i = 0; i < childCnt;  i++)
@@ -112,6 +130,26 @@ public class WeaponChange : MonoBehaviour
             weaponimg.sprite = sprites[9];
         }
     }
-        
+
+    public void Itemcode50010()
+    {
+        childCnt = this.transform.childCount;
+        for (int i = 0; i < childCnt; i++)
+        {
+            SpriteRenderer weaponimg = this.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>();
+            weaponimg.sprite = sprites[10];
+        }
+    }
+
+    public void Itemcode50011()
+    {
+        childCnt = this.transform.childCount;
+        for (int i = 0; i < childCnt; i++)
+        {
+            SpriteRenderer weaponimg = this.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>();
+            weaponimg.sprite = sprites[11];
+        }
+    }
+
 }
 

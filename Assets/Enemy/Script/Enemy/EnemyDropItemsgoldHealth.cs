@@ -69,6 +69,7 @@ public class EnemyDropItemsgoldHealth : MonoBehaviour
     private void DestroyObject()
     {
         //Destroy(gameObject);
+        this.GetComponent<CircleCollider2D>().isTrigger = false;
         HealthPortionObjectPool.ReturnObject(this.gameObject);
     }
     

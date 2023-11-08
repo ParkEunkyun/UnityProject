@@ -18,17 +18,17 @@ public class Select : MonoBehaviour
         // 슬롯별로 저장된 데이터가 존재하는지 판단.
         //for (int i = 0; i < 1; i++)
         //{
-            if (File.Exists(DataManager.instance.PlayerPath + $"{0}") && DataManager.instance.nowPlayer.name != "")	// 데이터가 있는 경우
-            {
-                savefile[0] = true;			// 해당 슬롯 번호의 bool배열 true로 변환
-                DataManager.instance.nowSlot = 0;	// 선택한 슬롯 번호 저장
-                DataManager.instance.LoadData();	// 해당 슬롯 데이터 불러옴
-                slotText[0].text = DataManager.instance.nowPlayer.name;	// 버튼에 닉네임 표시
-            }
-            else	// 데이터가 없는 경우
-            {
-                slotText[0].text = "비어있음";                
-            }
+        if (File.Exists(DataManager.instance.PlayerPath + $"{0}") && DataManager.instance.nowPlayer.name != "") // 데이터가 있는 경우
+        {
+            savefile[0] = true;         // 해당 슬롯 번호의 bool배열 true로 변환
+            DataManager.instance.nowSlot = 0;   // 선택한 슬롯 번호 저장
+            DataManager.instance.LoadData();    // 해당 슬롯 데이터 불러옴
+            slotText[0].text = "시작 하기"; //DataManager.instance.nowPlayer.name;	// 버튼에 닉네임 표시
+        }
+        else    // 데이터가 없는 경우
+        {
+            slotText[0].text = "캐릭터 생성";
+        }
         //}
         // 불러온 데이터를 초기화시킴.(버튼에 닉네임을 표현하기위함이었기 때문)
         //DataManager.instance.DataClear();
@@ -51,9 +51,29 @@ public class Select : MonoBehaviour
 
     public void Creat()	// 플레이어 생성하는 메소드
     {
-        SceneManager.LoadScene("MakeScene");
+        if (MonsterSelect.monsterPoolIndex < 1)
+        {
+            LoadingBar.LoadScene("MakeScene"); // Play씬으로 이동
+        }
+        else if (MonsterSelect.monsterPoolIndex > 1)
+        {
+            if (DataManager.instance.nowPlayer.monsterKill > 999)
+            {
+                DataManager.instance.nowPlayer.monsterKill -= 1000;
+                DataManager.instance.SaveData();
+                LoadingBar.LoadScene("MakeScene");
+            }
+            else
+            {
+                Alret.SetActive(true);
+                AlretText.text = "'블루슬라임' 에서만 생성 가능합니다.";
+                Invoke("AlretFalse", 2.0f);
+            }
+        }
     }
 
+    public GameObject Alret;
+    public Text AlretText;
     public void GoGame()	// 게임씬으로 이동
     {
         if (!savefile[DataManager.instance.nowSlot])	// 현재 슬롯번호의 데이터가 없다면
@@ -62,6 +82,44 @@ public class Select : MonoBehaviour
             DataManager.instance.SaveData();
             DataManager.instance.OnClickSaveButton(); // 현재 정보를 저장함.
         }
-        SceneManager.LoadScene("PlayScene"); // Play씬으로 이동
+        if(MonsterSelect.monsterPoolIndex < 8)
+        {
+            LoadingBar.LoadScene("PlayScene"); // Play씬으로 이동
+        }
+        else if (MonsterSelect.monsterPoolIndex == 8 )
+        {
+            if (DataManager.instance.nowPlayer.monsterKill > 999)
+            {
+                DataManager.instance.nowPlayer.monsterKill -= 1000;
+                DataManager.instance.SaveData();
+                LoadingBar.LoadScene("PlayScene");
+            }
+            else
+            {
+                Alret.SetActive(true);
+                AlretText.text = "1000 몬스터 포인트가 필요합니다.";
+                Invoke("AlretFalse", 2.0f);
+            }
+        }
+        else if (MonsterSelect.monsterPoolIndex == 9)
+        {
+            if (DataManager.instance.nowPlayer.monsterKill > 1999)
+            {
+                DataManager.instance.nowPlayer.monsterKill -= 2000;
+                DataManager.instance.SaveData();
+                LoadingBar.LoadScene("PlayScene");
+            }
+            else
+            {
+                Alret.SetActive(true);
+                AlretText.text = "2000 몬스터 포인트가 필요합니다.";
+                Invoke("AlretFalse", 2.0f);
+            }
+        }
+    }
+
+    public void AlretFalse()
+    {
+        Alret.SetActive(false);
     }
 }

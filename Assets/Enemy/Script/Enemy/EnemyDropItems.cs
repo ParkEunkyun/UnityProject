@@ -67,6 +67,7 @@ public class EnemyDropItems : MonoBehaviour
 
     private void DestroyObject()
     {
+        this.GetComponent<CircleCollider2D>().isTrigger = false;
         Destroy(gameObject);        
     }
     

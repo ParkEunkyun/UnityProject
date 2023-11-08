@@ -7,7 +7,8 @@ public class LoadManager : MonoBehaviour
 {
     public void SecenChange()
     {
-        SceneManager.LoadScene("LoginScene");
+        DataManager.instance.audioSource.volume = 0.2f;
+        LoadingBar.LoadScene("SelectScene");
     }
     
 }

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0535c80fa7bcc7649ae6bcf941b3d88f, type: 3}
+  m_Name: GR_50011
+  m_EditorClassIdentifier: 
+  topLeft: {fileID: 11400000, guid: b025a000f3dc53e4cbe44e053b82d13f, type: 2}
+  topMiddle: {fileID: 11400000, guid: e1353013267a09f4a9f4dbd7c416d5ac, type: 2}
+  topRight: {fileID: 11400000, guid: 597cbcb0723062c4e8d4b64a24f12d0d, type: 2}
+  middleLeft: {fileID: 11400000, guid: e1353013267a09f4a9f4dbd7c416d5ac, type: 2}
+  middle: {fileID: 11400000, guid: 597cbcb0723062c4e8d4b64a24f12d0d, type: 2}
+  middleRight: {fileID: 11400000, guid: e1353013267a09f4a9f4dbd7c416d5ac, type: 2}
+  bottomLeft: {fileID: 11400000, guid: 597cbcb0723062c4e8d4b64a24f12d0d, type: 2}
+  bottomMiddle: {fileID: 11400000, guid: e1353013267a09f4a9f4dbd7c416d5ac, type: 2}
+  bottomRight: {fileID: 11400000, guid: b025a000f3dc53e4cbe44e053b82d13f, type: 2}
+  output: {fileID: 11400000, guid: 8ff04c7935913954ab25d0b0c9762988, type: 2}
+  outputAmount: 1

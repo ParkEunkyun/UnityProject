@@ -69,6 +69,7 @@ public class EnemyDropItemsgoldmana : MonoBehaviour
     private void DestroyObject()
     {
         //Destroy(gameObject);
+        this.GetComponent<CircleCollider2D>().isTrigger = false;
         ManaPortionObjectPool.ReturnObject(this.gameObject);
     }
     

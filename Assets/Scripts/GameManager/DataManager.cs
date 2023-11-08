@@ -8,10 +8,14 @@ using UnityEngine.UI;
 using System.IO;
 using System.Linq;
 using System;
+using GooglePlayGames.BasicApi.Events;
 
 public class PlayerData
 {
+    public string UID;
+    public int howManyPlay;
     public int SelectedCharacter;
+    public int PrecurExp; //광고 이어보기 시 복구용
 
     #region 스탯
     [Header("Status")]
@@ -126,7 +130,7 @@ public class PlayerData
 
     [Header("사거리")]
     public int ViewRadiusLv;
-    public int SkillViewRadius;
+    public float SkillViewRadius;
     public int ViewRadiusCurExp;
     public int ViewRadiusMaxExp;
 
@@ -220,6 +224,8 @@ public class PlayerData
     [Header("Inventory")]
     public int[] RecipeitemId;
     public int[] Recipeitemamount;
+    public int Currentitemid;
+    public int Currentitemidamount;
 
     #endregion
 
@@ -229,10 +235,11 @@ public class PlayerData
     public string Crystal10Time;
     public string Crystal30Time;
     public string Crystal50Time;
-    public string FreeBoxTime;    
+    public string FreeBoxTime;
     public string manaportionTime;
     public string gold500RubyTime;
     public string gold50CrystalTime;
+    public string StatTime;
 
     #endregion
 
@@ -250,6 +257,10 @@ public class DataManager : MonoBehaviour
     public int nowSlot; // 현재 슬롯번호    
     bool bPaused = false;
 
+    public int PlayGame;
+
+    public AudioSource audioSource;
+
     private void Awake()
     {
         #region 싱글톤
@@ -264,6 +275,7 @@ public class DataManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
         #endregion
 
+        audioSource = GetComponent<AudioSource>();
         PlayerPath = Application.persistentDataPath + "/player";
         //InvenPath = Application.persistentDataPath + "/inven";    // 경로 지정
         try
@@ -281,19 +293,36 @@ public class DataManager : MonoBehaviour
         invenSave();
         EquipinvenSave();
         materialinvenSave();
-        RecipeinvenSave();
+        if (nowPlayer.howManyPlay > 0)
+        {
+            RecipeinvenSave();
+        }
+        else
+        {
+            firstRecipeinvenSave();
+        }
         SkillSave();
         string pdata = JsonUtility.ToJson(nowPlayer);
-        //pdata = Crypto.AESEncrypt128(pdata);
+        pdata = Crypto.AESEncrypt128(pdata);
         File.WriteAllText(PlayerPath + nowSlot.ToString(), pdata);
         Debug.Log("세이브됨");
-
+    }
+    public void SaveData2() // 데이터 저장
+    {
+        invenSave();
+        EquipinvenSave();
+        materialinvenSave();
+        SkillSave();
+        string pdata = JsonUtility.ToJson(nowPlayer);
+        pdata = Crypto.AESEncrypt128(pdata);
+        File.WriteAllText(PlayerPath + nowSlot.ToString(), pdata);
+        Debug.Log("세이브됨");
     }
 
     public void LoadData()// 데이터 로드
     {
         string pdata = File.ReadAllText(PlayerPath + nowSlot.ToString());
-        //pdata = Crypto.AESDecrypt128(pdata);
+        pdata = Crypto.AESDecrypt128(pdata);
         nowPlayer = JsonUtility.FromJson<PlayerData>(pdata);
         Debug.Log("로드됨");
     }
@@ -1051,9 +1080,22 @@ public class DataManager : MonoBehaviour
                                                                     EZInventory.InventoryManager.instance.slots[28].currentItemAmount,
                                                                     EZInventory.InventoryManager.instance.slots[29].currentItemAmount,
 
-                                                                };
+                                                                };        
         Debug.Log("레시피 인벤 세이브됨");
     }
+
+    public void firstRecipeinvenSave()
+    {
+        nowPlayer.RecipeitemId = new int[] { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
+        nowPlayer.Recipeitemamount = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, };
+        Debug.Log("레시피 인벤 최초 세이브됨");
+    }
+
+
+
+
+
+
 
     ////////////////////////스킬 저장//////////////////////////////////
 
@@ -1143,12 +1185,16 @@ public class DataManager : MonoBehaviour
 
     }
 
-
+    /*
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public Slider ExpBar1; public Text EXP1;
     public Text LvUI;
     public Stat _stat;
     public LevelUpEffect effect;
+
+    public Text myRanking;
+    public Text myNickName;
+    public Text myPower;
 
     public void EXPandHP()
     {
@@ -1159,10 +1205,16 @@ public class DataManager : MonoBehaviour
         EXP1.text = nowPlayer.curExp.ToString() + " / " + nowPlayer.maxExp.ToString();
         LvUI = GameObject.Find("LvUITEXT").GetComponent<Text>();
         LvUI.text = nowPlayer.Level.ToString();
+        effect = GameObject.Find("Char").GetComponent<LevelUpEffect>();
+
+        myRanking = GameObject.Find("myRangking").GetComponent<Text>();
+        myNickName = GameObject.Find("myNick").GetComponent<Text>();
+        myPower = GameObject.Find("myPower").GetComponent<Text>();
+
     }
     public void LevelUP()
     {
-        effect = GameObject.Find("Char").GetComponent<LevelUpEffect>();
+
         while (nowPlayer.curExp >= ExpBar1.maxValue)
         {
             nowPlayer.Level++;
@@ -1202,7 +1254,7 @@ public class DataManager : MonoBehaviour
         SaveData();
         OnClickSaveButton();
     }
-
+    */
 
 
     //DB 정보 저장//////////////////////////////////////////////////////////////////////////////////////
@@ -1270,6 +1322,7 @@ public class DataManager : MonoBehaviour
     public void writeNewUser(string userid, string nickName, string TotalScore, string KillScore, string Gold, string CrystalPt)
     {
         userid = FirebaseManager.Instance.UserId;
+        nowPlayer.UID = userid;
         nickName = nowPlayer.name;
         //string TotalScoreFomat = string.Format("{0:#,0}", nowPlayer.TotalScore);
         //TotalScore = TotalScoreFomat;
@@ -1325,10 +1378,10 @@ public class DataManager : MonoBehaviour
                     strRank[count] = personInfo["nickName"].ToString() + " . " + personInfo["userid"].ToString() + " | " + string.Format("{0:N2}", personInfo["TotalScore"]);
                     //strUserid[count] = personInfo["userid"].ToString() + "_";
                     //Debug.Log("nickName: " + personInfo["nickName"] + ", TotalScore: " + personInfo["TotalScore"] + ", Userid: " + personInfo["userid"]);
-                    count++;
+                    count++;                    
                 }
                 textLoadBool = true;
-                //Debug.Log(dataString);         
+                //Debug.Log(dataString);    
 
             }
         });
@@ -1374,7 +1427,6 @@ public class DataManager : MonoBehaviour
             Comma[i] = string.Format("{0:#,0}", intScore[i]);
             Score[i].text = Comma[i];
             //Score[i].text = strRank[i].Substring(strRank[i].IndexOf('|')+2);
-
         }
     }
     // 닉네임 중복 체크

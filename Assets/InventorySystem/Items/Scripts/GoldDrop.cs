@@ -11,10 +11,11 @@ public class GoldDrop : MonoBehaviour
     {
         if(other.tag.Equals("Player"))
         {            
-            DataManager.instance.nowPlayer.gold = DataManager.instance.nowPlayer.gold + Random.Range(minGold,maxGold);
+            DataManager.instance.nowPlayer.gold = DataManager.instance.nowPlayer.gold + Random.Range(minGold,maxGold);            
             DataManager.instance.SaveData();
             //this.gameObject.SetActive(false);
             //Destroy(this.gameObject);
+            this.GetComponent<CircleCollider2D>().isTrigger = false;
             GoldObjectPool.ReturnObject(this.gameObject);
         }
         

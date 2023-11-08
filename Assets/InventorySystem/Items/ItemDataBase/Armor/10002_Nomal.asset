@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   stackable: 0
-  icon: {fileID: 21300000, guid: df7cf555455df0242855a0d165c92734, type: 3}
+  icon: {fileID: 21300000, guid: 62f4fdd7ddc9bd54f85e8a38fd59bd96, type: 3}
   ItemPrefab: {fileID: 4279229832920638116, guid: 4fba1a0e3d2d97847af8c3c46e265ba1, type: 3}
   data:
-    id: 1
-    name: "\uAC00\uC8FD \uAC11\uC637"
+    id: 5
+    name: "\uAC00\uC8FD \uC637"
     buffs:
     - stat: 10
       value: 0

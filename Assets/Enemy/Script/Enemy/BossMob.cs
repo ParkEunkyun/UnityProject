@@ -16,6 +16,8 @@ public class BossMob : MonoBehaviour
     public GameObject hudCriDamageText;
     Transform trans;
     public Transform hudPos;
+
+    public Transform FxPos;
     //private Animator animator;
     AutoThrowing _AutoThrowing;
     public Stat stat;
@@ -258,6 +260,9 @@ public class BossMob : MonoBehaviour
             hudText.gameObject.layer = 5;
             //hudText.GetComponent<DamageText>().damage = _AutoThrowing.Dmg;
             hudText.GetComponent<TextMeshPro>().text = _AutoThrowing.Dmg.ToString();
+
+            GameObject FX = EffectObjectPool.GetObject();
+            FX.transform.position = FxPos.position;
         }
         else if (_AutoThrowing.Dmg == 0)
         {
@@ -266,6 +271,9 @@ public class BossMob : MonoBehaviour
             hudCriText.gameObject.layer = 5;
             //hudCriText.GetComponent<DamageText>().damage = _AutoThrowing.CriDmg;
             hudCriText.GetComponent<TextMeshPro>().text = _AutoThrowing.CriDmg.ToString();
+
+            GameObject FX = EffectObjectPool.GetObject();
+            FX.transform.position = FxPos.position;
         }
     }
 

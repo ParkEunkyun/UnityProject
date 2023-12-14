@@ -14,7 +14,7 @@ public class TipText : MonoBehaviour
     }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {        
-        InvokeRepeating("Textupdate", 0.1f, 3.0f);
+        InvokeRepeating("Textupdate", 2.0f, 2.0f);
     }
     void OnDisable()
     {

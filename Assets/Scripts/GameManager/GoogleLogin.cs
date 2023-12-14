@@ -10,17 +10,15 @@ using UnityEngine.UI;
 
 public class GoogleLogin : MonoBehaviour
 {
-    [SerializeField]
-    Text googleLog;
-    [SerializeField]
-    Text firebaseLog;
-    [SerializeField]
-    Text Log;
-
     FirebaseAuth fbAuth;
+    public Text outputText;
+
 
     void Start()
     {
+        FirebaseManager.Instance.OnChangedLoginState += OnChangedLoginState;
+        FirebaseManager.Instance.InitializeFirebase();
+
         PlayGamesPlatform.InitializeInstance(new PlayGamesClientConfiguration.Builder()
             .RequestIdToken()
             .RequestEmail()
@@ -52,12 +50,13 @@ public void TryGoogleLogin()
         {
             if (success == SignInStatus.Success)
             {
-                googleLog.text = "Google Success";
+                Debug.Log("Google Success");
                 StartCoroutine(TryFirebaseLogin());
             }
             else
             {
-                googleLog.text = "Google Failure";
+                Debug.Log("Google Failure");
+                Debug.LogError($"Google login error msg: {success}");
             }
         });
     }
@@ -87,17 +86,26 @@ public void TryGoogleLogin()
         fbAuth.SignInWithCredentialAsync(credential).ContinueWith(task => {
             if (task.IsCanceled)
             {
-                firebaseLog.text = "Firebase Canceled";
+                Debug.Log("Firebase Canceled");
             }
             else if (task.IsFaulted)
             {
-                firebaseLog.text = "Firebase Faulted";
+                Debug.Log("Firebase Faulted");
             }
             else
             {
-                firebaseLog.text = "Firebase Success";
+                Debug.Log("Firebase Success");
             }
         });
+
+        FirebaseManager.Instance.OnChangedLoginState += OnChangedLoginState;
+        FirebaseManager.Instance.InitializeFirebase();
+    }
+
+    private void OnChangedLoginState(bool signedIn)
+    {
+        outputText.text = signedIn ? "Signed In" : "Signed Out";
+        outputText.text += FirebaseManager.Instance.UserId;
     }
 }
 /*

@@ -66,11 +66,11 @@ public class CharacterSpawn : MonoBehaviour
         else
         {
             DataManager.instance.ClearInventory();
-            //DataManager.instance.AddNewEquipItem(0);
-            //DataManager.instance.AddNewEquipItem(1);
-            //DataManager.instance.AddNewEquipItem(2);
-            //DataManager.instance.AddNewEquipItem(3);
-            //DataManager.instance.AddNewEquipItem(4);
+            DataManager.instance.AddNewEquipItem(0);
+            DataManager.instance.AddNewEquipItem(1);
+            DataManager.instance.AddNewEquipItem(2);
+            DataManager.instance.AddNewEquipItem(3);
+            DataManager.instance.AddNewEquipItem(4);
             DataManager.instance.nowPlayer.Level++;
             DataManager.instance.nowPlayer.gold += 100000;
             DataManager.instance.nowPlayer.RubbyPoint += 5000;

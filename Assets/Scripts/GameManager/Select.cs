@@ -55,7 +55,7 @@ public class Select : MonoBehaviour
         {
             LoadingBar.LoadScene("MakeScene"); // Play씬으로 이동
         }
-        else if (MonsterSelect.monsterPoolIndex > 1)
+        else if (MonsterSelect.monsterPoolIndex > 0)
         {
             if (DataManager.instance.nowPlayer.monsterKill > 999)
             {
@@ -115,6 +115,14 @@ public class Select : MonoBehaviour
                 AlretText.text = "2000 몬스터 포인트가 필요합니다.";
                 Invoke("AlretFalse", 2.0f);
             }
+        }
+        else if (MonsterSelect.monsterPoolIndex == 10)
+        {
+            Alret.SetActive(true);
+            AlretText.text = "준비 중 입니다.";
+            Invoke("AlretFalse", 2.0f);
+            Debug.Log("레이드 접속");
+            return;
         }
     }
 

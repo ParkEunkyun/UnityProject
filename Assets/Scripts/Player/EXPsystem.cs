@@ -19,7 +19,7 @@ public class EXPsystem : MonoBehaviour
 
     public void Update()
     {      
-        LevelUP();
+        LevelUP();        
     }
     public void LateUpdate()
     {
@@ -58,14 +58,24 @@ public class EXPsystem : MonoBehaviour
             if (DataManager.instance.nowPlayer.Level < 30)
             {
                 DataManager.instance.nowPlayer.maxExp = DataManager.instance.nowPlayer.maxExp + 10;
+                DataManager.instance.SaveData();
+                DataManager.instance.OnClickSaveButton();
             }
             else if (DataManager.instance.nowPlayer.Level < 50)
             {
                 DataManager.instance.nowPlayer.maxExp = DataManager.instance.nowPlayer.maxExp + 100;
+                DataManager.instance.SaveData();
+                DataManager.instance.OnClickSaveButton();
             }
             else if (DataManager.instance.nowPlayer.Level < 100)
             {
                 DataManager.instance.nowPlayer.maxExp = DataManager.instance.nowPlayer.maxExp + 1000;
+                DataManager.instance.SaveData();
+                DataManager.instance.OnClickSaveButton();
+            }
+            else 
+            {
+                break;
             }
 
             if (DataManager.instance.nowPlayer.curExp < DataManager.instance.nowPlayer.maxExp)
@@ -82,8 +92,6 @@ public class EXPsystem : MonoBehaviour
         EXPtext.text = DataManager.instance.nowPlayer.curExp.ToString() + " / " + DataManager.instance.nowPlayer.maxExp.ToString();
         _stat.curExp = DataManager.instance.nowPlayer.curExp;
         _stat.maxExp = DataManager.instance.nowPlayer.maxExp;
-        DataManager.instance.SaveData();
-        DataManager.instance.OnClickSaveButton();
     }
 
     

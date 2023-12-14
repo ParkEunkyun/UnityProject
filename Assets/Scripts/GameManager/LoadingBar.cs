@@ -13,7 +13,7 @@ public class LoadingBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("corutine", 2.0f, 2.5f);
+        InvokeRepeating("corutine", 5.0f, 5.0f);
     }
 
     void corutine()

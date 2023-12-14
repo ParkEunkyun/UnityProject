@@ -710,6 +710,7 @@ Transform:
   - {fileID: 7289463344120738346}
   - {fileID: 7289463344776606086}
   - {fileID: 4864233948100810744}
+  - {fileID: 8200640616005760419}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -776,12 +777,12 @@ MonoBehaviour:
   hudDamageText: {fileID: 5904405710037628061, guid: 32d3c276137f6ae4bb994c1deb63d75f, type: 3}
   hudCriDamageText: {fileID: 5904405710037628061, guid: e02f178b519c1df4692bbe914449f8ab, type: 3}
   hudPos: {fileID: 4864233948100810744}
+  FxPos: {fileID: 8200640616005760419}
   stat: {fileID: 11400000, guid: 1f131e299f510fb4ba70644e252e4d3d, type: 2}
   _skill: {fileID: 0}
   AreaSkillUse: 0
   EXP: 10
   timer: 0
-  AttackSound: {fileID: 8300000, guid: e3347cc7022acfa46af46d0859c8683b, type: 3}
   golddrop: 1
   itemDrop: {fileID: 11400000, guid: 988f604d7327f4141984b6bf1375fa45, type: 2}
   itemDrop2: {fileID: 11400000, guid: 42dac9e03eec2eb45912c749ddb170c4, type: 2}
@@ -907,3 +908,34 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &7391542806345151660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8200640616005760419}
+  m_Layer: 5
+  m_Name: fx
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8200640616005760419
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7391542806345151660}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7289463344962075093}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

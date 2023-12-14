@@ -179,7 +179,7 @@ public class CharacterDataManager : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {            
-            AlertText.text = (3 - i).ToString();
+            AlertText.text = "중복 확인 중입니다.\n" + (3 - i).ToString();
             yield return new WaitForSeconds(1f);
         }
     }

@@ -1454,6 +1454,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: 0
   chars: []
+  selectArrow: []
+  audioSource: {fileID: 0}
 --- !u!210 &-2214368260089571318
 SortingGroup:
   m_ObjectHideFlags: 0

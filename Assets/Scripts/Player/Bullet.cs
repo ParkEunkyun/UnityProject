@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     WeaponChange _weaponchange;
     public float destroytime;
     public int pierceCount;
-
+    public static Vector3 pos;
     void Awake()
     {
         //Destroy(this.gameObject, 3f);
@@ -37,6 +37,7 @@ public class Bullet : MonoBehaviour
             else if (pierceCount == 0)
             {
                 destroytime = 0;
+                pos = this.transform.position;
                 BulletObjectPool.ReturnObject(this);
             }
         }

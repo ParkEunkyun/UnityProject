@@ -59,19 +59,16 @@ public class EXPsystem : MonoBehaviour
             {
                 DataManager.instance.nowPlayer.maxExp = DataManager.instance.nowPlayer.maxExp + 10;
                 DataManager.instance.SaveData();
-                DataManager.instance.OnClickSaveButton();
             }
             else if (DataManager.instance.nowPlayer.Level < 50)
             {
                 DataManager.instance.nowPlayer.maxExp = DataManager.instance.nowPlayer.maxExp + 100;
                 DataManager.instance.SaveData();
-                DataManager.instance.OnClickSaveButton();
             }
             else if (DataManager.instance.nowPlayer.Level < 100)
             {
                 DataManager.instance.nowPlayer.maxExp = DataManager.instance.nowPlayer.maxExp + 1000;
                 DataManager.instance.SaveData();
-                DataManager.instance.OnClickSaveButton();
             }
             else 
             {

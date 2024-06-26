@@ -31,7 +31,7 @@ public class LoginController : MonoBehaviour
 
         FirebaseManager.Instance.SignIn(email, password);        
     }
-
+    
     public void SignOut()
     {
         FirebaseManager.Instance.SignOut();

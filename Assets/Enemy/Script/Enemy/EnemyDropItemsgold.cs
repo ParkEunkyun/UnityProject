@@ -35,6 +35,8 @@ public class EnemyDropItemsgold : MonoBehaviour
     }
     void OnEnable()
     {
+        this.gameObject.layer = 12;
+        this.GetComponent<CircleCollider2D>().isTrigger = true;
         Invoke("DestroyObject", destroyTime);
     }
     IEnumerator DropItemTime()

@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using EZInventory;
+using System.IO;
+using System.Linq;
+using System;
 
 public class UIManager : MonoBehaviour
 {
+    public TutorialManager tutorialmanager;
     public GameObject MainUIwindow;
     public GameObject Statuswindow;
     public GameObject Skillwindow;
@@ -37,13 +42,11 @@ public class UIManager : MonoBehaviour
     public GameObject SkillPassive;
     public GameObject RecipeBook;
     public GameObject settingWindow;
+    public RecipeDataBase _recipeDataBase;
 
     private void Start()
     {
-        MainUIwindow.GetComponent<LoadImage>();
-        Inventory2.SetActive(false);
-        CraftingInven.SetActive(false);
-        MainUIwindow.SetActive(false);
+        MainUIwindow.GetComponent<LoadImage>();    
         RankingBoard.SetActive(false);
         SkillPassive.SetActive(false);
         Skillwindow.SetActive(false);
@@ -51,14 +54,38 @@ public class UIManager : MonoBehaviour
         getitemPop.SetActive(false);
         shop.SetActive(false);
         Shadow();
+        Invoke("mainwindowclose", 0.05f);
+        Debug.Log("UI²¨Áü");
     }
+    void mainwindowclose()
+    {
+        Inventory2.SetActive(false);
+        CraftingInven.SetActive(false);        
+        MainUIwindow.SetActive(false);
+    }    
 
     public void MainWindowOpen()
     {
+        TutorialManager tutorialManager = tutorialmanager.GetComponent<TutorialManager>();
         DataManager.instance.audioSource.mute = true;
-        MainUIwindow.SetActive(true);
-        MainUIwindow.GetComponent<LoadImage>().Loadimage();
-        testObj.SetActive(false);
+        DataManager.instance.RecipeinvenSave();
+        string pdata = JsonUtility.ToJson(DataManager.instance.nowPlayer);
+        //pdata = Crypto.AESEncrypt128(pdata);
+        File.WriteAllText(DataManager.instance.PlayerPath + DataManager.instance.nowSlot.ToString(), pdata);
+
+        if (DataManager.instance.nowPlayer.statustutorial == 0)
+        {
+            MainUIwindow.SetActive(true);
+            MainUIwindow.GetComponent<LoadImage>().Loadimage();
+            testObj.SetActive(false);
+            tutorialManager.TutorialMask_12.SetActive(true);
+        }
+        else
+        {
+            MainUIwindow.SetActive(true);
+            MainUIwindow.GetComponent<LoadImage>().Loadimage();
+            testObj.SetActive(false);
+        }
     }
 
     public void StatusWindowOpen()
@@ -105,8 +132,14 @@ public class UIManager : MonoBehaviour
         shop.SetActive(false);
         testObj.SetActive(true);
         RecipeBook.SetActive(false);
-        settingWindow.SetActive(false);
+        settingWindow.SetActive(false);        
         DataManager.instance.audioSource.mute = false;
+        DataManager.instance.RecipeinvenSave();
+        string pdata = JsonUtility.ToJson(DataManager.instance.nowPlayer);
+        //pdata = Crypto.AESEncrypt128(pdata);
+        File.WriteAllText(DataManager.instance.PlayerPath + DataManager.instance.nowSlot.ToString(), pdata);
+
+        DataManager.instance.OnClickSaveButton();
     }
 
     public void modifyWindowOpen()
@@ -178,6 +211,8 @@ public class UIManager : MonoBehaviour
     public void Back()
     {
         DataManager.instance.audioSource.volume = 0.2f;
+        DataManager.instance.RecipeinvenSave();
+        DataManager.instance.SaveData();
         LoadingBar.LoadScene("SelectScene");
     }
 

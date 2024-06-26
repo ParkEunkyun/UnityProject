@@ -8,7 +8,8 @@ using UnityEngine.UI;
 using System.IO;
 using System.Linq;
 using System;
-using GooglePlayGames.BasicApi.Events;
+using System.Runtime.ConstrainedExecution;
+using static DataManager;
 
 public class PlayerData
 {
@@ -16,6 +17,12 @@ public class PlayerData
     public int howManyPlay;
     public int SelectedCharacter;
     public int PrecurExp; //광고 이어보기 시 복구용
+
+    public int Playtutorial;
+    public int statustutorial;
+    public int skilltutorial;
+    public int itemtutorial;
+    public int Crafttutorial;
 
     #region 스탯
     [Header("Status")]
@@ -293,17 +300,9 @@ public class DataManager : MonoBehaviour
         invenSave();
         EquipinvenSave();
         materialinvenSave();
-        if (nowPlayer.howManyPlay > 0)
-        {
-            RecipeinvenSave();
-        }
-        else
-        {
-            firstRecipeinvenSave();
-        }
         SkillSave();
         string pdata = JsonUtility.ToJson(nowPlayer);
-        pdata = Crypto.AESEncrypt128(pdata);
+        //pdata = Crypto.AESEncrypt128(pdata);
         File.WriteAllText(PlayerPath + nowSlot.ToString(), pdata);
         Debug.Log("세이브됨");
     }
@@ -312,17 +311,18 @@ public class DataManager : MonoBehaviour
         invenSave();
         EquipinvenSave();
         materialinvenSave();
+        firstRecipeinvenSave();
         SkillSave();
         string pdata = JsonUtility.ToJson(nowPlayer);
-        pdata = Crypto.AESEncrypt128(pdata);
+        //pdata = Crypto.AESEncrypt128(pdata);
         File.WriteAllText(PlayerPath + nowSlot.ToString(), pdata);
-        Debug.Log("세이브됨");
+        Debug.Log("세이브2됨");
     }
 
     public void LoadData()// 데이터 로드
     {
         string pdata = File.ReadAllText(PlayerPath + nowSlot.ToString());
-        pdata = Crypto.AESDecrypt128(pdata);
+        //pdata = Crypto.AESDecrypt128(pdata);
         nowPlayer = JsonUtility.FromJson<PlayerData>(pdata);
         Debug.Log("로드됨");
     }
@@ -338,7 +338,9 @@ public class DataManager : MonoBehaviour
         if (pause)
         {
             bPaused = true;
+            RecipeinvenSave();
             SaveData();
+            OnClickSaveButton();
         }
         else
         {
@@ -351,7 +353,9 @@ public class DataManager : MonoBehaviour
     }
     private void OnApplicationQuit()
     {
+        RecipeinvenSave();
         SaveData();
+        OnClickSaveButton();
     }
 
     //아이템 획득 및 옵션 저장 및 로드
@@ -360,6 +364,8 @@ public class DataManager : MonoBehaviour
     public InventoryObject tempObject;
     public InventoryObject inventoryObject;
     public InventoryObject MaterialinventoryObject;
+    public InventoryObject recipeinventoryObject;
+    public RecipeDataBase recipeDataBase;
     public ItemObjectDataBase databaseObject;
     public ItemObjectDataBase MaterialdatabaseObject;
     public SkillObject _skill;
@@ -1080,7 +1086,7 @@ public class DataManager : MonoBehaviour
                                                                     EZInventory.InventoryManager.instance.slots[28].currentItemAmount,
                                                                     EZInventory.InventoryManager.instance.slots[29].currentItemAmount,
 
-                                                                };        
+                                                                };
         Debug.Log("레시피 인벤 세이브됨");
     }
 
@@ -1265,6 +1271,7 @@ public class DataManager : MonoBehaviour
     public string KillScore;
     public string Gold;
     public string CrystalPt;
+    public string GameVersion;
     //public string[] itemoption0;
 
     public class User
@@ -1275,9 +1282,10 @@ public class DataManager : MonoBehaviour
         public string KillScore;
         public string Gold;
         public string CrystalPt;
+        public string GameVersion;
         //public string[] itemoption0;
 
-        public User(string userid, string nickName, string TotalScore, string KillScore, string Gold, string CrystalPt/* , string[] itemoption0*/)
+        public User(string userid, string nickName, string TotalScore, string KillScore, string Gold, string CrystalPt, string GameVersion/* , string[] itemoption0*/)
         {
             this.nickName = nickName;
             this.TotalScore = TotalScore;
@@ -1285,6 +1293,7 @@ public class DataManager : MonoBehaviour
             this.Gold = Gold;
             this.CrystalPt = CrystalPt;
             this.userid = FirebaseManager.Instance.UserId;
+            this.GameVersion = Application.version;
             //this.itemoption0 = itemoption0;
         }
     }
@@ -1303,6 +1312,7 @@ public class DataManager : MonoBehaviour
     private void Start()
     {
         databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
 
     void Update()
@@ -1316,13 +1326,14 @@ public class DataManager : MonoBehaviour
 
     public void OnClickSaveButton()
     {
-        writeNewUser(userid, nickName, TotalScore, KillScore, Gold, CrystalPt);
+        writeNewUser(userid, nickName, TotalScore, KillScore, Gold, CrystalPt, GameVersion);
     }
 
-    public void writeNewUser(string userid, string nickName, string TotalScore, string KillScore, string Gold, string CrystalPt)
+    public void writeNewUser(string userid, string nickName, string TotalScore, string KillScore, string Gold, string CrystalPt, string GameVersion)
     {
-        userid = FirebaseManager.Instance.UserId;
-        nowPlayer.UID = userid;
+        userid = nowPlayer.UID;
+        //userid = FirebaseManager.Instance.UserId;
+        //nowPlayer.UID = userid;
         nickName = nowPlayer.name;
         //string TotalScoreFomat = string.Format("{0:#,0}", nowPlayer.TotalScore);
         //TotalScore = TotalScoreFomat;
@@ -1330,12 +1341,13 @@ public class DataManager : MonoBehaviour
         KillScore = nowPlayer.monsterKill.ToString();
         Gold = nowPlayer.gold.ToString();
         CrystalPt = nowPlayer.CrystalPoint.ToString();
+        GameVersion = Application.version;
         //itemoption0 = nowPlayer.option0.Select(i => i.ToString()).ToArray();   배열 저장법
 
-        User user = new User(userid, nickName, TotalScore, KillScore, Gold, CrystalPt/*, itemoption0*/);
+        User user = new User(userid, nickName, TotalScore, KillScore, Gold, CrystalPt, GameVersion/*, itemoption0*/);
         string jsonData = JsonUtility.ToJson(user);
 
-        databaseReference.Child(userid).SetRawJsonValueAsync(jsonData);
+        databaseReference.Child("Users").Child(userid).SetRawJsonValueAsync(jsonData);
 
         //text.text = "저장";
     }
@@ -1349,7 +1361,7 @@ public class DataManager : MonoBehaviour
     {
         //userid = FirebaseManager.Instance.UserId;
 
-        databaseReference.Child(userid).GetValueAsync().ContinueWith(task =>
+        databaseReference.Child("Users").Child(userid).GetValueAsync().ContinueWith(task =>
         {
             if (task.IsCanceled)
             {
@@ -1378,7 +1390,7 @@ public class DataManager : MonoBehaviour
                     strRank[count] = personInfo["nickName"].ToString() + " . " + personInfo["userid"].ToString() + " | " + string.Format("{0:N2}", personInfo["TotalScore"]);
                     //strUserid[count] = personInfo["userid"].ToString() + "_";
                     //Debug.Log("nickName: " + personInfo["nickName"] + ", TotalScore: " + personInfo["TotalScore"] + ", Userid: " + personInfo["userid"]);
-                    count++;                    
+                    count++;
                 }
                 textLoadBool = true;
                 //Debug.Log(dataString);    
@@ -1433,7 +1445,7 @@ public class DataManager : MonoBehaviour
 
     public void nicknameCheking()
     {
-        FirebaseDatabase.DefaultInstance.GetReference(userid).OrderByChild("nickName").EqualTo(DataManager.instance.nowPlayer.name).GetValueAsync().ContinueWith(task =>
+        FirebaseDatabase.DefaultInstance.GetReference(userid).Child("Users").OrderByChild("nickName").EqualTo(DataManager.instance.nowPlayer.name).GetValueAsync().ContinueWith(task =>
         {
             if (task.IsFaulted)
             {
@@ -1460,6 +1472,23 @@ public class DataManager : MonoBehaviour
 
     }
 
+    public string ver;
 
+    public void VersionChecking()
+    {
+        FirebaseDatabase.DefaultInstance.GetReference("Version").GetValueAsync().ContinueWith(task =>
+        {
+            if (task.IsFaulted)
+            {
+                Debug.Log("실패");
+            }
+            else if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                Debug.Log(snapshot.Value);
+                ver = snapshot.Value.ToString();
+            }
+        });
+    }
 }
 ///////////////////////////////////////////////////////////////////////////////////////////

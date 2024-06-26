@@ -198,7 +198,6 @@ public class TooltipManager : MonoBehaviour
         EquipStatReset();
         EquipStatPlus();
         DataManager.instance.SaveData();
-        DataManager.instance.OnClickSaveButton();
         Closed();
     }
     public void UnEuquipButton() // 장비창 기준 Inven : 장비창 툴팁에서 해제버튼 클릭 할 떄
@@ -213,7 +212,6 @@ public class TooltipManager : MonoBehaviour
             EquipStatReset();
             EquipStatPlus2();
             DataManager.instance.SaveData();
-            DataManager.instance.OnClickSaveButton();
             Closed();
         }
     }
@@ -252,7 +250,6 @@ public class TooltipManager : MonoBehaviour
         if ((int)Inven.type == 1) { EquipStatPlus2(); }
         else if ((int)Inven.type == 0) { EquipStatPlus(); }
         DataManager.instance.SaveData();
-        DataManager.instance.OnClickSaveButton();
         Closed();
     }
     public void disasaambleAction()  //툴팁에서 분해버튼 누르고 최종 분해 할떄
@@ -267,7 +264,6 @@ public class TooltipManager : MonoBehaviour
             if ((int)Inven.type == 1) { EquipStatPlus2(); }
             else if ((int)Inven.type == 0) { EquipStatPlus(); }
             DataManager.instance.SaveData();
-            DataManager.instance.OnClickSaveButton();
             Closed();
         }
         else
@@ -730,7 +726,7 @@ public class TooltipManager : MonoBehaviour
         {
 
             AlertWindow.SetActive(true);
-            AlertText.text = "포인트가 부족합니다.";
+            AlertText.text = "루비가 부족합니다.";
 
         }
         else if (Inven.Slots[ParentMathod.SlotNumber].item.buffs[0].value >= 5)
@@ -751,7 +747,6 @@ public class TooltipManager : MonoBehaviour
         if ((int)Inven.type == 1) { EquipStatPlus2(); }
         else if ((int)Inven.type == 0) { EquipStatPlus(); }
         DataManager.instance.SaveData();
-        DataManager.instance.OnClickSaveButton();
         //Closed();
     }
     public void CloseAlert()  //알럿창 닫을 때
@@ -899,7 +894,6 @@ public class TooltipManager : MonoBehaviour
 
         //DataManager.instance.EXPandHP();
         DataManager.instance.SaveData();
-        DataManager.instance.OnClickSaveButton();
 
         StatOverWrite();
     }
@@ -923,7 +917,6 @@ public class TooltipManager : MonoBehaviour
         DataManager.instance.nowPlayer.itemCritical = 0;
 
         DataManager.instance.SaveData();
-        DataManager.instance.OnClickSaveButton();
 
         StatOverWrite();
     }
@@ -1067,7 +1060,6 @@ public class TooltipManager : MonoBehaviour
 
         //DataManager.instance.EXPandHP();
         DataManager.instance.SaveData();
-        DataManager.instance.OnClickSaveButton();
 
         StatOverWrite();
     }
@@ -1187,7 +1179,6 @@ public class TooltipManager : MonoBehaviour
             Inven.Slots[ParentMathod.SlotNumber].RemoveItem();
         }
         DataManager.instance.SaveData();
-        DataManager.instance.OnClickSaveButton();
         Closed();
     }
     public void MaterialValueChange()

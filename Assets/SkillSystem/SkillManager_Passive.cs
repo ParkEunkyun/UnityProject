@@ -82,21 +82,25 @@ public class SkillManager_Passive : MonoBehaviour
         {
             Magnet[2].SetActive(true);
             Magnet[1].SetActive(false);
+            Magnet[0].SetActive(false);
         }
         else if (_skill.MagnetLv == 3)
         {
             Magnet[3].SetActive(true);
             Magnet[2].SetActive(false);
+            Magnet[0].SetActive(false);
         }
         else if (_skill.MagnetLv == 4)
         {
             Magnet[4].SetActive(true);
             Magnet[3].SetActive(false);
+            Magnet[0].SetActive(false);
         }
         else if (_skill.MagnetLv == 5)
         {
             Magnet[5].SetActive(true);
             Magnet[4].SetActive(false);
+            Magnet[0].SetActive(false);
         }
 
         if (_skill.AttackMaxExp == 160 && _skill.AttackLv == 5)

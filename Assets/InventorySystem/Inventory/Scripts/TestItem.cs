@@ -21,7 +21,6 @@ public class TestItem : MonoBehaviour
             tests0();
             tests1();                     
             DataManager.instance.SaveData();
-            DataManager.instance.OnClickSaveButton();
             //Debug.Log(op_0);
             //Debug.Log((int)inventoryObject.Slots[0].item.buffs[0].stat);
         }

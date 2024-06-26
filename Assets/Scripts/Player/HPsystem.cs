@@ -47,8 +47,7 @@ public class HPsystem : MonoBehaviour
         {
             preAmount = HPortionAmount;
              
-            DataManager.instance.SaveData();
-            DataManager.instance.OnClickSaveButton();          
+            DataManager.instance.SaveData(); 
         }
         if(timer >= 10f)
         {
@@ -194,8 +193,7 @@ public class HPsystem : MonoBehaviour
             {
                 preAmount = HPortionAmount;
                  
-                DataManager.instance.SaveData();
-                DataManager.instance.OnClickSaveButton();             
+                DataManager.instance.SaveData();           
             }       
             _stat.curHP = (int)HPbar1.value;     
         }

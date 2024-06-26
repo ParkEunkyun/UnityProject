@@ -636,7 +636,7 @@ public class SkillManager_Active : MonoBehaviour
         }
         else if (i == 1)
         {
-            PierceShotAttribute();
+            PierceShotLevelUp();
         }
         else if (i == 2)
         {

@@ -59,7 +59,7 @@ public class Ads50CrystalPuchase : MonoBehaviour
         Textudate();
     }
     public void Puchase() // 구매버튼 클릭 시
-    {       
+    {
 
         if (isPuchase)
         {
@@ -80,13 +80,13 @@ public class Ads50CrystalPuchase : MonoBehaviour
 
             CurrentTimeStr = System.DateTime.Now.ToString("yyyyMMddHHmmss");
             FinishTimeStr = EndTimeDt.ToString("yyyyMMddHHmmss");
-            DataManager.instance.nowPlayer.Crystal50Time = FinishTimeStr;
-
-            Textudate();
+            DataManager.instance.nowPlayer.Crystal50Time = FinishTimeStr;            
 
             StartCoroutine("PuchaseCor");
 
             TestAdmob.instance.ShowAdss();
+
+            Textudate();
         }
         else
         {

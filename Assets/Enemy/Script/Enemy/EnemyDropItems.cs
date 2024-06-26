@@ -35,7 +35,14 @@ public class EnemyDropItems : MonoBehaviour
 
         StartCoroutine(DropItemTime());
         Invoke("DestroyObject", destroyTime);
-    }    
+    }
+
+    void OnEnable()
+    {
+        this.gameObject.layer = 12;
+        this.GetComponent<CircleCollider2D>().isTrigger = true;
+        Invoke("DestroyObject", destroyTime);
+    }
     IEnumerator DropItemTime()
     {
         yield return new WaitForSeconds(0.5f);

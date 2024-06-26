@@ -12,26 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a97a734724302494b99b5bd791987885, type: 3}
   m_Name: Skill
   m_EditorClassIdentifier: 
-  SkillPoint: 21076
-  MagnetLv: 5
-  MagnetCurExp: 0
+  SkillPoint: 999651
+  MagnetLv: 4
+  MagnetCurExp: 44
   MagnetMaxExp: 160
-  ViewRadiusLv: 5
-  SkillViewRadius: 6
+  ViewRadiusLv: 4
+  SkillViewRadius: 5
   ViewRadiusCurExp: 0
   ViewRadiusMaxExp: 160
-  AttackSpeedLv: 5
-  SkillAttackSpeed: 500
-  AttackSpeedCurExp: 0
-  AttackSpeedMaxExp: 160
-  AttackLv: 5
-  SkillAttack: 1100
+  AttackSpeedLv: 2
+  SkillAttackSpeed: 200
+  AttackSpeedCurExp: 1
+  AttackSpeedMaxExp: 40
+  AttackLv: 0
+  SkillAttack: 0
   AttackCurExp: 0
-  AttackMaxExp: 160
-  CriticalLv: 5
-  SkillCritical: 250
+  AttackMaxExp: 10
+  CriticalLv: 0
+  SkillCritical: 0
   CriticalCurExp: 0
-  CriticalMaxExp: 160
+  CriticalMaxExp: 10
   HealLv: 0
   HealingAmount: 0
   HealCurExp: 0
@@ -45,35 +45,35 @@ MonoBehaviour:
   HMoveSpeedMaxExp: 10
   MoveSpeedUseMP: 0
   MoveSpeedCooltime: 0
-  AreaSkillLv: 5
-  AreaSkillDamage: 50
-  AreaSkillDuring: 20
-  AreaSkillCurExp: 0
-  AreaSkillMaxExp: 160
-  AreaSkillUseMP: 50
+  AreaSkillLv: 3
+  AreaSkillDamage: 30
+  AreaSkillDuring: 15
+  AreaSkillCurExp: 1
+  AreaSkillMaxExp: 80
+  AreaSkillUseMP: 30
   AreaSkillCooltime: 15
-  AroundSkillLv: 0
-  AroundSkillDamage: 0
-  AroundSkillDuring: 0
+  AroundSkillLv: 4
+  AroundSkillDamage: 40
+  AroundSkillDuring: 25
   AroundSkillCurExp: 0
-  AroundSkillMaxExp: 10
-  AroundSkillUseMP: 0
-  AroundSkillCooltime: 0
+  AroundSkillMaxExp: 160
+  AroundSkillUseMP: 40
+  AroundSkillCooltime: 20
   InvincibilityLv: 0
   InvincibilityDuring: 0
   InvincibilityCurExp: 0
   InvincibilityMaxExp: 10
   InvincibilityUseMP: 0
   InvincibilityCooltime: 0
-  MultiShotLv: 5
-  MultiShotDuring: 30
-  MultiShotCurExp: 0
-  MultiShotMaxExp: 160
-  MultiShotUseMP: 50
+  MultiShotLv: 1
+  MultiShotDuring: 10
+  MultiShotCurExp: 3
+  MultiShotMaxExp: 20
+  MultiShotUseMP: 10
   MultiShotCooltime: 5
-  PierceShotLv: 0
-  PierceShotCount: 0
+  PierceShotLv: 1
+  PierceShotCount: 1
   PierceShotCurExp: 0
-  PierceShotMaxExp: 10
-  PierceShotUseMP: 0
-  PierceShotCooltime: 0
+  PierceShotMaxExp: 20
+  PierceShotUseMP: 10
+  PierceShotCooltime: 10

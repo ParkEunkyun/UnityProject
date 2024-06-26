@@ -121,7 +121,6 @@ public class itemPuchase : MonoBehaviour
         protector.SetActive(false);
          
         DataManager.instance.SaveData();
-        DataManager.instance.OnClickSaveButton();
     }
 
     public void OnDisable()
@@ -133,7 +132,6 @@ public class itemPuchase : MonoBehaviour
         protector.SetActive(false);
          
         DataManager.instance.SaveData();
-        DataManager.instance.OnClickSaveButton();
     }
 
     public void Textudate()

@@ -15,6 +15,7 @@ public class TestAdmob : MonoBehaviour
 
     public int exp;
 
+    
     public void Awake()
     {
         if (instance == null)
@@ -22,6 +23,7 @@ public class TestAdmob : MonoBehaviour
             instance = this;
         }       
     }
+    
 
     public void Start()
     {
@@ -34,7 +36,7 @@ public class TestAdmob : MonoBehaviour
         string adUnitId;
 
 #if UNITY_ANDROID
-        //adUnitId = "ca-app-pub-3940256099942544/5224354917";
+       //adUnitId = "ca-app-pub-3940256099942544/3347511713";
         adUnitId = "ca-app-pub-2393527128341658/6257915496";
 #elif UNITY_IPHONE
             adUnitId = "ca-app-pub-3940256099942544/1712485313";
@@ -152,6 +154,7 @@ public class TestAdmob : MonoBehaviour
     public void GetReward4(Reward reward)
     {
         DataManager.instance.nowPlayer.curExp = DataManager.instance.nowPlayer.PrecurExp;
+        DataManager.instance.RecipeinvenSave();
         DataManager.instance.SaveData();
         InitAds();
 

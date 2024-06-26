@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class InventoryTabButton : MonoBehaviour
 {
+    public TutorialManager tutorialmanager;
     public GameObject EquipInven;
     public GameObject MetarialInven;
     public GameObject Crafting;
@@ -42,17 +43,37 @@ public class InventoryTabButton : MonoBehaviour
 
     public void MetarialInventoryOn()
     {
-        EquipInven.SetActive(false);
-        Equipments.SetActive(false);
-        MetarialInven.SetActive(true);
-        Crafting.SetActive(true);
-        StatBtn.SetActive(false);
-        SkillBtn.SetActive(false);
-        RecipeBtn.SetActive(true);
-        //metarialInvenBtn.GetComponentInChildren<Image>().color = new Color(1.0f,1.0f,1.0f,1.0f);
-        //EquipInvenBtn.GetComponentInChildren<Image>().color = new Color(1.0f,1.0f,1.0f,0.5f);
-        metarialInvenBtn.SetActive(false);
-        EquipInvenBtn.SetActive(true);
+        TutorialManager tutorialManager = tutorialmanager.GetComponent<TutorialManager>();
+
+        if (DataManager.instance.nowPlayer.Crafttutorial == 0)
+        {
+            EquipInven.SetActive(false);
+            Equipments.SetActive(false);
+            MetarialInven.SetActive(true);
+            Crafting.SetActive(true);
+            StatBtn.SetActive(false);
+            SkillBtn.SetActive(false);
+            RecipeBtn.SetActive(true);
+            //metarialInvenBtn.GetComponentInChildren<Image>().color = new Color(1.0f,1.0f,1.0f,1.0f);
+            //EquipInvenBtn.GetComponentInChildren<Image>().color = new Color(1.0f,1.0f,1.0f,0.5f);
+            metarialInvenBtn.SetActive(false);
+            EquipInvenBtn.SetActive(true);
+            tutorialManager.TutorialMask_7.SetActive(true);        
+        }
+        else
+        {
+            EquipInven.SetActive(false);
+            Equipments.SetActive(false);
+            MetarialInven.SetActive(true);
+            Crafting.SetActive(true);
+            StatBtn.SetActive(false);
+            SkillBtn.SetActive(false);
+            RecipeBtn.SetActive(true);
+            //metarialInvenBtn.GetComponentInChildren<Image>().color = new Color(1.0f,1.0f,1.0f,1.0f);
+            //EquipInvenBtn.GetComponentInChildren<Image>().color = new Color(1.0f,1.0f,1.0f,0.5f);
+            metarialInvenBtn.SetActive(false);
+            EquipInvenBtn.SetActive(true);
+        }
     }
 
     public Text goldtext;

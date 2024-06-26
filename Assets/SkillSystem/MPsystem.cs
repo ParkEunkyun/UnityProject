@@ -33,8 +33,7 @@ public class MPsystem : MonoBehaviour
         {
             preAmount = MPortionAmount;
              
-            DataManager.instance.SaveData();
-            DataManager.instance.OnClickSaveButton();          
+            DataManager.instance.SaveData();       
         }
         if(timer >= 15f)
         {
@@ -58,8 +57,7 @@ public class MPsystem : MonoBehaviour
             {
                 preAmount = MPortionAmount;
                  
-                DataManager.instance.SaveData();
-                DataManager.instance.OnClickSaveButton();             
+                DataManager.instance.SaveData();         
             }
             _stat.curMP = (int)MPbar1.value;
         }

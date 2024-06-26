@@ -79,7 +79,7 @@ public class Select : MonoBehaviour
         if (!savefile[DataManager.instance.nowSlot])	// 현재 슬롯번호의 데이터가 없다면
         {
             //DataManager.instance.nowPlayer.name = newPlayerName.text; // 입력한 이름을 복사해옴
-            DataManager.instance.SaveData();
+            DataManager.instance.SaveData2();
             DataManager.instance.OnClickSaveButton(); // 현재 정보를 저장함.
         }
         if(MonsterSelect.monsterPoolIndex < 8)

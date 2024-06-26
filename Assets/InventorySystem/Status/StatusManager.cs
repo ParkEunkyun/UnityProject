@@ -3,9 +3,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class StatusManager : MonoBehaviour
+public class StatusManager : MonoBehaviour, IPointerClickHandler
 {
     public Text Name; public Text Level;
     public Text STR; public Text CON; public Text DEX; public Text INT; public Text LUK; public Text PP;
@@ -49,7 +50,6 @@ public class StatusManager : MonoBehaviour
         if (DataManager.instance.nowPlayer.Pp > 0) { DataManager.instance.nowPlayer.Str++; DataManager.instance.nowPlayer.Pp--; }
         Textupdate();
         DataManager.instance.SaveData();
-        DataManager.instance.OnClickSaveButton();
     }
     public void PlusPointCON()
     {
@@ -57,7 +57,6 @@ public class StatusManager : MonoBehaviour
         if (DataManager.instance.nowPlayer.Pp > 0) { DataManager.instance.nowPlayer.Con++; DataManager.instance.nowPlayer.Pp--; }
         Textupdate();
         DataManager.instance.SaveData();
-        DataManager.instance.OnClickSaveButton();
     }
     public void PlusPointDEX()
     {
@@ -65,7 +64,6 @@ public class StatusManager : MonoBehaviour
         if (DataManager.instance.nowPlayer.Pp > 0) { DataManager.instance.nowPlayer.Dex++; DataManager.instance.nowPlayer.Pp--; }
         Textupdate();
         DataManager.instance.SaveData();
-        DataManager.instance.OnClickSaveButton();
     }
     public void PlusPointINT()
     {
@@ -73,7 +71,6 @@ public class StatusManager : MonoBehaviour
         if (DataManager.instance.nowPlayer.Pp > 0) { DataManager.instance.nowPlayer.Int++; DataManager.instance.nowPlayer.Pp--; }
         Textupdate();
         DataManager.instance.SaveData();
-        DataManager.instance.OnClickSaveButton();
     }
     public void PlusPointLUK()
     {
@@ -81,7 +78,6 @@ public class StatusManager : MonoBehaviour
         if (DataManager.instance.nowPlayer.Pp > 0) { DataManager.instance.nowPlayer.Luk++; DataManager.instance.nowPlayer.Pp--; }
         Textupdate();
         DataManager.instance.SaveData();
-        DataManager.instance.OnClickSaveButton();
     }
 
     private void Update()
@@ -178,9 +174,22 @@ public class StatusManager : MonoBehaviour
     }
 
     #endregion
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        GameObject clickedObject = eventData.pointerCurrentRaycast.gameObject;
 
+        if (clickedObject.name == "adsPP")
+        {
+            PPUPTEST();
+        }
+        else
+        {
+            return;
+        }
+    }
     public void PPUPTEST()
     {
+
         TestAdmob.instance.ShowAds3();
 
         if (isPuchase)

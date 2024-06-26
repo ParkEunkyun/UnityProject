@@ -8,7 +8,7 @@ public class FloatingJoystick : Joystick
     protected override void Start()
     {
         base.Start();
-        background.gameObject.SetActive(false);
+        //background.gameObject.SetActive(false);
         
         
     }
@@ -23,8 +23,9 @@ public class FloatingJoystick : Joystick
 
     public override void OnPointerUp(PointerEventData eventData)
     {
-        
-        background.gameObject.SetActive(false);
+
+        //background.gameObject.SetActive(false);
+        background.anchoredPosition = new Vector3(540.0f, 330.0f, 0.0f);
         base.OnPointerUp(eventData);     
     }
 }

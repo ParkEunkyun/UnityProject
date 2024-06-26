@@ -126,7 +126,7 @@ public class FirebaseManager
     public void SignOut()
     {
         auth.SignOut();
-        LoadingBar.LoadScene("LoginScene");
+        LoadingBar.LoadScene("LoginScene(Guest)");
     }   
 
     private int GetFirebaseErrorCode(AggregateException exception)

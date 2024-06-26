@@ -83,6 +83,11 @@ public class CharacterDataManager : MonoBehaviour
         LukValue.text = DataManager.instance.nowPlayer.Luk.ToString();
         PPValue.text = DataManager.instance.nowPlayer.Pp.ToString();
 
+        DataManager.instance.nowPlayer.Playtutorial = 0;
+        DataManager.instance.nowPlayer.statustutorial = 0;
+        DataManager.instance.nowPlayer.skilltutorial = 0;
+        DataManager.instance.nowPlayer.itemtutorial = 0;
+        DataManager.instance.nowPlayer.Crafttutorial = 0;
     }
 
 

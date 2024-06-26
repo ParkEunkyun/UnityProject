@@ -33,6 +33,8 @@ public class AutoThrowing : MonoBehaviour
     public AudioClip ThrowSound;
     public AudioSource audioSource;
 
+    public SpriteRenderer Circle;
+
     //public GameObject targetingUI;
     void Start()
     {
@@ -54,6 +56,7 @@ public class AutoThrowing : MonoBehaviour
             FireTime = FireTime - 300;
             Throwbullet();
         }
+        Circle.transform.localScale = new Vector3(viewRadius*2, viewRadius*2, 1);
     }
     private void OnDrawGizmos()
     {
@@ -76,7 +79,7 @@ public class AutoThrowing : MonoBehaviour
                 {
                     visibleTargets.Add(target.transform.gameObject); //게임오브젝트가 리스트에 들어가긴 함,
                     //Debug.DrawRay(transform.position, dirToTarget * 10f, Color.red, 5f);
-
+                    
                     //print("raycast hit!");
                 }
             }

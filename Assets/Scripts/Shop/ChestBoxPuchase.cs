@@ -41,6 +41,9 @@ public class ChestBoxPuchase : MonoBehaviour
     public AudioClip ItemSound;
     public AudioSource audioSource;
 
+    public GameObject popupwindow1;
+    public GameObject popupwindow2;
+
     private void OnEnable()
     {
         isPuchase = true;
@@ -251,19 +254,19 @@ public class ChestBoxPuchase : MonoBehaviour
                     }
                     else if (rannn < 981) // 에픽
                     {
-                        int rannnn = Random.Range(20, 25);// 1.6%
+                        int rannnn = Random.Range(20, 25);// 0.8%
                         DataManager.instance.AddNewEquipItem(rannnn);
                         resultImagePremium[i].GetComponent<Image>().sprite = DataManager.instance.databaseObject.itemObjects[rannnn].icon;
                     }
                     else if (rannn < 1000) // 유니크
                     {
-                        int rannnn = Random.Range(25, 28);//0.5%
+                        int rannnn = Random.Range(25, 28);//0.19%
                         DataManager.instance.AddNewEquipItem(rannnn);
                         resultImagePremium[i].GetComponent<Image>().sprite = DataManager.instance.databaseObject.itemObjects[rannnn].icon;
                     }
                     else // 레전더리
                     {
-                        int rannnn = Random.Range(29, 30);//0.1%
+                        int rannnn = Random.Range(29, 30);//0.01%
                         DataManager.instance.AddNewEquipItem(rannnn);
                         resultImagePremium[i].GetComponent<Image>().sprite = DataManager.instance.databaseObject.itemObjects[rannnn].icon;
                     }
@@ -300,8 +303,7 @@ public class ChestBoxPuchase : MonoBehaviour
         protector.SetActive(false);
 
         DataManager.instance.SaveData();
-        DataManager.instance.OnClickSaveButton();
-        inventory.SetActive(false);
+        //inventory.SetActive(false);
         Characterwin.SetActive(false);
     }
 
@@ -316,5 +318,20 @@ public class ChestBoxPuchase : MonoBehaviour
 
         string CrystalFomat = string.Format("{0:#,0}", DataManager.instance.nowPlayer.CrystalPoint);
         Crystaltext.text = CrystalFomat;
+    }
+
+    public void popupwindow1open()
+    {
+        popupwindow1.SetActive(true);
+    }
+    public void popupwindow2open()
+    {
+        popupwindow2.SetActive(true);
+    }
+
+    public void popupclose()
+    {
+        popupwindow1.SetActive(false);
+        popupwindow2.SetActive(false);
     }
 }

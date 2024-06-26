@@ -24,6 +24,7 @@ public class CharacterSpawn : MonoBehaviour
     string PowerPointFomat;
     public GameObject PlayerParent;
     public int preGoldAmount; public int preKillAmount; public int prePowerAmount;
+    public RecipeDataBase _recipeDataBase;
 
 
 
@@ -98,7 +99,7 @@ public class CharacterSpawn : MonoBehaviour
 
     void LoadPlayerData()
     {
-        for (int i = 0; i < 30; i++)
+        for (int i = 0; i < 60; i++)
         {
 
             {
@@ -115,7 +116,7 @@ public class CharacterSpawn : MonoBehaviour
                 EquipInven.Slots[i].item.name = DataManager.instance.nowPlayer.EquipItemName[i];
                 EquipInven.Slots[i].amount = DataManager.instance.nowPlayer.EquipItemAmount[i];
             }
-        }
+        }        
         RecipeInvenLoad();
         optionload();
         optionvalueload();
@@ -1459,21 +1460,28 @@ public class CharacterSpawn : MonoBehaviour
 
     public void RecipeInvenLoad()
     {
-        for (int i = 0; i < InventoryManager.instance.slots.Count; i++)
+        for (int i = 0; i < 30; i++)
         {
             int itemData = DataManager.instance.nowPlayer.RecipeitemId[i];
             if (itemData > 0)
             {
-                itemData -= 1000;
-                ItemSO item = InventoryManager.instance._recipeDataBase.RecipeItem[itemData];
+                int iitemData = itemData - 1000;
+                ItemSO item = _recipeDataBase.RecipeItem[iitemData];
                 InventoryManager.instance.AddItemToInventory(item, DataManager.instance.nowPlayer.Recipeitemamount[i]);
             }
+            else
+            {
+                return;
+            }    
         }
+        Debug.Log("레시피인벤 로드");
     }
 
 
     public void Continue()
     {
+        DataManager.instance.RecipeinvenSave();
+        DataManager.instance.SaveData();
         LoadingBar.LoadScene("SelectScene");
     }
 

@@ -6,8 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using EZInventory;
 using Random = UnityEngine.Random;
+using UnityEngine.EventSystems;
 
-public class AdsChestBoxPuchase : MonoBehaviour
+public class AdsChestBoxPuchase : MonoBehaviour, IPointerClickHandler
 {
     public Text goldtext;
     public Text Rubytext;
@@ -40,6 +41,20 @@ public class AdsChestBoxPuchase : MonoBehaviour
     public AudioClip ItemSound;
     public AudioSource audioSource;
 
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        GameObject clickedObject = eventData.pointerCurrentRaycast.gameObject;
+
+        if (clickedObject.name == "adschest")
+        {
+            AdsChestboxActiveTure();
+        }
+        else
+        {
+            return;
+        }    
+    }
     public void OnEnable() // 저장한 시간을 불러왔을때 처리해야됨
     {
         CurrentTimeStr = DateTime.Now.ToString("yyyyMMddHHmmss");
@@ -79,7 +94,11 @@ public class AdsChestBoxPuchase : MonoBehaviour
 
     public void AdsChestboxActiveTure()  // 상점에서 클릭
     {
+        Debug.Log("테스트 광고 실행");
+
         TestAdmob.instance.ShowAds2();
+       
+        Debug.Log("테스트 광고 실행2");
 
         Back.SetActive(true);
         freeBoxSp.SetActive(true);        

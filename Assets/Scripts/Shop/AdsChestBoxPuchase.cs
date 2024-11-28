@@ -84,7 +84,7 @@ public class AdsChestBoxPuchase : MonoBehaviour, IPointerClickHandler
         if (!isPuchase && StartTimeDt >= EndTimeDt)
         {
             Debug.Log("코루틴 종료" + EndTimeDt);
-            TimeText.text = "▶";
+            TimeText.text = "무료";
             StopCoroutine("PuchaseCor");
             buttonCover.SetActive(false);
             isPuchase = true;
@@ -96,7 +96,7 @@ public class AdsChestBoxPuchase : MonoBehaviour, IPointerClickHandler
     {
         Debug.Log("테스트 광고 실행");
 
-        TestAdmob.instance.ShowAds2();
+        //AdChestBoxAdmob.instance.ShowAds();
        
         Debug.Log("테스트 광고 실행2");
 

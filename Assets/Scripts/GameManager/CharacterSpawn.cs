@@ -1487,6 +1487,6 @@ public class CharacterSpawn : MonoBehaviour
 
     public void ContinueAds()
     {
-        TestAdmob.instance.ShowAds4();
+        RestartAdmob.instance.ShowAds();
     }
 }

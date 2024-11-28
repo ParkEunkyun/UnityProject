@@ -190,7 +190,7 @@ public class StatusManager : MonoBehaviour, IPointerClickHandler
     public void PPUPTEST()
     {
 
-        TestAdmob.instance.ShowAds3();
+        StatAdmob.instance.ShowAds();
 
         if (isPuchase)
         {

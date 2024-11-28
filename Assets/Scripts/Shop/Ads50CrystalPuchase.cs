@@ -68,7 +68,7 @@ public class Ads50CrystalPuchase : MonoBehaviour
 
             Debug.Log("현재시간" + StartTimeDt);
 
-            DelayTimeTs = new TimeSpan(0, 5, 0); // 쿨타임
+            DelayTimeTs = new TimeSpan(0, 10, 0); // 쿨타임
             CountTimeTs = new TimeSpan(0, 0, 1);
             EndTimeDt = StartTimeDt + DelayTimeTs;            
 
@@ -84,7 +84,7 @@ public class Ads50CrystalPuchase : MonoBehaviour
 
             StartCoroutine("PuchaseCor");
 
-            TestAdmob.instance.ShowAdss();
+            Crystal50Admob.instance.ShowAds();
 
             Textudate();
         }
